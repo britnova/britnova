@@ -8,7 +8,7 @@ Design reference: [Kinetiq template](https://kinetiq-template.webflow.io/)
 
 | Layer | Technology |
 | --- | --- |
-| Framework | [Astro](https://astro.build/) (file-based routing, static output with Vercel adapter) |
+| Framework | [Astro](https://astro.build/) (file-based routing, static output with Netlify adapter) |
 | Styling | [Tailwind CSS v4](https://tailwindcss.com/) — design tokens in `src/styles/global.css` |
 | Interactivity | [React](https://react.dev/) islands only (nav, carousel, contact form, work filters) |
 | Animation | [Framer Motion](https://www.framer.com/motion/) (inside React islands) |
@@ -105,4 +105,15 @@ For full agent and contributor guidelines, see [AGENTS.md](./AGENTS.md).
 
 ## Deployment
 
-The site is configured for [Vercel](https://vercel.com/) via `@astrojs/vercel`. Set `RESEND_API_KEY` in your Vercel project environment variables for the contact form to send live emails.
+The site is configured for [Netlify](https://www.netlify.com/) via `@astrojs/netlify`. The contact form API route (`/api/contact`) requires this adapter — a static-only deploy will return 404 for that endpoint.
+
+Set these environment variables in your Netlify site settings (Site configuration → Environment variables):
+
+- `RESEND_API_KEY` — required
+- `CONTACT_EMAIL` — optional (defaults to `hello@britnova.com`)
+- `RESEND_FROM` — optional (defaults to Resend sandbox sender)
+
+Build settings are defined in `netlify.toml` (`pnpm build`, publish `dist`, Node 22).
+
+to manually run deployment:
+`netlify deploy --prod`
