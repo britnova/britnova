@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.vercel/
+
+# Astro generated types
+.astro/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Editor & OS
+.DS_Store
+*.swp
+.vscode/settings.json
