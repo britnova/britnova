@@ -17,3 +17,9 @@ dist/
 .DS_Store
 *.swp
 .vscode/settings.json
+
+# Local Netlify folder
+.netlify
+
+# cache files
+.pnpm-store/

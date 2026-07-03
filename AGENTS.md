@@ -77,5 +77,4 @@ public/
 
 ## Open Questions / Placeholders to Flag
 - Final brand accent color
-- Real case study content and images (we will content from ./old_britnova/app/)
 - Contact form backend (we will use Resend, and the api key will be in the .env file)

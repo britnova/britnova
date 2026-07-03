@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -14,5 +14,21 @@ export default defineConfig({
   },
 
   integrations: [react()],
-  adapter: vercel()
+  adapter: vercel(),
+
+  env: {
+    schema: {
+      RESEND_API_KEY: envField.string({ context: 'server', access: 'secret' }),
+      CONTACT_EMAIL: envField.string({
+        context: 'server',
+        access: 'secret',
+        default: 'onboarding@resend.dev',
+      }),
+      RESEND_FROM: envField.string({
+        context: 'server',
+        access: 'secret',
+        default: 'Britnova Contact Form <onboarding@resend.dev>',
+      }),
+    },
+  },
 });
