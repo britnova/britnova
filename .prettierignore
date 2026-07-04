@@ -1,0 +1,15 @@
+node_modules
+.dist
+dist
+.build
+public
+coverage
+.env
+.env.*
+/*.log
+
+# ignore lockfiles
+pnpm-lock.yaml
+package-lock.json
+
+timeouts.json

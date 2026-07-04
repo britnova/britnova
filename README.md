@@ -6,14 +6,14 @@ Design reference: [Kinetiq template](https://kinetiq-template.webflow.io/)
 
 ## Tech stack
 
-| Layer | Technology |
-| --- | --- |
-| Framework | [Astro](https://astro.build/) (file-based routing, static output with Netlify adapter) |
-| Styling | [Tailwind CSS v4](https://tailwindcss.com/) — design tokens in `src/styles/global.css` |
-| Interactivity | [React](https://react.dev/) islands only (nav, carousel, contact form, work filters) |
-| Animation | [Framer Motion](https://www.framer.com/motion/) (inside React islands) |
-| Content | Astro Content Collections (`src/content/work/`, `src/content/services/`) |
-| Package manager | [pnpm](https://pnpm.io/) |
+| Layer           | Technology                                                                             |
+| --------------- | -------------------------------------------------------------------------------------- |
+| Framework       | [Astro](https://astro.build/) (file-based routing, static output with Netlify adapter) |
+| Styling         | [Tailwind CSS v4](https://tailwindcss.com/) — design tokens in `src/styles/global.css` |
+| Interactivity   | [React](https://react.dev/) islands only (nav, carousel, contact form, work filters)   |
+| Animation       | [Framer Motion](https://www.framer.com/motion/) (inside React islands)                 |
+| Content         | Astro Content Collections (`src/content/work/`, `src/content/services/`)               |
+| Package manager | [pnpm](https://pnpm.io/)                                                               |
 
 ## Requirements
 
@@ -80,14 +80,14 @@ public/
 
 ## Pages
 
-| Route | Description |
-| --- | --- |
-| `/` | Homepage |
-| `/work` | Portfolio grid with category filters |
-| `/work/[slug]` | Individual case study |
-| `/services` | Services overview |
-| `/about` | About the agency |
-| `/contact` | Contact form and details |
+| Route          | Description                          |
+| -------------- | ------------------------------------ |
+| `/`            | Homepage                             |
+| `/work`        | Portfolio grid with category filters |
+| `/work/[slug]` | Individual case study                |
+| `/services`    | Services overview                    |
+| `/about`       | About the agency                     |
+| `/contact`     | Contact form and details             |
 
 ## Content
 

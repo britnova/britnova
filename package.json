@@ -10,7 +10,19 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "pnpm build && netlify deploy --prod"
+    "deploy": "pnpm build && netlify deploy --prod",
+    "check": "astro check",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,astro}": [
+      "eslint --fix"
+    ],
+    "*.{js,jsx,ts,tsx,astro,css,json,md}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@astrojs/netlify": "^8.1.1",
@@ -25,5 +37,22 @@
     "react-dom": "^19.2.7",
     "resend": "^6.16.0",
     "tailwindcss": "^4.3.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.6.0",
+    "eslint-plugin-astro": "^2.1.1",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-prettier": "^5.5.6",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.8",
+    "prettier": "^3.9.4",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.62.1"
   }
 }
