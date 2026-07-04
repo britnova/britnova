@@ -1,17 +1,9 @@
 import type { APIRoute } from 'astro';
 import { CONTACT_EMAIL, RESEND_API_KEY, RESEND_FROM } from 'astro:env/server';
 import { Resend } from 'resend';
+import { renderContactEmailTemplate } from '../../utils/templates/contactEmail';
 
 export const prerender = false;
-
-function escapeHtml(text: string): string {
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
-}
 
 function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -46,14 +38,12 @@ export const POST: APIRoute = async ({ request }) => {
       to: [CONTACT_EMAIL],
       replyTo: trimmedEmail,
       subject: `New Project Inquiry: ${trimmedService}`,
-      html: `
-        <h3>New Lead from Britnova Technologies</h3>
-        <p><strong>Name:</strong> ${escapeHtml(trimmedName)}</p>
-        <p><strong>Email:</strong> ${escapeHtml(trimmedEmail)}</p>
-        <p><strong>Project Scope:</strong> ${escapeHtml(trimmedService)}</p>
-        <p><strong>Message:</strong></p>
-        <p>${escapeHtml(trimmedMessage).replace(/\n/g, '<br/>')}</p>
-      `,
+      html: renderContactEmailTemplate({
+        name: trimmedName,
+        email: trimmedEmail,
+        service: trimmedService,
+        message: trimmedMessage,
+      }),
     });
 
     if (error) {
