@@ -36,28 +36,37 @@ const workItems = featuredWork.slice(0, 3);
       <!-- Section Header -->
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6">
         <div class="max-w-xl">
-          <span class="font-mono text-xs uppercase tracking-widest text-brand-accent mb-4 block">Case Studies</span>
-          <h2 class="font-display text-4xl md:text-5xl font-black uppercase tracking-tight text-text-light leading-tight">
+          <span class="font-mono text-xs uppercase tracking-widest text-brand-accent mb-4 block"
+            >Case Studies</span
+          >
+          <h2
+            class="font-display text-4xl md:text-5xl font-black uppercase tracking-tight text-text-light leading-tight"
+          >
             Projects We've Brought to Life
           </h2>
         </div>
-        <a href="/work" class="inline-flex items-center gap-1 text-sm font-semibold uppercase tracking-wider text-text-light border-b border-text-light pb-1 hover:text-brand-accent hover:border-brand-accent transition-colors self-start md:self-auto">
+        <a
+          href="/work"
+          class="inline-flex items-center gap-1 text-sm font-semibold uppercase tracking-wider text-text-light border-b border-text-light pb-1 hover:text-brand-accent hover:border-brand-accent transition-colors self-start md:self-auto"
+        >
           View All Projects
         </a>
       </div>
 
       <!-- Work Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {workItems.map((item) => (
-          <WorkCard
-            title={item.data.title}
-            description={item.data.description}
-            slug={item.id}
-            tags={item.data.tags}
-            client={item.data.client}
-            year={item.data.year}
-          />
-        ))}
+        {
+          workItems.map((item) => (
+            <WorkCard
+              title={item.data.title}
+              description={item.data.description}
+              slug={item.id}
+              tags={item.data.tags}
+              client={item.data.client}
+              year={item.data.year}
+            />
+          ))
+        }
       </div>
     </div>
   </section>

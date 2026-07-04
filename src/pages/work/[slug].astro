@@ -9,7 +9,7 @@ export async function getStaticPaths() {
     params: { slug: entry.id },
     props: {
       entry,
-      nextEntry: workEntries[(index + 1) % workEntries.length]
+      nextEntry: workEntries[(index + 1) % workEntries.length],
     },
   }));
 }
@@ -24,17 +24,23 @@ const { Content } = await render(entry);
 >
   <article class="py-20 bg-bg-dark text-text-light">
     <div class="max-w-4xl mx-auto px-6">
-      
       <!-- Back Link -->
-      <a href="/work" class="inline-flex items-center gap-2 text-xs font-mono text-text-muted hover:text-brand-accent transition-colors mb-12">
-        <ArrowLeft class="w-4 h-4" />
+      <a
+        href="/work"
+        class="inline-flex items-center gap-2 text-xs font-mono text-text-muted hover:text-brand-accent transition-colors mb-12"
+      >
+        <ArrowLeft className="w-4 h-4" />
         Back to portfolio
       </a>
 
       <!-- Header -->
       <div class="border-b border-border-subtle pb-12 mb-12">
-        <span class="font-mono text-xs text-brand-accent uppercase tracking-wider block mb-4">Case Study</span>
-        <h1 class="font-display text-4xl md:text-6xl font-black uppercase tracking-tight text-text-light mb-6 leading-tight">
+        <span class="font-mono text-xs text-brand-accent uppercase tracking-wider block mb-4"
+          >Case Study</span
+        >
+        <h1
+          class="font-display text-4xl md:text-6xl font-black uppercase tracking-tight text-text-light mb-6 leading-tight"
+        >
           {entry.data.title}
         </h1>
         <p class="text-lg md:text-xl text-text-muted font-light leading-relaxed mb-8">
@@ -42,69 +48,89 @@ const { Content } = await render(entry);
         </p>
 
         <!-- Metadata Grid -->
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-6 pt-6 border-t border-border-subtle/50 text-sm">
+        <div
+          class="grid grid-cols-2 md:grid-cols-3 gap-6 pt-6 border-t border-border-subtle/50 text-sm"
+        >
           <div>
-            <span class="font-mono text-xs text-text-muted block uppercase tracking-wider mb-1">Client</span>
+            <span class="font-mono text-xs text-text-muted block uppercase tracking-wider mb-1"
+              >Client</span
+            >
             <span class="font-semibold text-text-light">{entry.data.client}</span>
           </div>
           <div>
-            <span class="font-mono text-xs text-text-muted block uppercase tracking-wider mb-1">Year</span>
+            <span class="font-mono text-xs text-text-muted block uppercase tracking-wider mb-1"
+              >Year</span
+            >
             <span class="font-semibold text-text-light">{entry.data.year}</span>
           </div>
           <div class="col-span-2 md:col-span-1">
-            <span class="font-mono text-xs text-text-muted block uppercase tracking-wider mb-1">Tags</span>
+            <span class="font-mono text-xs text-text-muted block uppercase tracking-wider mb-1"
+              >Tags</span
+            >
             <div class="flex flex-wrap gap-1.5 mt-1">
-              {entry.data.tags.map((tag) => (
-                <span class="text-[10px] font-mono uppercase bg-bg-card border border-border-subtle px-2 py-0.5 rounded text-text-muted">
-                  {tag}
-                </span>
-              ))}
+              {
+                entry.data.tags.map((tag) => (
+                  <span class="text-[10px] font-mono uppercase bg-bg-card border border-border-subtle px-2 py-0.5 rounded text-text-muted">
+                    {tag}
+                  </span>
+                ))
+              }
             </div>
           </div>
         </div>
       </div>
 
       <!-- Metrics Highlight -->
-      {entry.data.metrics && entry.data.metrics.length > 0 && (
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 p-6 rounded-2xl bg-bg-card border border-border-subtle mb-16">
-          {entry.data.metrics.map((metric) => (
-            <div class="text-center sm:text-left border-b sm:border-b-0 sm:border-r border-border-subtle last:border-none pb-4 sm:pb-0 sm:pr-6 last:pr-0">
-              <span class="font-display text-3xl font-extrabold text-brand-accent block mb-1">
-                {metric.value}
-              </span>
-              <span class="font-mono text-[10px] text-text-muted uppercase tracking-wider">
-                {metric.label}
-              </span>
-            </div>
-          ))}
-        </div>
-      )}
+      {
+        entry.data.metrics && entry.data.metrics.length > 0 && (
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 p-6 rounded-2xl bg-bg-card border border-border-subtle mb-16">
+            {entry.data.metrics.map((metric) => (
+              <div class="text-center sm:text-left border-b sm:border-b-0 sm:border-r border-border-subtle last:border-none pb-4 sm:pb-0 sm:pr-6 last:pr-0">
+                <span class="font-display text-3xl font-extrabold text-brand-accent block mb-1">
+                  {metric.value}
+                </span>
+                <span class="font-mono text-[10px] text-text-muted uppercase tracking-wider">
+                  {metric.label}
+                </span>
+              </div>
+            ))}
+          </div>
+        )
+      }
 
       <!-- Markdown Content -->
-      <div class="prose prose-invert max-w-none prose-h2:font-display prose-h2:text-2xl prose-h2:font-bold prose-h2:uppercase prose-h2:tracking-tight prose-h2:border-b prose-h2:border-border-subtle prose-h2:pb-3 prose-h2:mt-12 prose-h2:mb-6 prose-p:text-text-muted prose-p:leading-relaxed prose-p:font-light prose-p:mb-6 prose-ul:list-disc prose-ul:pl-6 prose-ul:space-y-2 prose-ul:text-text-muted prose-ul:font-light">
+      <div
+        class="prose prose-invert max-w-none prose-h2:font-display prose-h2:text-2xl prose-h2:font-bold prose-h2:uppercase prose-h2:tracking-tight prose-h2:border-b prose-h2:border-border-subtle prose-h2:pb-3 prose-h2:mt-12 prose-h2:mb-6 prose-p:text-text-muted prose-p:leading-relaxed prose-p:font-light prose-p:mb-6 prose-ul:list-disc prose-ul:pl-6 prose-ul:space-y-2 prose-ul:text-text-muted prose-ul:font-light"
+      >
         <Content />
       </div>
 
       <!-- Next Project Link -->
-      {nextEntry && (
-        <div class="border-t border-border-subtle pt-16 mt-20">
-          <span class="font-mono text-xs text-text-muted uppercase tracking-wider block mb-4">Next Case Study</span>
-          <a href={`/work/${nextEntry.id}`} class="group flex justify-between items-center py-6 px-8 rounded-2xl bg-bg-card border border-border-subtle hover:border-brand-accent/50 hover:bg-bg-card-hover transition-all duration-300">
-            <div>
-              <h4 class="font-display text-2xl font-bold text-text-light group-hover:text-brand-accent transition-colors">
-                {nextEntry.data.title}
-              </h4>
-              <p class="text-xs text-text-muted mt-1 font-mono">
-                Client: {nextEntry.data.client}
-              </p>
-            </div>
-            <div class="w-10 h-10 rounded-full border border-border-subtle group-hover:border-brand-accent flex items-center justify-center text-text-muted group-hover:text-brand-accent transition-colors">
-              <ArrowRight class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-            </div>
-          </a>
-        </div>
-      )}
-
+      {
+        nextEntry && (
+          <div class="border-t border-border-subtle pt-16 mt-20">
+            <span class="font-mono text-xs text-text-muted uppercase tracking-wider block mb-4">
+              Next Case Study
+            </span>
+            <a
+              href={`/work/${nextEntry.id}`}
+              class="group flex justify-between items-center py-6 px-8 rounded-2xl bg-bg-card border border-border-subtle hover:border-brand-accent/50 hover:bg-bg-card-hover transition-all duration-300"
+            >
+              <div>
+                <h4 class="font-display text-2xl font-bold text-text-light group-hover:text-brand-accent transition-colors">
+                  {nextEntry.data.title}
+                </h4>
+                <p class="text-xs text-text-muted mt-1 font-mono">
+                  Client: {nextEntry.data.client}
+                </p>
+              </div>
+              <div class="w-10 h-10 rounded-full border border-border-subtle group-hover:border-brand-accent flex items-center justify-center text-text-muted group-hover:text-brand-accent transition-colors">
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+              </div>
+            </a>
+          </div>
+        )
+      }
     </div>
   </article>
 </BaseLayout>

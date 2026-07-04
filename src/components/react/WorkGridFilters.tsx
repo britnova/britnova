@@ -15,16 +15,25 @@ interface Props {
   caseStudies: CaseStudy[];
 }
 
-const categories = ['All', 'AI & Machine Learning', 'DevOps & MLOps', 'Web & Software Development', 'Cloud Services'];
+const categories = [
+  'All',
+  'AI & Machine Learning',
+  'DevOps & MLOps',
+  'Web & Software Development',
+  'Cloud Services',
+];
 
 export default function WorkGridFilters({ caseStudies }: Props) {
   const [activeCategory, setActiveCategory] = useState('All');
 
-  const filteredStudies = activeCategory === 'All'
-    ? caseStudies
-    : caseStudies.filter(study => 
-        study.tags.some(tag => tag.toLowerCase().includes(activeCategory.toLowerCase().substring(0, 8)))
-      );
+  const filteredStudies =
+    activeCategory === 'All'
+      ? caseStudies
+      : caseStudies.filter((study) =>
+          study.tags.some((tag) =>
+            tag.toLowerCase().includes(activeCategory.toLowerCase().substring(0, 8))
+          )
+        );
 
   return (
     <div className="flex flex-col gap-12">
@@ -82,7 +91,10 @@ export default function WorkGridFilters({ caseStudies }: Props) {
                 <div>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {study.tags.map((tag) => (
-                      <span key={tag} className="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded bg-bg-dark border border-border-subtle text-text-muted">
+                      <span
+                        key={tag}
+                        className="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded bg-bg-dark border border-border-subtle text-text-muted"
+                      >
                         {tag}
                       </span>
                     ))}

@@ -2,7 +2,7 @@ import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 const work = defineCollection({
-  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: "./src/content/work" }),
+  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './src/content/work' }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -11,17 +11,19 @@ const work = defineCollection({
     client: z.string(),
     year: z.string(),
     featured: z.boolean().default(false),
-    metrics: z.array(
-      z.object({
-        label: z.string(),
-        value: z.string(),
-      })
-    ).optional(),
+    metrics: z
+      .array(
+        z.object({
+          label: z.string(),
+          value: z.string(),
+        })
+      )
+      .optional(),
   }),
 });
 
 const services = defineCollection({
-  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: "./src/content/services" }),
+  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './src/content/services' }),
   schema: z.object({
     title: z.string(),
     description: z.string(),

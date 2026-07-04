@@ -37,7 +37,10 @@ export default function Nav() {
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
           {/* Logo */}
-          <a href="/" className="font-display text-2xl font-bold tracking-tight text-text-light flex items-center gap-2 group">
+          <a
+            href="/"
+            className="font-display text-2xl font-bold tracking-tight text-text-light flex items-center gap-2 group"
+          >
             <span className="w-2.5 h-2.5 rounded-full bg-brand-accent group-hover:scale-125 transition-transform duration-300"></span>
             BRITNOVA
           </a>
@@ -96,12 +99,14 @@ export default function Nav() {
                     onClick={() => setIsOpen(false)}
                     className="font-display text-4xl md:text-5xl font-extrabold tracking-tight text-text-light hover:text-brand-accent transition-colors duration-300 flex items-baseline gap-2"
                   >
-                    <span className="text-sm text-brand-accent font-mono font-normal">0{idx + 1}.</span>
+                    <span className="text-sm text-brand-accent font-mono font-normal">
+                      0{idx + 1}.
+                    </span>
                     {link.label}
                   </a>
                 </motion.div>
               ))}
-              
+
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

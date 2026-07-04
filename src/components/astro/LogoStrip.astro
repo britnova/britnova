@@ -5,7 +5,7 @@ const brandLogos = [
   { name: 'Docker', class: 'font-semibold tracking-wide' },
   { name: 'Supabase', class: 'font-medium' },
   { name: 'Kubernetes', class: 'font-light tracking-tight' },
-  { name: 'Terraform', class: 'font-mono tracking-tight font-bold' }
+  { name: 'Terraform', class: 'font-mono tracking-tight font-bold' },
 ];
 ---
 
@@ -14,12 +14,18 @@ const brandLogos = [
     <p class="text-center font-mono text-[10px] uppercase tracking-widest text-text-muted mb-8">
       Technologies & Integrations We Trust
     </p>
-    <div class="flex flex-wrap items-center justify-center gap-x-16 gap-y-8 opacity-40 hover:opacity-75 transition-opacity duration-300">
-      {brandLogos.map((logo) => (
-        <div class={`text-lg md:text-xl font-display text-text-light cursor-default select-none ${logo.class}`}>
-          {logo.name}
-        </div>
-      ))}
+    <div
+      class="flex flex-wrap items-center justify-center gap-x-16 gap-y-8 opacity-40 hover:opacity-75 transition-opacity duration-300"
+    >
+      {
+        brandLogos.map((logo) => (
+          <div
+            class={`text-lg md:text-xl font-display text-text-light cursor-default select-none ${logo.class}`}
+          >
+            {logo.name}
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>

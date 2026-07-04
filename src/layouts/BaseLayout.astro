@@ -10,20 +10,20 @@ interface Props {
 }
 
 const {
-  title = "Britnova Technologies | Intelligent AI, Cloud & Web Engineering",
-  description = "We design and build high-performance, scalable digital products using AI, Cloud, and modern web frameworks.",
-  ogImage = "/images/og-default.jpg"
+  title = 'Britnova Technologies | Intelligent AI, Cloud & Web Engineering',
+  description = 'We design and build high-performance, scalable digital products using AI, Cloud, and modern web frameworks.',
+  ogImage = '/images/og-default.jpg',
 } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    
+
     <!-- Primary Meta Tags -->
     <title>{title}</title>
     <meta name="title" content={title} />
@@ -43,7 +43,9 @@ const {
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(ogImage, Astro.url)} />
   </head>
-  <body class="bg-bg-dark text-text-light font-sans flex flex-col min-h-screen selection:bg-brand-accent selection:text-bg-dark">
+  <body
+    class="bg-bg-dark text-text-light font-sans flex flex-col min-h-screen selection:bg-brand-accent selection:text-bg-dark"
+  >
     <!-- Sticky Nav -->
     <Nav client:load />
 

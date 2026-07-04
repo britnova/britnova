@@ -17,7 +17,7 @@ export default function ContactForm() {
     'DevOps & MLOps',
     'Web & Software Development',
     'Cloud Services',
-    'Consulting / Other'
+    'Consulting / Other',
   ];
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -50,13 +50,13 @@ export default function ContactForm() {
 
   return (
     <div className="bg-bg-card border border-border-subtle p-8 md:p-10 rounded-2xl relative overflow-hidden">
-      
       {status === 'success' ? (
         <div className="text-center py-12 flex flex-col items-center">
           <CheckCircle2 className="w-16 h-16 text-brand-accent mb-6 stroke-[1.5]" />
           <h3 className="font-display text-2xl font-bold text-text-light mb-3">Message Sent!</h3>
           <p className="text-text-muted text-sm max-w-sm leading-relaxed mb-8">
-            Thank you for reaching out. We have received your query and our team will get back to you within 24 hours.
+            Thank you for reaching out. We have received your query and our team will get back to
+            you within 24 hours.
           </p>
           <button
             onClick={() => setStatus('idle')}
@@ -77,7 +77,12 @@ export default function ContactForm() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {/* Name */}
             <div className="flex flex-col gap-2">
-              <label htmlFor="name" className="font-mono text-xs text-text-muted uppercase tracking-wider">Your Name</label>
+              <label
+                htmlFor="name"
+                className="font-mono text-xs text-text-muted uppercase tracking-wider"
+              >
+                Your Name
+              </label>
               <input
                 id="name"
                 type="text"
@@ -91,7 +96,12 @@ export default function ContactForm() {
 
             {/* Email */}
             <div className="flex flex-col gap-2">
-              <label htmlFor="email" className="font-mono text-xs text-text-muted uppercase tracking-wider">Email Address</label>
+              <label
+                htmlFor="email"
+                className="font-mono text-xs text-text-muted uppercase tracking-wider"
+              >
+                Email Address
+              </label>
               <input
                 id="email"
                 type="email"
@@ -106,7 +116,12 @@ export default function ContactForm() {
 
           {/* Service interested in */}
           <div className="flex flex-col gap-2">
-            <label htmlFor="service" className="font-mono text-xs text-text-muted uppercase tracking-wider">Project Scope / Interest</label>
+            <label
+              htmlFor="service"
+              className="font-mono text-xs text-text-muted uppercase tracking-wider"
+            >
+              Project Scope / Interest
+            </label>
             <select
               id="service"
               value={form.service}
@@ -123,7 +138,12 @@ export default function ContactForm() {
 
           {/* Message */}
           <div className="flex flex-col gap-2">
-            <label htmlFor="message" className="font-mono text-xs text-text-muted uppercase tracking-wider">Tell us about your project</label>
+            <label
+              htmlFor="message"
+              className="font-mono text-xs text-text-muted uppercase tracking-wider"
+            >
+              Tell us about your project
+            </label>
             <textarea
               id="message"
               required
@@ -149,7 +169,6 @@ export default function ContactForm() {
           </button>
         </form>
       )}
-
     </div>
   );
 }

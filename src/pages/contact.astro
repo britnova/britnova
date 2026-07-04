@@ -10,54 +10,70 @@ import { Mail, MapPin, Globe } from 'lucide-react';
 >
   <section class="py-24 bg-bg-dark text-text-light">
     <div class="max-w-7xl mx-auto px-6 md:px-12">
-      
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-        
         <!-- Left Side: Contact Information -->
         <div class="lg:col-span-5 flex flex-col justify-between h-full">
           <div>
-            <span class="font-mono text-xs uppercase tracking-widest text-brand-accent mb-4 block">Get in Touch</span>
-            <h1 class="font-display text-4xl md:text-6xl font-black uppercase tracking-tight text-text-light mb-6">
-              Let's build <br/>
+            <span class="font-mono text-xs uppercase tracking-widest text-brand-accent mb-4 block"
+              >Get in Touch</span
+            >
+            <h1
+              class="font-display text-4xl md:text-6xl font-black uppercase tracking-tight text-text-light mb-6"
+            >
+              Let's build <br />
               something <span class="text-brand-accent">great</span>.
             </h1>
             <p class="text-text-muted text-sm font-light leading-relaxed mb-12 max-w-sm">
-              Ready to automate your workflows, scale your cloud infrastructure, or build a custom web solution? Drop us a line. We respond to all inquiries within 24 hours.
+              Ready to automate your workflows, scale your cloud infrastructure, or build a custom
+              web solution? Drop us a line. We respond to all inquiries within 24 hours.
             </p>
           </div>
 
           <!-- Contact items -->
           <div class="space-y-6">
             <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-full border border-border-subtle flex items-center justify-center text-brand-accent shrink-0">
-                <Mail class="w-4 h-4" />
+              <div
+                class="w-10 h-10 rounded-full border border-border-subtle flex items-center justify-center text-brand-accent shrink-0"
+              >
+                <Mail className="w-4 h-4" />
               </div>
               <div>
-                <span class="font-mono text-[10px] text-text-muted uppercase tracking-wider block">Email us</span>
-                <a href="mailto:hello@britnova.com" class="text-sm font-semibold hover:text-brand-accent transition-colors">
+                <span class="font-mono text-[10px] text-text-muted uppercase tracking-wider block"
+                  >Email us</span
+                >
+                <a
+                  href="mailto:hello@britnova.com"
+                  class="text-sm font-semibold hover:text-brand-accent transition-colors"
+                >
                   hello@britnova.com
                 </a>
               </div>
             </div>
 
             <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-full border border-border-subtle flex items-center justify-center text-brand-accent shrink-0">
-                <MapPin class="w-4 h-4" />
+              <div
+                class="w-10 h-10 rounded-full border border-border-subtle flex items-center justify-center text-brand-accent shrink-0"
+              >
+                <MapPin className="w-4 h-4" />
               </div>
               <div>
-                <span class="font-mono text-[10px] text-text-muted uppercase tracking-wider block">HQ Location</span>
-                <span class="text-sm text-text-muted font-light">
-                  London, United Kingdom
-                </span>
+                <span class="font-mono text-[10px] text-text-muted uppercase tracking-wider block"
+                  >HQ Location</span
+                >
+                <span class="text-sm text-text-muted font-light"> London, United Kingdom </span>
               </div>
             </div>
 
             <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-full border border-border-subtle flex items-center justify-center text-brand-accent shrink-0">
-                <Globe class="w-4 h-4" />
+              <div
+                class="w-10 h-10 rounded-full border border-border-subtle flex items-center justify-center text-brand-accent shrink-0"
+              >
+                <Globe className="w-4 h-4" />
               </div>
               <div>
-                <span class="font-mono text-[10px] text-text-muted uppercase tracking-wider block">Office Hours</span>
+                <span class="font-mono text-[10px] text-text-muted uppercase tracking-wider block"
+                  >Office Hours</span
+                >
                 <span class="text-sm text-text-muted font-light">
                   Mon – Fri, 9:00 AM – 6:00 PM GMT
                 </span>
@@ -70,9 +86,7 @@ import { Mail, MapPin, Globe } from 'lucide-react';
         <div class="lg:col-span-7">
           <ContactForm client:load />
         </div>
-
       </div>
-
     </div>
   </section>
 </BaseLayout>

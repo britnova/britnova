@@ -14,17 +14,17 @@ export const POST: APIRoute = async ({ request }) => {
     const { name, email, service, message } = await request.json();
 
     if (!name?.trim() || !email?.trim() || !message?.trim()) {
-      return new Response(
-        JSON.stringify({ error: 'Name, email, and message are required.' }),
-        { status: 400, headers: { 'Content-Type': 'application/json' } }
-      );
+      return new Response(JSON.stringify({ error: 'Name, email, and message are required.' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
     }
 
     if (!isValidEmail(email.trim())) {
-      return new Response(
-        JSON.stringify({ error: 'Please provide a valid email address.' }),
-        { status: 400, headers: { 'Content-Type': 'application/json' } }
-      );
+      return new Response(JSON.stringify({ error: 'Please provide a valid email address.' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
     }
 
     const resend = new Resend(RESEND_API_KEY);
@@ -54,15 +54,15 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    return new Response(
-      JSON.stringify({ message: 'Message sent successfully.', id: data?.id }),
-      { status: 200, headers: { 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ message: 'Message sent successfully.', id: data?.id }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
   } catch (error) {
     console.error('Contact API Route Error:', error);
-    return new Response(
-      JSON.stringify({ error: 'An unexpected server error occurred.' }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ error: 'An unexpected server error occurred.' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 };
