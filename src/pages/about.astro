@@ -1,101 +1,71 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTASection from '../components/astro/CTASection.astro';
+import SectionHeading from '../components/astro/home/SectionHeading.astro';
+import content from '../data/content.json';
 
-const beliefs = [
-  {
-    title: 'Solve Real Problems',
-    desc: 'Technology should serve the business goals, not the other way around. We focus on outcomes.',
-  },
-  {
-    title: 'Simplicity Over Complexity',
-    desc: 'We design modular, readable architectures that are easy to maintain and scale.',
-  },
-  {
-    title: 'Scalability from Day One',
-    desc: 'Infrastructure and database schemas are built to endure traffic growth without rewrites.',
-  },
-  {
-    title: 'Partnerships Over Projects',
-    desc: 'We act as your dedicated engineering arm, collaborating closely to launch products.',
-  },
-];
+const { about } = content;
 ---
 
-<BaseLayout
-  title="About Us | Britnova Technologies"
-  description="Our story, core engineering values, and what drives our technological selections."
->
+<BaseLayout title={about.seo.title} description={about.seo.description}>
   <!-- Hero Section -->
-  <section class="py-24 border-b border-border-subtle bg-bg-dark text-text-light">
-    <div class="max-w-7xl mx-auto px-6 md:px-12">
-      <div class="max-w-3xl mb-20">
-        <span class="font-mono text-xs uppercase tracking-widest text-brand-accent mb-4 block"
-          >About Our Agency</span
-        >
+  <section class="border-b border-ink-800 py-24">
+    <div class="mx-auto max-w-7xl px-6 md:px-12">
+      <div class="mb-20 max-w-3xl">
+        <span class="mb-5 block font-mono text-[12px] tracking-[0.2em] text-ink-300 uppercase">
+          {about.eyebrow}
+        </span>
         <h1
-          class="font-display text-5xl md:text-7xl font-black uppercase tracking-tight text-text-light mb-8"
+          class="font-brand max-w-[20ch] text-[42px] leading-[1.05] font-semibold tracking-[-0.045em] text-paper md:text-[68px]"
         >
-          About <span class="text-brand-accent">Britnova</span>
+          {`${about.headline.prefix} ${about.headline.accent}`}
         </h1>
-        <p class="text-lg md:text-xl text-text-muted font-light leading-relaxed">
-          We are a forward-thinking technology company helping businesses build scalable digital
-          products using AI, cloud, and modern web technologies.
+        <p class="mt-6 max-w-2xl text-[17px] leading-relaxed text-ink-300">
+          {about.intro}
         </p>
       </div>
 
       <!-- Story grid -->
       <div
-        class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start py-16 border-t border-border-subtle"
+        class="grid grid-cols-1 items-start gap-12 border-t border-ink-800 py-16 lg:grid-cols-12"
       >
         <!-- Left Title -->
         <div class="lg:col-span-4">
-          <h2 class="font-display text-3xl font-bold uppercase tracking-tight text-text-light">
-            Our Story
+          <h2 class="font-mono text-[12px] tracking-[0.24em] text-ink-300 uppercase">
+            {about.story.title}
           </h2>
         </div>
 
         <!-- Right Paragraphs -->
-        <div class="lg:col-span-8 space-y-6 text-sm text-text-muted leading-relaxed font-light">
-          <p>
-            Britnova Technologies was founded with a simple vision — to bridge the gap between
-            complex, emerging technology and tangible business value. We noticed that many companies
-            were either getting lost in AI hype or running fragile legacy systems that bottlenecked
-            growth.
-          </p>
-          <p>
-            We specialize in AI/ML model deployment, DevOps pipeline automations, and modern
-            full-stack development, delivering engineering solutions that are not only powerful but
-            also scalable and maintainable.
-          </p>
-          <p>
-            From startups launching their first products to growing enterprises modernizing their
-            tech stack, we work side-by-side with product teams to turn technical concepts into
-            production-ready software.
-          </p>
+        <div class="space-y-6 text-[15px] leading-relaxed text-ink-300 lg:col-span-8">
+          {about.story.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
         </div>
       </div>
 
       <!-- Values Grid -->
-      <div class="py-20 border-t border-border-subtle">
-        <div class="mb-12">
-          <span class="font-mono text-xs uppercase tracking-widest text-brand-accent mb-4 block"
-            >Our Philosophy</span
-          >
-          <h2 class="font-display text-3xl font-bold uppercase tracking-tight text-text-light">
-            What We Believe
-          </h2>
-        </div>
+      <div class="border-t border-ink-800 py-20">
+        <SectionHeading
+          label={`${about.philosophy.eyebrow} / ${String(about.philosophy.beliefs.length).padStart(2, '0')}`}
+        />
+        <h3
+          class="font-brand text-[28px] leading-[1.1] font-medium tracking-[-0.025em] text-paper md:text-[36px]"
+        >
+          {about.philosophy.title}
+        </h3>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div
+          class="mt-12 grid grid-cols-1 border-t border-l border-ink-800 sm:grid-cols-2 lg:grid-cols-4"
+        >
           {
-            beliefs.map((belief, index) => (
-              <div class="p-6 rounded-2xl bg-bg-card border border-border-subtle hover:border-brand-accent/30 transition-all duration-300">
-                <div class="font-mono text-xs text-brand-accent mb-4">0{index + 1}.</div>
-                <h3 class="font-display text-lg font-bold text-text-light uppercase tracking-tight mb-2">
+            about.philosophy.beliefs.map((belief, index) => (
+              <div class="border-r border-b border-ink-800 p-6 md:p-7">
+                <span class="font-mono text-[12px] text-ink-300">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <h3 class="font-brand mt-3.5 text-[19px] leading-tight font-medium tracking-[-0.01em] text-paper">
                   {belief.title}
                 </h3>
-                <p class="text-xs text-text-muted leading-relaxed font-light">{belief.desc}</p>
+                <p class="mt-2.5 text-[15px] leading-relaxed text-ink-300">{belief.desc}</p>
               </div>
             ))
           }

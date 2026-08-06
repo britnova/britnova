@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import content from '../../data/content.json';
 
 interface CaseStudy {
   title: string;
@@ -15,13 +16,7 @@ interface Props {
   caseStudies: CaseStudy[];
 }
 
-const categories = [
-  'All',
-  'AI & Machine Learning',
-  'DevOps & MLOps',
-  'Web & Software Development',
-  'Cloud Services',
-];
+const categories = content.workPage.filterCategories;
 
 export default function WorkGridFilters({ caseStudies }: Props) {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -43,10 +38,10 @@ export default function WorkGridFilters({ caseStudies }: Props) {
           <button
             key={category}
             onClick={() => setActiveCategory(category)}
-            className={`px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide uppercase transition-all duration-300 ${
+            className={`rounded-sm px-4 py-2 font-mono text-[11px] tracking-[0.14em] uppercase transition-colors ${
               activeCategory === category
-                ? 'bg-brand-accent text-bg-dark font-bold'
-                : 'bg-bg-card border border-border-subtle text-text-muted hover:text-text-light hover:border-text-muted'
+                ? 'bg-paper text-ink-950'
+                : 'border border-ink-700 text-ink-300 hover:text-paper hover:border-ink-400'
             }`}
           >
             {category}
@@ -69,21 +64,19 @@ export default function WorkGridFilters({ caseStudies }: Props) {
             >
               <a
                 href={`/work/${study.slug}`}
-                className="group flex flex-col justify-between p-6 md:p-8 rounded-2xl bg-bg-card border border-border-subtle hover:border-brand-accent/50 hover:bg-bg-card-hover transition-all duration-500 h-full relative overflow-hidden"
+                className="group flex h-full flex-col justify-between border border-ink-800 p-6 transition-colors hover:border-ink-500 md:p-7"
               >
-                <div className="absolute -right-20 -bottom-20 w-64 h-64 rounded-full bg-brand-accent/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-
                 <div>
-                  <div className="flex justify-between items-center mb-6 font-mono text-xs text-text-muted">
+                  <div className="flex justify-between items-center mb-6 font-mono text-[12px] text-ink-300">
                     <span>{study.client}</span>
                     <span>{study.year}</span>
                   </div>
 
-                  <h3 className="font-display text-2xl font-bold tracking-tight text-text-light mb-3 group-hover:text-brand-accent transition-colors duration-300">
+                  <h3 className="font-brand text-[22px] font-medium leading-tight tracking-[-0.02em] text-paper mb-3">
                     {study.title}
                   </h3>
 
-                  <p className="text-sm text-text-muted leading-relaxed mb-6 font-light">
+                  <p className="text-[15px] leading-relaxed text-ink-300 mb-6">
                     {study.description}
                   </p>
                 </div>
@@ -93,14 +86,14 @@ export default function WorkGridFilters({ caseStudies }: Props) {
                     {study.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded bg-bg-dark border border-border-subtle text-text-muted"
+                        className="border border-ink-700 px-2.5 py-0.5 font-mono text-[10px] tracking-[0.1em] text-ink-300 uppercase"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <div className="flex items-center gap-1.5 text-xs font-semibold text-text-light group-hover:text-brand-accent transition-colors duration-300">
+                  <div className="flex items-center gap-1.5 text-xs font-semibold text-ink-100 group-hover:text-paper transition-colors duration-300">
                     View Case Study
                     <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
                   </div>

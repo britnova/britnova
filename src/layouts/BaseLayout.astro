@@ -1,17 +1,16 @@
 ---
 import '../styles/global.css';
-import Nav from '../components/react/Nav';
-import Footer from '../components/astro/Footer.astro';
+import SiteHeader from '../components/astro/home/SiteHeader.astro';
+import SiteFooter from '../components/astro/home/SiteFooter.astro';
 
 interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
   /**
-   * Render the shared Nav + Footer. Set false when the page supplies its own
-   * chrome. The homepage sets this false — it supplies its own header and
-   * footer in the monochrome brand palette, while the inner pages still use
-   * the shared Nav/Footer.
+   * Render the shared SiteHeader + SiteFooter. Set false when the page
+   * supplies its own chrome directly — the homepage does, embedding
+   * SiteHeader inside Hero so the two fill exactly one viewport.
    */
   chrome?: boolean;
 }
@@ -52,17 +51,14 @@ const {
     <meta property="twitter:image" content={new URL(ogImage, Astro.url)} />
   </head>
   <body
-    class="bg-bg-dark text-text-light font-sans flex flex-col min-h-screen selection:bg-brand-accent selection:text-bg-dark"
+    class="bg-ink-950 text-paper font-sans flex flex-col min-h-screen selection:bg-paper selection:text-ink-950"
   >
-    <!-- Sticky Nav -->
-    {chrome && <Nav client:visible />}
+    {chrome && <SiteHeader />}
 
-    <!-- Main Content Area -->
-    <main class={chrome ? 'flex-grow pt-20' : 'flex-grow'}>
+    <main class="flex-grow">
       <slot />
     </main>
 
-    <!-- Footer -->
-    {chrome && <Footer />}
+    {chrome && <SiteFooter />}
   </body>
 </html>

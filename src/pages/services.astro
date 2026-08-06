@@ -1,95 +1,87 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTASection from '../components/astro/CTASection.astro';
-import { getCollection } from 'astro:content';
+import content from '../data/content.json';
 
-const allServices = await getCollection('services');
-const services = allServices.sort((a, b) => a.data.order - b.data.order);
+const services = [...content.services].sort((a, b) => a.order - b.order);
+const { servicesPage } = content;
 ---
 
-<BaseLayout
-  title="Our Services & Capabilities | Britnova Technologies"
-  description="Learn about our custom AI/ML model developments, infrastructure scaling, full-stack systems, and cloud management."
->
-  <section class="py-24 border-b border-border-subtle bg-bg-dark text-text-light">
+<BaseLayout title={servicesPage.seo.title} description={servicesPage.seo.description}>
+  <section class="py-24 border-b border-ink-800">
     <div class="max-w-7xl mx-auto px-6 md:px-12">
-      
-      <!-- Page Header -->
       <div class="max-w-3xl mb-24 text-center mx-auto">
-        <span class="font-mono text-xs uppercase tracking-widest text-brand-accent mb-4 block">Our Capabilities</span>
-        <h1 class="font-display text-5xl md:text-6xl font-black uppercase tracking-tight text-text-light mb-6">
-          How We Build
+        <span class="font-mono text-[12px] tracking-[0.2em] text-ink-300 uppercase mb-4 block">
+          {servicesPage.eyebrow}
+        </span>
+        <h1
+          class="font-brand text-5xl md:text-6xl font-semibold tracking-[-0.045em] text-paper mb-6"
+        >
+          {servicesPage.headline}
         </h1>
-        <p class="text-text-muted text-lg font-light leading-relaxed">
-          We bring engineering precision and structured development practices to help you scale operations, decrease costs, and build custom software.
+        <p class="text-[17px] leading-relaxed text-ink-300">
+          {servicesPage.body}
         </p>
       </div>
 
-      <!-- Services Grid details -->
       <div class="flex flex-col gap-24">
-        {services.map((service, index) => (
-          <div id={service.id} class="scroll-mt-28 grid grid-cols-1 lg:grid-cols-12 gap-12 border-t border-border-subtle pt-16 group">
-            
-            <!-- Left Info Block -->
-            <div class="lg:col-span-5">
-              <div class="flex items-center gap-4 mb-6">
-                <span class="text-3xl font-display font-bold text-brand-accent/50">0{index + 1}.</span>
-                <span class="text-3xl">{service.data.icon}</span>
+        {
+          services.map((service, index) => (
+            <div
+              id={service.id}
+              class="scroll-mt-28 grid grid-cols-1 lg:grid-cols-12 gap-12 border-t border-ink-800 pt-16 group"
+            >
+              <div class="lg:col-span-5">
+                <div class="flex items-center gap-4 mb-6">
+                  <span class="text-3xl font-brand font-semibold text-ink-300">0{index + 1}.</span>
+                  <span class="text-3xl">{service.icon}</span>
+                </div>
+                <h2 class="font-brand text-[29px] md:text-[38px] leading-[1.1] font-semibold tracking-[-0.025em] text-paper group-hover:text-ink-100 transition-colors mb-6">
+                  {service.title}
+                </h2>
+                <p class="text-[15px] leading-relaxed text-ink-300 mb-8">{service.description}</p>
               </div>
-              <h2 class="font-display text-3xl font-bold uppercase text-text-light group-hover:text-brand-accent transition-colors mb-6">
-                {service.data.title}
-              </h2>
-              <p class="text-sm text-text-muted leading-relaxed font-light mb-8">
-                {service.data.description}
-              </p>
+
+              <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8">
+                {service.deliverables && (
+                  <div class="border border-ink-800 p-6">
+                    <h3 class="font-mono text-[11px] tracking-[0.2em] text-ink-300 uppercase mb-6 pb-2 border-b border-ink-800">
+                      Core Deliverables
+                    </h3>
+                    <ul class="flex flex-col gap-2.5">
+                      {service.deliverables.map((item) => (
+                        <li class="border-l border-ink-700 pl-3 text-[15px] leading-snug text-ink-200">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {service.process && (
+                  <div class="border border-ink-800 p-6">
+                    <h3 class="font-mono text-[11px] tracking-[0.2em] text-ink-300 uppercase mb-6 pb-2 border-b border-ink-800">
+                      Our Process
+                    </h3>
+                    <ul class="flex flex-col gap-2.5">
+                      {service.process.map((step, idx) => (
+                        <li class="flex gap-3 text-[15px] leading-snug text-ink-200">
+                          <span class="font-mono text-[11px] text-ink-300">
+                            {String(idx + 1).padStart(2, '0')}
+                          </span>
+                          {step}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
             </div>
-
-            <!-- Right Detail Columns -->
-            <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8">
-              
-              <!-- Column: Deliverables -->
-              {service.data.deliverables && (
-                <div class="p-6 rounded-2xl bg-bg-card border border-border-subtle">
-                  <h3 class="font-mono text-xs uppercase tracking-wider text-text-light mb-6 pb-2 border-b border-border-subtle/50">
-                    Core Deliverables
-                  </h3>
-                  <ul class="space-y-4">
-                    {service.data.deliverables.map((item) => (
-                      <li class="flex items-start gap-2.5 text-xs text-text-muted font-light leading-normal">
-                        <span class="w-1.5 h-1.5 rounded-full bg-brand-accent mt-1.5 shrink-0"></span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              <!-- Column: Our Process -->
-              {service.data.process && (
-                <div class="p-6 rounded-2xl bg-bg-card border border-border-subtle">
-                  <h3 class="font-mono text-xs uppercase tracking-wider text-text-light mb-6 pb-2 border-b border-border-subtle/50">
-                    Our Process
-                  </h3>
-                  <ul class="space-y-4">
-                    {service.data.process.map((step, idx) => (
-                      <li class="flex gap-3 text-xs text-text-muted font-light leading-normal">
-                        <span class="font-mono text-brand-accent font-bold">0{idx + 1}</span>
-                        {step}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-            </div>
-
-          </div>
-        ))}
+          ))
+        }
       </div>
-
     </div>
   </section>
 
-  <!-- CTA section -->
   <CTASection />
 </BaseLayout>

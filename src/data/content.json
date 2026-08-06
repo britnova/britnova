@@ -1,0 +1,515 @@
+{
+  "site": {
+    "brandName": "BritNova",
+    "brandSuffix": "tech",
+    "legalName": "Britnova Technologies",
+    "defaultTitle": "BritNova Tech | AI, Cloud & Web Engineering",
+    "defaultDescription": "An engineering studio working across machine learning, cloud infrastructure, delivery automation and the modern web.",
+    "email": "hello@britnova.com"
+  },
+
+  "nav": {
+    "links": [
+      { "href": "/work", "label": "Work" },
+      { "href": "/services", "label": "Services" },
+      { "href": "/about", "label": "About" },
+      { "href": "/contact", "label": "Contact" }
+    ],
+    "ctaLabel": "Start a project",
+    "ctaHref": "/contact"
+  },
+
+  "layout": {
+    "cta": {
+      "eyebrow": "Partner With Us",
+      "headlineLine1": "Have an Idea?",
+      "headlineLine2": "Let's build it together.",
+      "body": "From custom AI workflows to enterprise-grade web experiences and optimized cloud orchestration. We engineer solutions that deliver business value.",
+      "primary": { "label": "Get in Touch", "href": "/contact" },
+      "secondary": { "label": "Our Capabilities", "href": "/services" }
+    }
+  },
+
+  "home": {
+    "seo": {
+      "title": "BritNova Tech | AI, Cloud & Web Engineering",
+      "description": "An engineering studio working across machine learning, cloud infrastructure, delivery automation and the modern web."
+    },
+    "hero": {
+      "eyebrow": "[ AI · Cloud · Web — Where technology evolves.. ]",
+      "headline": "We build the systems other teams are afraid to touch.",
+      "subhead": "BritNova is an engineering studio that designs, builds, and operates AI platforms, cloud infrastructure, and custom software for startups and growing businesses. The same senior engineers who architect your system are the ones who ship and support it.",
+      "ctaPrimary": { "label": "Start a project", "href": "#contact" },
+      "ctaSecondary": { "label": "What we do", "href": "#services" }
+    },
+    "whyUs": {
+      "headline": "Small team. Senior people. No handoffs.",
+      "items": [
+        {
+          "title": "Experienced engineers",
+          "body": "Senior people on every engagement — nobody learns on your budget."
+        },
+        {
+          "title": "Transparent communication",
+          "body": "Direct access to the people building, not an account-manager filter."
+        },
+        {
+          "title": "Modern technology stack",
+          "body": "Current tools, boring where it matters — chosen for longevity, not fashion."
+        },
+        {
+          "title": "Fast delivery",
+          "body": "Small team, short loops, working software early and often."
+        },
+        {
+          "title": "Scalable architecture",
+          "body": "Built to survive growth — in load, in team size, in scope."
+        },
+        {
+          "title": "Long-term partnership",
+          "body": "We stay past launch. The people who build it are the people who run it."
+        }
+      ]
+    },
+    "techStack": {
+      "sectionLabel": "Stack / what we build with",
+      "proposedNote": "† proposed — confirm before launch",
+      "byService": {
+        "ai-ml": [
+          { "name": "Python", "sourced": true },
+          { "name": "LLM fine-tuning", "sourced": true },
+          { "name": "Document parsing", "sourced": true },
+          { "name": "Predictive models", "sourced": true },
+          { "name": "PyTorch", "sourced": false },
+          { "name": "Hugging Face", "sourced": false }
+        ],
+        "devops-mlops": [
+          { "name": "Terraform", "sourced": true },
+          { "name": "Kubernetes", "sourced": true },
+          { "name": "Prometheus", "sourced": true },
+          { "name": "Grafana", "sourced": true },
+          { "name": "Docker", "sourced": false },
+          { "name": "GitHub Actions", "sourced": false }
+        ],
+        "web-development": [
+          { "name": "React", "sourced": true },
+          { "name": "Next.js", "sourced": true },
+          { "name": "Node.js", "sourced": true },
+          { "name": "GraphQL", "sourced": true },
+          { "name": "REST", "sourced": true },
+          { "name": "TypeScript", "sourced": false }
+        ],
+        "cloud-services": [
+          { "name": "AWS", "sourced": true },
+          { "name": "Azure", "sourced": true },
+          { "name": "GCP", "sourced": true },
+          { "name": "Serverless", "sourced": true },
+          { "name": "IAM / VPC", "sourced": true },
+          { "name": "Postgres", "sourced": false }
+        ]
+      },
+      "belt": [
+        [
+          { "name": "Python", "sourced": true },
+          { "name": "TypeScript", "sourced": false },
+          { "name": "Node.js", "sourced": true },
+          { "name": "React", "sourced": true },
+          { "name": "Next.js", "sourced": true },
+          { "name": "GraphQL", "sourced": true },
+          { "name": "REST", "sourced": true },
+          { "name": "Postgres", "sourced": false },
+          { "name": "Vercel", "sourced": true },
+          { "name": "Cloudflare", "sourced": true },
+          { "name": "GitHub Actions", "sourced": false },
+          { "name": "Prometheus", "sourced": true },
+          { "name": "Grafana", "sourced": true }
+        ],
+        [
+          { "name": "AWS", "sourced": true },
+          { "name": "Azure", "sourced": true },
+          { "name": "GCP", "sourced": true },
+          { "name": "Terraform", "sourced": true },
+          { "name": "Kubernetes", "sourced": true },
+          { "name": "Docker", "sourced": false },
+          { "name": "Serverless", "sourced": true },
+          { "name": "IAM / VPC", "sourced": true },
+          { "name": "OpenAI", "sourced": false },
+          { "name": "Anthropic", "sourced": false },
+          { "name": "LangChain", "sourced": false },
+          { "name": "Vector DBs", "sourced": false },
+          { "name": "MCP", "sourced": false },
+          { "name": "PyTorch", "sourced": false },
+          { "name": "Hugging Face", "sourced": false }
+        ]
+      ]
+    },
+    "process": {
+      "steps": [
+        { "title": "Discovery call", "detail": "30 minutes on what you actually need — no deck." },
+        {
+          "title": "Requirements & planning",
+          "detail": "Scope, priorities and a plan you can hold us to."
+        },
+        {
+          "title": "Architecture & design",
+          "detail": "System design before code — decisions on paper first."
+        },
+        { "title": "Development", "detail": "Short iterations; something working every week." },
+        { "title": "Testing", "detail": "Automated where it pays, manual where it matters." },
+        { "title": "Deployment", "detail": "Boring, repeatable releases." },
+        { "title": "Ongoing support", "detail": "We run what we build." }
+      ]
+    },
+    "team": {
+      "quote": "Clients hire people, not logos.",
+      "rosterLegend": "placeholder roster — replace with the real team",
+      "namePlaceholder": "[ Name TBD ]",
+      "slots": [
+        { "role": "Founder", "area": "Direction & delivery" },
+        { "role": "Engineering lead", "area": "Architecture & review" },
+        { "role": "AI / ML engineer", "area": "Models & pipelines" },
+        { "role": "Cloud & DevOps engineer", "area": "Infrastructure & releases" }
+      ]
+    },
+    "contact": {
+      "eyebrow": "[ Available for new work ]",
+      "headline": "Tell us what you're building.",
+      "body": "A few lines about the problem is enough to start. We'll come back with questions, not a pitch deck.",
+      "channels": [
+        { "label": "Email", "value": "hello@britnova.com", "href": "mailto:hello@britnova.com" },
+        { "label": "Calendly", "value": "https://calendly.com/hello-britnova/30min" },
+        { "label": "LinkedIn", "value": "https://www.linkedin.com/company/britnova-technologies" },
+        { "label": "WhatsApp", "value": "+44 74 0521 2943" }
+      ],
+      "location": "[ Norwich, UK ]"
+    }
+  },
+
+  "services": [
+    {
+      "id": "ai-ml",
+      "shortLabel": "AI & ML",
+      "title": "AI & Machine Learning Solutions",
+      "description": "We build intelligent systems that automate processes, generate insights, and help businesses make smarter decisions.",
+      "icon": "🧠",
+      "order": 1,
+      "features": [
+        "Predictive Analytics",
+        "Custom AI Models",
+        "Automation Systems",
+        "Data Processing Pipelines"
+      ],
+      "deliverables": [
+        "Custom LLM Fine-Tuning",
+        "Automated Data Workflows",
+        "Predictive Analytics Models",
+        "Intelligent Document Parsing"
+      ],
+      "process": [
+        "Discovery & Data Feasibility Audit",
+        "Model Architecture Selection & POC",
+        "Iterative Fine-Tuning & Training",
+        "Production Deployment & Monitoring"
+      ],
+      "body": [
+        "Intelligence is no longer a luxury; it is the core of modern business efficiency. We design and build bespoke machine learning models, natural language processing pipelines, and agentic workflows that plug directly into your business logic.",
+        "Whether you need to predict demand trends, automate cognitive back-office tasks, or build next-generation customer assistance platforms, our engineering team brings mathematical rigor and production experience to deliver solutions that go far beyond wrapper APIs."
+      ]
+    },
+    {
+      "id": "devops-mlops",
+      "shortLabel": "DevOps & MLOps",
+      "title": "DevOps & MLOps",
+      "description": "We streamline development and deployment with scalable infrastructure and automated pipelines.",
+      "icon": "⚙️",
+      "order": 2,
+      "features": [
+        "CI/CD Pipeline Setup",
+        "Cloud Infrastructure Automation",
+        "Monitoring & Logging",
+        "MLOps Integration"
+      ],
+      "deliverables": [
+        "Terraform Infrastructure-as-Code Setup",
+        "Kubernetes Cluster Management",
+        "Prometheus & Grafana Dashboards",
+        "Model Deployment & Versioning Workflows"
+      ],
+      "process": [
+        "Infrastructure & Deployment Audit",
+        "IaC Architecture Design",
+        "CI/CD & Security Hardening",
+        "Automated Scaling & Alerting Handover"
+      ],
+      "body": [
+        "Speed is nothing without stability. We build the pipelines and infrastructure that allow your product teams to ship code with total confidence. By treating infrastructure strictly as code and introducing strict observability, we eliminate 'it works on my machine' problems.",
+        "Additionally, our MLOps practice bridges the gap between data science and operations. We establish reproducible training runs, automated model validation, and drift detection to ensure your AI systems remain robust and cost-effective in production."
+      ]
+    },
+    {
+      "id": "web-development",
+      "shortLabel": "Web & Software",
+      "title": "Web & Software Development",
+      "description": "We build modern, scalable, and high-performance web applications tailored to your business.",
+      "icon": "💻",
+      "order": 3,
+      "features": [
+        "Custom Web Applications",
+        "Full-Stack Development",
+        "API Development",
+        "UI/UX Design"
+      ],
+      "deliverables": [
+        "High-Performance Single Page & Static Sites",
+        "RESTful / GraphQL API Infrastructure",
+        "Bespoke CMS Integrations",
+        "Interactive Web Applications & Dashboards"
+      ],
+      "process": [
+        "Figma Design & Wireframing",
+        "Technical Architecture Definition",
+        "Component-Driven Implementation",
+        "Vercel / Cloudflare Staging & Deployment"
+      ],
+      "body": [
+        "The web is the primary window to your business. We engineer web applications that are blisteringly fast, accessible, and designed to convert. Our front-end philosophy values performance above all, utilizing static-first rendering, modern web APIs, and carefully hydration-controlled React islands.",
+        "Behind the scenes, we develop clean, modular APIs and resilient databases capable of processing high-volume transactions, keeping your user experience smooth and uninterrupted under any load."
+      ]
+    },
+    {
+      "id": "cloud-services",
+      "shortLabel": "Cloud",
+      "title": "Cloud Services",
+      "description": "We help businesses deploy, scale, and optimize applications across cloud platforms.",
+      "icon": "☁️",
+      "order": 4,
+      "features": [
+        "AWS / Azure / GCP Deployment",
+        "Cloud Migration",
+        "Infrastructure Optimization",
+        "Cost Management"
+      ],
+      "deliverables": [
+        "Multi-Cloud Strategy & Design",
+        "Serverless Application Frameworks",
+        "Cloud Security & Compliance Audits",
+        "Data Warehouse & Lake Design"
+      ],
+      "process": [
+        "Cloud Architecture Assessment",
+        "Migration Mapping & Sandbox Dry-Runs",
+        "Zero-Downtime Environment Switchover",
+        "Cost Optimization & Rightsizing Audit"
+      ],
+      "body": [
+        "Scaling shouldn't mean runaway cloud bills. We design resilient cloud architectures that scale up automatically to meet traffic spikes and scale down to minimize overhead. Security and compliance are built into our design by default, utilizing strict IAM roles, VPC isolation, and end-to-end encryption.",
+        "Whether you are migrating legacy servers to the cloud or looking to leverage serverless computing for event-driven workflows, we align your infrastructure with your bottom line."
+      ]
+    }
+  ],
+
+  "work": [
+    {
+      "slug": "ai-automation",
+      "title": "AI Automation Platform",
+      "description": "Automated document ingestion and intelligence workflows using custom machine learning models.",
+      "heroImage": "/images/work-ai.jpg",
+      "tags": ["AI & Machine Learning", "Intelligent Automation", "Python"],
+      "client": "Veridia Logistics",
+      "year": "2025",
+      "featured": true,
+      "metrics": [
+        { "label": "Processing Time Reduction", "value": "75%" },
+        { "label": "Data Extraction Accuracy", "value": "99.8%" },
+        { "label": "Operational Cost Saved", "value": "$120k/yr" }
+      ],
+      "sections": [
+        {
+          "heading": "Challenge",
+          "paragraphs": [
+            "Veridia Logistics was processing thousands of international shipping manifest documents manually every single day. The manual transcription was error-prone, bottlenecked supply chain dispatch schedules, and caused significant customs delays due to minor clerical errors."
+          ]
+        },
+        {
+          "heading": "Solution",
+          "paragraphs": [
+            "We engineered a custom AI document processing platform that integrated optical character recognition (OCR) and localized large language models (LLMs). The platform reads multi-format PDFs, extracts complex tabular shipment lists, cross-references them with customs databases, and flags anomalies directly inside a React dashboard."
+          ]
+        },
+        {
+          "heading": "Results",
+          "paragraphs": [
+            "The system went from proof of concept to full production in under 8 weeks. It now processes over 95% of manifests without human intervention, ensuring rapid custom clearance times."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "cloud-infra",
+      "title": "Cloud Infrastructure Setup",
+      "description": "Zero-downtime cloud migration and automated Kubernetes orchestrations.",
+      "heroImage": "/images/work-cloud.jpg",
+      "tags": ["Cloud Services", "DevOps & MLOps", "Terraform & AWS"],
+      "client": "Apex MedTech",
+      "year": "2024",
+      "featured": true,
+      "metrics": [
+        { "label": "Deployment Speed", "value": "10x Faster" },
+        { "label": "Production Uptime", "value": "99.99%" },
+        { "label": "Cloud Spend Reduction", "value": "35%" }
+      ],
+      "sections": [
+        {
+          "heading": "Challenge",
+          "paragraphs": [
+            "Apex MedTech had critical healthcare services running on fragile on-premise servers. Deployments required hours of manual configuration and had to be done overnight to avoid outages. Furthermore, HIPAA-compliant encryption standards were not automated."
+          ]
+        },
+        {
+          "heading": "Solution",
+          "paragraphs": [
+            "We modeled their complete server matrix into Terraform configurations, establishing a secure multi-region AWS setup. We moved their core microservices into Amazon Elastic Kubernetes Service (EKS) with automated horizontal pod autoscaling and automated SSL/TLS termination."
+          ]
+        },
+        {
+          "heading": "Results",
+          "paragraphs": [
+            "The agency now deploys multiple production updates daily with zero disruption to active doctor-patient sessions. Operational infrastructure costs were slashed by optimization of server capacities."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ecommerce",
+      "title": "E-Commerce System",
+      "description": "High-performance, modular full-stack e-commerce engine powering global retail storefronts.",
+      "heroImage": "/images/work-ecommerce.jpg",
+      "tags": ["Web & Software Development", "React & Next.js", "Node.js"],
+      "client": "Aura Retail",
+      "year": "2025",
+      "featured": true,
+      "metrics": [
+        { "label": "Lighthouse Performance", "value": "98/100" },
+        { "label": "Conversion Rate Bump", "value": "+24%" },
+        { "label": "Checkout Response Time", "value": "140ms" }
+      ],
+      "sections": [
+        {
+          "heading": "Challenge",
+          "paragraphs": [
+            "Aura Retail faced severe performance bottlenecks during promotional drops, where sudden spikes in traffic led to page lag and cart drops. Their legacy monolithic system couldn't handle concurrent checkout sessions without database locks."
+          ]
+        },
+        {
+          "heading": "Solution",
+          "paragraphs": [
+            "We rebuilt the frontend storefront using Next.js with static site generation and incremental regeneration, paired with a headless Shopify Integration. The backend checkout flow was moved to decoupled, serverless microservices on AWS Lambda with Redis caching, preventing database contention."
+          ]
+        },
+        {
+          "heading": "Results",
+          "paragraphs": [
+            "The site saw 0% downtime during their largest seasonal product launch of the year. The page load performance jumped, resulting in a direct increase in average order value."
+          ]
+        }
+      ]
+    }
+  ],
+
+  "about": {
+    "seo": {
+      "title": "About Us | Britnova Technologies",
+      "description": "Our story, core engineering values, and what drives our technological selections."
+    },
+    "eyebrow": "About Our Agency",
+    "headline": { "prefix": "About", "accent": "Britnova" },
+    "intro": "We are a forward-thinking technology company helping businesses build scalable digital products using AI, cloud, and modern web technologies.",
+    "story": {
+      "title": "Our Story",
+      "paragraphs": [
+        "Britnova Technologies was founded with a simple vision — to bridge the gap between complex, emerging technology and tangible business value. We noticed that many companies were either getting lost in AI hype or running fragile legacy systems that bottlenecked growth.",
+        "We specialize in AI/ML model deployment, DevOps pipeline automations, and modern full-stack development, delivering engineering solutions that are not only powerful but also scalable and maintainable.",
+        "From startups launching their first products to growing enterprises modernizing their tech stack, we work side-by-side with product teams to turn technical concepts into production-ready software."
+      ]
+    },
+    "philosophy": {
+      "eyebrow": "Our Philosophy",
+      "title": "What We Believe",
+      "beliefs": [
+        {
+          "title": "Solve Real Problems",
+          "desc": "Technology should serve the business goals, not the other way around. We focus on outcomes."
+        },
+        {
+          "title": "Simplicity Over Complexity",
+          "desc": "We design modular, readable architectures that are easy to maintain and scale."
+        },
+        {
+          "title": "Scalability from Day One",
+          "desc": "Infrastructure and database schemas are built to endure traffic growth without rewrites."
+        },
+        {
+          "title": "Partnerships Over Projects",
+          "desc": "We act as your dedicated engineering arm, collaborating closely to launch products."
+        }
+      ]
+    }
+  },
+
+  "contactPage": {
+    "seo": {
+      "title": "Contact Us | Britnova Technologies",
+      "description": "Get in touch with our engineering team to discuss your next custom software development project."
+    },
+    "eyebrow": "Get in Touch",
+    "headline": { "line1": "Let's build", "line2Prefix": "something", "accent": "great" },
+    "body": "Ready to automate your workflows, scale your cloud infrastructure, or build a custom web solution? Drop us a line. We respond to all inquiries within 24 hours.",
+    "info": [
+      {
+        "key": "email",
+        "label": "Email us",
+        "value": "hello@britnova.com",
+        "href": "mailto:hello@britnova.com"
+      },
+      { "key": "location", "label": "HQ Location", "value": "London, United Kingdom" },
+      { "key": "hours", "label": "Office Hours", "value": "Mon – Fri, 9:00 AM – 6:00 PM GMT" }
+    ]
+  },
+
+  "servicesPage": {
+    "seo": {
+      "title": "Our Services & Capabilities | Britnova Technologies",
+      "description": "Learn about our custom AI/ML model developments, infrastructure scaling, full-stack systems, and cloud management."
+    },
+    "eyebrow": "Our Capabilities",
+    "headline": "How We Build",
+    "body": "We bring engineering precision and structured development practices to help you scale operations, decrease costs, and build custom software."
+  },
+
+  "workPage": {
+    "seo": {
+      "title": "Our Portfolio | Britnova Technologies",
+      "description": "Explore our case studies in custom AI models, infrastructure automation, full-stack systems, and cloud migrations."
+    },
+    "eyebrow": "Our Work",
+    "headline": "Selected Case Studies",
+    "body": "A deep dive into the systems we've designed, the pipelines we've automated, and the codebases we've scaled.",
+    "filterCategories": [
+      "All",
+      "AI & Machine Learning",
+      "DevOps & MLOps",
+      "Web & Software Development",
+      "Cloud Services"
+    ]
+  },
+
+  "contactForm": {
+    "services": [
+      "AI & Machine Learning",
+      "DevOps & MLOps",
+      "Web & Software Development",
+      "Cloud Services",
+      "Consulting / Other"
+    ]
+  }
+}

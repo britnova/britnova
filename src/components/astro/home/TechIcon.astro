@@ -108,14 +108,15 @@ const mono = (label: string) =>
     label.length > 2 ? 7 : 9
   }" font-weight="700" fill="currentColor">${label}</text>`;
 
-// Fail loud on a typo'd `Tech.name` from src/data/techStack.ts: today an
-// unmatched name would silently fall through to a raw 2-letter slice that's
-// indistinguishable from an intentional monogram. Flag it in dev instead.
-// (Full fix would be a shared literal-union type between the two files —
-// out of scope here; this just makes the mismatch visible.)
+// Fail loud on a typo'd `Tech.name` from src/data/content.json's
+// `home.techStack` entries: today an unmatched name would silently fall
+// through to a raw 2-letter slice that's indistinguishable from an
+// intentional monogram. Flag it in dev instead.
+// (Full fix would be a shared literal-union type between the two — out of
+// scope here; this just makes the mismatch visible.)
 if (import.meta.env.DEV && !(name in glyphs) && !(name in monograms)) {
   console.warn(
-    `TechIcon: no glyph or monogram registered for "${name}" — check src/data/techStack.ts for a typo.`
+    `TechIcon: no glyph or monogram registered for "${name}" — check src/data/content.json's home.techStack entries for a typo.`
   );
 }
 

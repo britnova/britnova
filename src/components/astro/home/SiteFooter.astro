@@ -1,12 +1,14 @@
 ---
 /*
- * Homepage footer.
- *
- * TODO: replace — confirm the nav targets and the legal/company line before
- * launch. The inner pages still render the older shared `Footer` component.
+ * Site footer — the same nav links as SiteHeader, one row, identical on
+ * every page. No secondary/"more" row: there's nothing left to link to that
+ * isn't already in the primary row.
  */
 import BrandLogo from './BrandLogo.astro';
-import { homeNav } from '../../../data/nav';
+import content from '../../../data/content.json';
+
+const { links } = content.nav;
+const { legalName } = content.site;
 ---
 
 <footer class="relative z-10 border-t border-ink-800">
@@ -16,15 +18,15 @@ import { homeNav } from '../../../data/nav';
     <span class="font-sans text-[15px] tracking-normal text-ink-300 normal-case">
       <BrandLogo id="footer" />
     </span>
-    <nav class="flex flex-wrap gap-x-6 gap-y-2">
+    <nav class="flex flex-wrap gap-x-6 gap-y-2" aria-label="Primary">
       {
-        homeNav.map((l) => (
+        links.map((l) => (
           <a href={l.href} class="text-ink-300 transition-colors hover:text-paper">
             {l.label}
           </a>
         ))
       }
     </nav>
-    <p>© {new Date().getFullYear()} BritNova Tech</p>
+    <p>© {new Date().getFullYear()} {legalName}</p>
   </div>
 </footer>

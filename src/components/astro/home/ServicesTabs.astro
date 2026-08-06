@@ -16,29 +16,35 @@
  *     (matching the first radio's `checked` state) so there's no flash before
  *     the script runs.
  *
- * Service copy comes from the `services` content collection. The per-service
- * stack chips come from src/data/techStack.ts, where technologies not
- * evidenced in the repo are flagged `sourced: false`.
+ * Service copy comes from content.json's `services` array. The per-service
+ * stack chips come from content.json's `home.techStack.byService`, where
+ * technologies not evidenced in the repo are flagged `sourced: false`.
  */
 import SectionHeading from './SectionHeading.astro';
-import { stackByService } from '../../../data/techStack';
-import type { CollectionEntry } from 'astro:content';
+import content from '../../../data/content.json';
+
+interface Service {
+  id: string;
+  shortLabel: string;
+  title: string;
+  description: string;
+  icon: string;
+  order: number;
+  features: string[];
+  deliverables: string[];
+  process: string[];
+  body: string[];
+}
 
 interface Props {
-  services: CollectionEntry<'services'>[];
+  services: Service[];
 }
 const { services } = Astro.props;
 
-// Short tab labels — the full titles are too long for a tab strip. Keys must
-// match each service's `service.id` (the content collection entry's slug,
-// e.g. `src/content/services/ai-ml.md` → `ai-ml`); a renamed/added service
-// file that isn't mirrored here silently falls back to the full title below.
-const shortLabel: Record<string, string> = {
-  'ai-ml': 'AI & ML',
-  'devops-mlops': 'DevOps & MLOps',
-  'web-development': 'Web & Software',
-  'cloud-services': 'Cloud',
-};
+const stackByService = content.home.techStack.byService as Record<
+  string,
+  { name: string; sourced: boolean }[]
+>;
 ---
 
 <section id="services" class="relative z-10">
@@ -61,7 +67,7 @@ const shortLabel: Record<string, string> = {
             name="svc"
             id={`svc-${i}`}
             checked={i === 0}
-            aria-label={s.data.title}
+            aria-label={s.title}
           />
         ))
       }
@@ -75,7 +81,7 @@ const shortLabel: Record<string, string> = {
               data-active={i === 0 ? true : undefined}
             >
               <span class="mr-2 text-ink-300">{String(i + 1).padStart(2, '0')}</span>
-              {shortLabel[s.id] ?? s.data.title}
+              {s.shortLabel ?? s.title}
             </label>
           ))
         }
@@ -88,10 +94,10 @@ const shortLabel: Record<string, string> = {
               <div class="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-8">
                 <div class="md:col-span-5">
                   <h3 class="font-brand text-[29px] leading-[1.1] font-medium tracking-[-0.025em] text-paper md:text-[38px]">
-                    {s.data.title}
+                    {s.title}
                   </h3>
                   <p class="mt-5 max-w-[46ch] text-[17px] leading-relaxed text-ink-300">
-                    {s.data.description}
+                    {s.description}
                   </p>
 
                   <div class="mt-8">
@@ -114,7 +120,7 @@ const shortLabel: Record<string, string> = {
                     Deliverables
                   </p>
                   <ul class="mt-4 flex flex-col gap-2.5">
-                    {(s.data.deliverables ?? s.data.features).map((d) => (
+                    {(s.deliverables ?? s.features).map((d) => (
                       <li class="border-l border-ink-700 pl-3 text-[15px] leading-snug text-ink-200">
                         {d}
                       </li>
@@ -127,7 +133,7 @@ const shortLabel: Record<string, string> = {
                     How we run it
                   </p>
                   <ol class="mt-4 flex flex-col gap-2.5">
-                    {(s.data.process ?? []).map((p, pi) => (
+                    {(s.process ?? []).map((p, pi) => (
                       <li class="flex gap-3 text-[15px] leading-snug text-ink-200">
                         <span class="font-mono text-[11px] text-ink-300">
                           {String(pi + 1).padStart(2, '0')}

@@ -1,50 +1,46 @@
 ---
-import { ArrowUpRight } from 'lucide-react';
+/*
+ * Shared closing CTA — appears at the bottom of About, Services, and Work.
+ * Monochrome register, matching the homepage's SectionHeading/button
+ * patterns: no accent color, sharp/rounded-sm buttons, no decorative glow.
+ */
+import content from '../../data/content.json';
+
+const { cta } = content.layout;
 ---
 
-<section class="relative py-32 overflow-hidden border-b border-border-subtle bg-bg-dark">
-  <!-- Glowing background shapes -->
+<section class="relative z-10 border-t border-ink-800">
   <div
-    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-brand-accent/5 blur-[120px] pointer-events-none"
+    class="mx-auto flex max-w-[1500px] flex-col items-center px-6 py-24 text-center md:px-10 md:py-32"
   >
-  </div>
-
-  <div class="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center">
-    <!-- Tagline -->
-    <span class="font-mono text-xs uppercase tracking-widest text-brand-accent mb-6"
-      >Partner With Us</span
-    >
-
-    <!-- Big Headline -->
-    <h2
-      class="font-display text-4xl md:text-7xl font-black uppercase tracking-tight text-text-light leading-[1.0] mb-8 max-w-3xl select-none"
-    >
-      Have an Idea? <br />
-      Let's build it together.
-    </h2>
-
-    <!-- Subtitle -->
-    <p class="text-base md:text-lg text-text-muted max-w-xl font-light leading-relaxed mb-12">
-      From custom AI workflows to enterprise-grade web experiences and optimized cloud
-      orchestration. We engineer solutions that deliver business value.
+    <p class="mb-6 font-mono text-[12px] tracking-[0.2em] text-ink-300 uppercase">
+      {cta.eyebrow}
     </p>
 
-    <!-- Buttons -->
-    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+    <h2
+      class="font-brand max-w-3xl text-[11vw] leading-[0.98] font-semibold tracking-[-0.045em] text-paper sm:text-[9vw] md:text-[5.4vw]"
+    >
+      {cta.headlineLine1}
+      <br />
+      {cta.headlineLine2}
+    </h2>
+
+    <p class="mt-7 max-w-xl text-[17px] leading-relaxed text-ink-300">
+      {cta.body}
+    </p>
+
+    <div class="mt-10 flex flex-col items-center gap-2.5 sm:flex-row">
       <a
-        href="/contact"
-        class="group inline-flex items-center gap-2 bg-brand-accent text-bg-dark font-semibold px-8 py-4 rounded-full hover:bg-brand-accent/90 transition-all duration-300 shadow-[0_4px_20px_rgba(108,92,231,0.25)]"
+        href={cta.primary.href}
+        class="rounded-sm bg-paper px-7 py-3.5 font-mono text-[12px] tracking-[0.14em] text-ink-950 uppercase transition-colors hover:bg-ink-200"
       >
-        Get in Touch
-        <ArrowUpRight
-          className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300"
-        />
+        {cta.primary.label}
       </a>
       <a
-        href="/services"
-        class="inline-flex items-center gap-2 text-sm font-semibold text-text-light border border-border-subtle hover:border-text-light px-8 py-4 rounded-full transition-all duration-300 bg-bg-dark/50 backdrop-blur-sm"
+        href={cta.secondary.href}
+        class="rounded-sm border border-ink-500 px-7 py-3.5 font-mono text-[12px] tracking-[0.14em] text-ink-100 uppercase transition-colors hover:border-ink-200 hover:text-paper"
       >
-        Our Capabilities
+        {cta.secondary.label}
       </a>
     </div>
   </div>

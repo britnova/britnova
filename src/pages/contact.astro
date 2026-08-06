@@ -1,90 +1,75 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ContactForm from '../components/react/ContactForm';
+import BriefForm from '../components/react/BriefForm';
 import { Mail, MapPin, Globe } from 'lucide-react';
+import content from '../data/content.json';
+
+const { contactPage } = content;
+
+const infoIcons = {
+  email: Mail,
+  location: MapPin,
+  hours: Globe,
+};
 ---
 
-<BaseLayout
-  title="Contact Us | Britnova Technologies"
-  description="Get in touch with our engineering team to discuss your next custom software development project."
->
-  <section class="py-24 bg-bg-dark text-text-light">
-    <div class="max-w-7xl mx-auto px-6 md:px-12">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<BaseLayout title={contactPage.seo.title} description={contactPage.seo.description}>
+  <section class="border-t border-ink-800">
+    <div class="mx-auto max-w-[1500px] px-6 py-20 md:px-10 md:py-24">
+      <div class="grid grid-cols-1 gap-12 lg:grid-cols-12">
         <!-- Left Side: Contact Information -->
-        <div class="lg:col-span-5 flex flex-col justify-between h-full">
+        <div class="flex h-full flex-col justify-between lg:col-span-5">
           <div>
-            <span class="font-mono text-xs uppercase tracking-widest text-brand-accent mb-4 block"
-              >Get in Touch</span
-            >
+            <p class="mb-6 font-mono text-[12px] tracking-[0.2em] text-ink-300 uppercase">
+              {contactPage.eyebrow}
+            </p>
             <h1
-              class="font-display text-4xl md:text-6xl font-black uppercase tracking-tight text-text-light mb-6"
+              class="font-brand max-w-[14ch] text-[10.2vw] leading-[0.98] font-semibold tracking-[-0.045em] text-paper md:text-[4.7vw]"
             >
-              Let's build <br />
-              something <span class="text-brand-accent">great</span>.
+              {contactPage.headline.line1}
+              <br />
+              {`${contactPage.headline.line2Prefix} ${contactPage.headline.accent}.`}
             </h1>
-            <p class="text-text-muted text-sm font-light leading-relaxed mb-12 max-w-sm">
-              Ready to automate your workflows, scale your cloud infrastructure, or build a custom
-              web solution? Drop us a line. We respond to all inquiries within 24 hours.
+            <p class="mt-6 max-w-sm text-[17px] leading-relaxed text-ink-300">
+              {contactPage.body}
             </p>
           </div>
 
           <!-- Contact items -->
-          <div class="space-y-6">
-            <div class="flex items-start gap-4">
-              <div
-                class="w-10 h-10 rounded-full border border-border-subtle flex items-center justify-center text-brand-accent shrink-0"
-              >
-                <Mail className="w-4 h-4" />
-              </div>
-              <div>
-                <span class="font-mono text-[10px] text-text-muted uppercase tracking-wider block"
-                  >Email us</span
-                >
-                <a
-                  href="mailto:hello@britnova.com"
-                  class="text-sm font-semibold hover:text-brand-accent transition-colors"
-                >
-                  hello@britnova.com
-                </a>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-4">
-              <div
-                class="w-10 h-10 rounded-full border border-border-subtle flex items-center justify-center text-brand-accent shrink-0"
-              >
-                <MapPin className="w-4 h-4" />
-              </div>
-              <div>
-                <span class="font-mono text-[10px] text-text-muted uppercase tracking-wider block"
-                  >HQ Location</span
-                >
-                <span class="text-sm text-text-muted font-light"> London, United Kingdom </span>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-4">
-              <div
-                class="w-10 h-10 rounded-full border border-border-subtle flex items-center justify-center text-brand-accent shrink-0"
-              >
-                <Globe className="w-4 h-4" />
-              </div>
-              <div>
-                <span class="font-mono text-[10px] text-text-muted uppercase tracking-wider block"
-                  >Office Hours</span
-                >
-                <span class="text-sm text-text-muted font-light">
-                  Mon – Fri, 9:00 AM – 6:00 PM GMT
-                </span>
-              </div>
-            </div>
+          <div class="mt-12 space-y-6 lg:mt-0">
+            {
+              contactPage.info.map((item) => {
+                const Icon = infoIcons[item.key as keyof typeof infoIcons];
+                return (
+                  <div class="flex items-start gap-4">
+                    <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm border border-ink-700 text-ink-300">
+                      <Icon className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <span class="block font-mono text-[11px] tracking-[0.2em] text-ink-300 uppercase">
+                        {item.label}
+                      </span>
+                      {'href' in item && item.href ? (
+                        <a
+                          href={item.href}
+                          class="font-mono text-[15px] text-ink-100 transition-colors hover:text-paper"
+                        >
+                          {item.value}
+                        </a>
+                      ) : (
+                        <span class="font-mono text-[15px] text-ink-100">{item.value}</span>
+                      )}
+                    </div>
+                  </div>
+                );
+              })
+            }
           </div>
         </div>
 
         <!-- Right Side: Contact Form Island -->
         <div class="lg:col-span-7">
-          <ContactForm client:load />
+          <BriefForm client:visible />
         </div>
       </div>
     </div>
