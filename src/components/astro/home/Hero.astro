@@ -1,0 +1,53 @@
+---
+/*
+ * Homepage hero.
+ *
+ * Wraps the header so the two together fill exactly one viewport: the wrapper
+ * is `min-h-dvh` and the hero takes the remaining space. Deliberately NOT a
+ * fixed viewport fraction on the hero itself — that cannot account for the
+ * header's height, and leaves the next section peeking above the fold.
+ * `dvh` rather than `vh` so mobile browser chrome collapsing doesn't overshoot.
+ *
+ * TODO: replace — the headline and supporting line are placeholder positioning
+ * copy. Nothing here is a verified claim about BritNova.
+ */
+import SiteHeader from './SiteHeader.astro';
+---
+
+<div class="relative z-10 flex min-h-dvh flex-col">
+  <SiteHeader />
+
+  <section class="relative z-10 flex flex-1 items-center justify-center px-6 py-16">
+    <div class="flex flex-col items-center text-center">
+      <p class="mb-8 font-mono text-[12px] tracking-[0.2em] text-ink-300 uppercase">
+        [ AI · Cloud · Web — Where technology evolves.. ]
+      </p>
+
+      <h1
+        class="font-brand max-w-[20ch] text-[9.2vw] leading-[0.98] font-semibold tracking-[-0.045em] text-paper md:text-[4.5vw]"
+      >
+        We build the systems other teams are afraid to touch.
+      </h1>
+
+      <p class="mt-7 max-w-[58ch] text-[17px] leading-[1.6] text-ink-300">
+        Machine learning, cloud infrastructure, delivery automation and web engineering — designed,
+        shipped and operated by the same small team.
+      </p>
+
+      <div class="mt-10 flex flex-col items-center gap-2.5 sm:flex-row">
+        <a
+          href="#contact"
+          class="rounded-sm bg-paper px-7 py-3.5 font-mono text-[12px] tracking-[0.14em] text-ink-950 uppercase transition-colors hover:bg-ink-200"
+        >
+          Start a project
+        </a>
+        <a
+          href="#services"
+          class="rounded-sm border border-ink-500 px-7 py-3.5 font-mono text-[12px] tracking-[0.14em] text-ink-100 uppercase transition-colors hover:border-ink-200 hover:text-paper"
+        >
+          What we do
+        </a>
+      </div>
+    </div>
+  </section>
+</div>

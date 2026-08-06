@@ -1,0 +1,36 @@
+---
+/*
+ * Homepage footer.
+ *
+ * TODO: replace — confirm the nav targets and the legal/company line before
+ * launch. The inner pages still render the older shared `Footer` component.
+ */
+import BrandLogo from './BrandLogo.astro';
+
+const nav = [
+  { href: '#services', label: 'Services' },
+  { href: '#stack', label: 'Stack' },
+  { href: '#process', label: 'Process' },
+  { href: '#contact', label: 'Contact' },
+];
+---
+
+<footer class="relative z-10 border-t border-ink-800">
+  <div
+    class="mx-auto flex max-w-[1500px] flex-col gap-4 px-6 py-7 font-mono text-[11px] tracking-[0.12em] text-ink-300 uppercase md:flex-row md:items-center md:justify-between md:px-10"
+  >
+    <span class="font-sans text-[15px] tracking-normal text-ink-300 normal-case">
+      <BrandLogo id="footer" />
+    </span>
+    <nav class="flex flex-wrap gap-x-6 gap-y-2">
+      {
+        nav.map((l) => (
+          <a href={l.href} class="text-ink-300 transition-colors hover:text-paper">
+            {l.label}
+          </a>
+        ))
+      }
+    </nav>
+    <p>© {new Date().getFullYear()} BritNova Tech</p>
+  </div>
+</footer>

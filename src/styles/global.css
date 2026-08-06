@@ -1,5 +1,5 @@
 /* Google Fonts — must be first import before any rules */
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Outfit:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
 
 /* Tailwind CSS v4 */
 @import 'tailwindcss';
@@ -17,6 +17,25 @@
   --font-sans: 'Inter', sans-serif;
   --font-display: 'Outfit', 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+
+  /* Monochrome brand scale, sampled from the BritNova brand assets. The
+     identity is strictly greyscale — no accent hue appears in any asset.
+     The accent tokens above are the older inner-page theme. */
+  --color-ink-950: #050505;
+  --color-ink-900: #0b0b0b;
+  --color-ink-800: #141414;
+  --color-ink-700: #1e1e1e; /* brand black, sampled from the wordmark */
+  --color-ink-600: #2e2e2e;
+  --color-ink-500: #4a4a4a;
+  --color-ink-400: #6e6e6e;
+  --color-ink-300: #9a9a9a;
+  --color-ink-200: #c4c4c4;
+  --color-ink-100: #e4e4e4;
+  --color-paper: #fafafa;
+
+  /* TODO: replace — Poppins stands in for the wordmark's face (closest
+     widely available match to its geometric single-storey 'a'). */
+  --font-brand: 'Poppins', 'Outfit', sans-serif;
 }
 
 @layer base {

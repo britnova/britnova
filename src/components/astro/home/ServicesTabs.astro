@@ -1,0 +1,207 @@
+---
+/*
+ * "Services" — one tab per discipline.
+ *
+ *   · hidden radio inputs + sibling CSS, so it works with no JavaScript and
+ *     survives the static build; radios are natively arrow-key navigable
+ *   · panels are grid-stacked into ONE cell and toggled with `visibility`, so
+ *     the section always holds the height of the tallest panel and switching
+ *     tabs never shifts the page
+ *
+ * Service copy comes from the `services` content collection. The per-service
+ * stack chips come from src/data/techStack.ts, where technologies not
+ * evidenced in the repo are flagged `sourced: false`.
+ */
+import { stackByService } from '../../../data/techStack';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  services: CollectionEntry<'services'>[];
+}
+const { services } = Astro.props;
+
+// Short tab labels — the full titles are too long for a tab strip.
+const shortLabel: Record<string, string> = {
+  'ai-ml': 'AI & ML',
+  'devops-mlops': 'DevOps & MLOps',
+  'web-development': 'Web & Software',
+  'cloud-services': 'Cloud',
+};
+---
+
+<section id="services" class="relative z-10">
+  <div class="mx-auto max-w-[1500px] px-6 py-20 md:px-10 md:py-24">
+    <div class="mb-10 flex items-baseline justify-between border-b border-ink-800 pb-5">
+      <h2 class="font-mono text-[12px] tracking-[0.24em] text-ink-300 uppercase">
+        Capabilities / {String(services.length).padStart(2, '0')}
+      </h2>
+      <a
+        href="/services"
+        class="font-mono text-[11px] tracking-[0.16em] text-ink-300 uppercase transition-colors hover:text-paper"
+      >
+        All services →
+      </a>
+    </div>
+
+    <div>
+      {
+        services.map((s, i) => (
+          <input
+            class="tsv-radio"
+            type="radio"
+            name="svc"
+            id={`svc-${i}`}
+            checked={i === 0}
+            aria-label={s.data.title}
+          />
+        ))
+      }
+
+      <div class="tsv-tabs flex flex-wrap gap-x-1 gap-y-2 border-b border-ink-800">
+        {
+          services.map((s, i) => (
+            <label
+              class="tsv-tab cursor-pointer border-b-2 border-transparent px-4 py-3 font-mono text-[12px] tracking-[0.14em] text-ink-300 uppercase transition-colors hover:text-paper"
+              for={`svc-${i}`}
+            >
+              <span class="mr-2 text-ink-300">{String(i + 1).padStart(2, '0')}</span>
+              {shortLabel[s.id] ?? s.data.title}
+            </label>
+          ))
+        }
+      </div>
+
+      <div class="tsv-panels">
+        {
+          services.map((s) => (
+            <div class="tsv-panel pt-10">
+              <div class="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-8">
+                <div class="md:col-span-5">
+                  <h3 class="font-brand text-[29px] leading-[1.1] font-medium tracking-[-0.025em] text-paper md:text-[38px]">
+                    {s.data.title}
+                  </h3>
+                  <p class="mt-5 max-w-[46ch] text-[17px] leading-relaxed text-ink-300">
+                    {s.data.description}
+                  </p>
+
+                  <div class="mt-8">
+                    <p class="font-mono text-[11px] tracking-[0.2em] text-ink-300 uppercase">
+                      Stack <span class="text-ink-300">— † proposed, unconfirmed</span>
+                    </p>
+                    <ul class="mt-3 flex flex-wrap gap-1.5">
+                      {(stackByService[s.id] ?? []).map((t) => (
+                        <li class="rounded-sm border border-ink-600 px-2.5 py-1 font-mono text-[11px] tracking-[0.1em] text-ink-100">
+                          {t.name}
+                          {!t.sourced && ' †'}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="md:col-span-3 md:col-start-7">
+                  <p class="font-mono text-[11px] tracking-[0.2em] text-ink-300 uppercase">
+                    Deliverables
+                  </p>
+                  <ul class="mt-4 flex flex-col gap-2.5">
+                    {(s.data.deliverables ?? s.data.features).map((d) => (
+                      <li class="border-l border-ink-700 pl-3 text-[15px] leading-snug text-ink-200">
+                        {d}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div class="md:col-span-3 md:col-start-10">
+                  <p class="font-mono text-[11px] tracking-[0.2em] text-ink-300 uppercase">
+                    How we run it
+                  </p>
+                  <ol class="mt-4 flex flex-col gap-2.5">
+                    {(s.data.process ?? []).map((p, pi) => (
+                      <li class="flex gap-3 text-[15px] leading-snug text-ink-200">
+                        <span class="font-mono text-[11px] text-ink-300">
+                          {String(pi + 1).padStart(2, '0')}
+                        </span>
+                        {p}
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Radios stay in the DOM as siblings so `~` selectors can reach the panels. */
+  .tsv-radio {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+  /* All panels occupy the SAME grid cell, so the container is always as tall
+     as the tallest panel — switching tabs never changes the page height. */
+  .tsv-panels {
+    display: grid;
+  }
+  .tsv-panel {
+    grid-area: 1 / 1;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  /* CSS cannot loop, so there is one rule pair per tab index. HARD CAP: six
+     services. A seventh renders a tab that does nothing — extend these three
+     blocks if the services collection ever grows past six. */
+  .tsv-radio:nth-of-type(1):checked ~ .tsv-panels > .tsv-panel:nth-child(1),
+  .tsv-radio:nth-of-type(2):checked ~ .tsv-panels > .tsv-panel:nth-child(2),
+  .tsv-radio:nth-of-type(3):checked ~ .tsv-panels > .tsv-panel:nth-child(3),
+  .tsv-radio:nth-of-type(4):checked ~ .tsv-panels > .tsv-panel:nth-child(4),
+  .tsv-radio:nth-of-type(5):checked ~ .tsv-panels > .tsv-panel:nth-child(5),
+  .tsv-radio:nth-of-type(6):checked ~ .tsv-panels > .tsv-panel:nth-child(6) {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    /* transition lives on the ACTIVE state only: the incoming panel fades and
+       rises, the outgoing one disappears instantly instead of cross-fading */
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .tsv-radio:nth-of-type(1):checked ~ .tsv-tabs > .tsv-tab:nth-child(1),
+  .tsv-radio:nth-of-type(2):checked ~ .tsv-tabs > .tsv-tab:nth-child(2),
+  .tsv-radio:nth-of-type(3):checked ~ .tsv-tabs > .tsv-tab:nth-child(3),
+  .tsv-radio:nth-of-type(4):checked ~ .tsv-tabs > .tsv-tab:nth-child(4),
+  .tsv-radio:nth-of-type(5):checked ~ .tsv-tabs > .tsv-tab:nth-child(5),
+  .tsv-radio:nth-of-type(6):checked ~ .tsv-tabs > .tsv-tab:nth-child(6) {
+    color: var(--color-paper);
+    border-bottom-color: var(--color-paper);
+  }
+
+  /* Keyboard focus has to be visible — the radio itself is hidden. */
+  .tsv-radio:nth-of-type(1):focus-visible ~ .tsv-tabs > .tsv-tab:nth-child(1),
+  .tsv-radio:nth-of-type(2):focus-visible ~ .tsv-tabs > .tsv-tab:nth-child(2),
+  .tsv-radio:nth-of-type(3):focus-visible ~ .tsv-tabs > .tsv-tab:nth-child(3),
+  .tsv-radio:nth-of-type(4):focus-visible ~ .tsv-tabs > .tsv-tab:nth-child(4),
+  .tsv-radio:nth-of-type(5):focus-visible ~ .tsv-tabs > .tsv-tab:nth-child(5),
+  .tsv-radio:nth-of-type(6):focus-visible ~ .tsv-tabs > .tsv-tab:nth-child(6) {
+    outline: 1px solid var(--color-ink-400);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tsv-panel,
+    .tsv-radio:checked ~ .tsv-panels > .tsv-panel {
+      transition: none;
+      transform: none;
+    }
+  }
+</style>

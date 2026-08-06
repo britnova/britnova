@@ -1,0 +1,52 @@
+---
+/*
+ * Homepage header.
+ *
+ * The homepage supplies its own header rather than the shared `Nav` island,
+ * because it is a single-page layout whose nav points at on-page anchors and
+ * because it uses the monochrome brand palette rather than the older accent
+ * theme still used by the inner pages. It is static — no client JS.
+ *
+ * Rendered inside Hero's full-height wrapper, so the two together fill exactly
+ * one viewport.
+ *
+ * TODO: replace — the inner pages still use the old `Nav` island and accent
+ * theme. Until they are migrated the site has two visual identities.
+ */
+import BrandLogo from './BrandLogo.astro';
+
+const nav = [
+  { href: '#services', label: 'Services' },
+  { href: '#stack', label: 'Stack' },
+  { href: '#process', label: 'Process' },
+  { href: '#contact', label: 'Contact' },
+];
+---
+
+<header class="relative z-20 border-b border-ink-800">
+  <div class="mx-auto flex max-w-[1500px] items-center justify-between px-6 py-4 md:px-10">
+    <a href="/" class="text-[17px] text-paper" aria-label="BritNova Tech — home">
+      <BrandLogo id="header" />
+    </a>
+
+    <nav class="hidden items-center gap-8 md:flex" aria-label="Primary">
+      {
+        nav.map((l) => (
+          <a
+            href={l.href}
+            class="font-mono text-[12px] tracking-[0.14em] text-ink-300 uppercase transition-colors hover:text-paper"
+          >
+            {l.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <a
+      href="#contact"
+      class="rounded-sm bg-paper px-4 py-2 font-mono text-[11px] tracking-[0.14em] text-ink-950 uppercase transition-colors hover:bg-ink-200"
+    >
+      Start a project
+    </a>
+  </div>
+</header>

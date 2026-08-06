@@ -1,82 +1,69 @@
 ---
+/*
+ * Homepage.
+ *
+ * Section order:
+ *   Hero (full viewport, includes the header) → Why work with us → Services →
+ *   Technology stack → How we work → Meet the team → Contact → Footer
+ *
+ * `chrome={false}` because this page supplies its own header and footer, in
+ * the monochrome brand palette; the shared Nav/Footer still carry the older
+ * accent theme used by the inner pages.
+ *
+ * TODO: replace — the page still renders placeholder copy throughout, and the
+ * team section contains no real people. Grep `TODO: replace` under
+ * src/components/astro/home and src/data before launch.
+ */
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/astro/Hero.astro';
-import LogoStrip from '../components/astro/LogoStrip.astro';
-import StatsRow from '../components/astro/StatsRow.astro';
-import ServicesList from '../components/astro/ServicesList.astro';
-import TestimonialCarousel from '../components/react/TestimonialCarousel';
-import CTASection from '../components/astro/CTASection.astro';
-import WorkCard from '../components/astro/WorkCard.astro';
+import Hero from '../components/astro/home/Hero.astro';
+import WhyUs from '../components/astro/home/WhyUs.astro';
+import ServicesTabs from '../components/astro/home/ServicesTabs.astro';
+import TechStackBelt from '../components/astro/home/TechStackBelt.astro';
+import ProcessGrid from '../components/astro/home/ProcessGrid.astro';
+import TeamRoster from '../components/astro/home/TeamRoster.astro';
+import ContactSection from '../components/astro/home/ContactSection.astro';
+import SiteFooter from '../components/astro/home/SiteFooter.astro';
 import { getCollection } from 'astro:content';
 
-const featuredWork = await getCollection('work', ({ data }) => {
-  return data.featured === true;
-});
-
-// Limit to max 3 on home page
-const workItems = featuredWork.slice(0, 3);
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
 ---
 
 <BaseLayout
-  title="Britnova Technologies | Intelligent AI, Cloud & Web Engineering"
-  description="We design and build high-performance, scalable digital products using AI, Cloud, and modern web frameworks."
+  title="BritNova Tech | AI, Cloud & Web Engineering"
+  description="An engineering studio working across machine learning, cloud infrastructure, delivery automation and the modern web."
+  chrome={false}
 >
-  <!-- Hero Section -->
-  <Hero />
+  <div class="relative bg-ink-950 font-sans text-paper antialiased">
+    {/* brand sheen, lifted from the banner asset */}
+    <div aria-hidden="true" class="home-sheen pointer-events-none absolute inset-x-0 top-0"></div>
 
-  <!-- Logo Strip -->
-  <LogoStrip />
-
-  <!-- Stats Row -->
-  <StatsRow />
-
-  <!-- Featured Work section -->
-  <section id="work" class="py-28 border-b border-border-subtle bg-bg-dark">
-    <div class="max-w-7xl mx-auto px-6 md:px-12">
-      <!-- Section Header -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6">
-        <div class="max-w-xl">
-          <span class="font-mono text-xs uppercase tracking-widest text-brand-accent mb-4 block"
-            >Case Studies</span
-          >
-          <h2
-            class="font-display text-4xl md:text-5xl font-black uppercase tracking-tight text-text-light leading-tight"
-          >
-            Projects We've Brought to Life
-          </h2>
-        </div>
-        <a
-          href="/work"
-          class="inline-flex items-center gap-1 text-sm font-semibold uppercase tracking-wider text-text-light border-b border-text-light pb-1 hover:text-brand-accent hover:border-brand-accent transition-colors self-start md:self-auto"
-        >
-          View All Projects
-        </a>
-      </div>
-
-      <!-- Work Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {
-          workItems.map((item) => (
-            <WorkCard
-              title={item.data.title}
-              description={item.data.description}
-              slug={item.id}
-              tags={item.data.tags}
-              client={item.data.client}
-              year={item.data.year}
-            />
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <!-- Services List Section -->
-  <ServicesList />
-
-  <!-- Testimonials Carousel Section -->
-  <TestimonialCarousel client:visible />
-
-  <!-- CTA Section -->
-  <CTASection />
+    <Hero />
+    <WhyUs />
+    <ServicesTabs services={services} />
+    <TechStackBelt />
+    <ProcessGrid />
+    <TeamRoster />
+    <ContactSection />
+    <SiteFooter />
+  </div>
 </BaseLayout>
+
+<style>
+  /* Height must stay equal to the hero (one viewport, header included) or the
+     gradient's bottom edge shows as a seam in the next section. The mask fades
+     the last 45% so the boundary is invisible either way. */
+  .home-sheen {
+    height: 100dvh;
+    background: linear-gradient(
+      115deg,
+      rgba(255, 255, 255, 0.09) 0%,
+      rgba(255, 255, 255, 0) 28%,
+      rgba(255, 255, 255, 0.05) 44%,
+      rgba(255, 255, 255, 0) 62%,
+      rgba(255, 255, 255, 0.07) 78%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+  }
+</style>
