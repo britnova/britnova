@@ -29,6 +29,19 @@ const { entry, nextEntry } = Astro.props;
         Back to portfolio
       </a>
 
+      <!-- Hero Image -->
+      {
+        entry.heroImage && (
+          <div class="mb-12 aspect-[16/9] overflow-hidden border border-ink-800 bg-ink-900">
+            <img
+              src={entry.heroImage}
+              alt={`${entry.title} homepage`}
+              class="h-full w-full object-cover object-top"
+            />
+          </div>
+        )
+      }
+
       <!-- Header -->
       <div class="border-b border-ink-800 pb-12 mb-12">
         <span class="font-mono text-[12px] tracking-[0.2em] text-ink-300 uppercase block mb-4">

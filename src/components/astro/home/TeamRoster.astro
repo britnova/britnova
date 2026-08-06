@@ -1,11 +1,6 @@
 ---
 /*
- * "Meet the team".
- *
- * TODO: replace — CONTAINS NO REAL PEOPLE. Every card renders "[ Name TBD ]"
- * and the role labels are guesses mapped to the four service disciplines.
- * This section MUST NOT ship until real names, roles and photos replace the
- * slots — or the section is removed. See src/data/content.json.
+ * "Leadership Team" — the real people behind BritNova.
  */
 import SectionHeading from './SectionHeading.astro';
 import content from '../../../data/content.json';
@@ -15,27 +10,20 @@ const { team } = content.home;
 
 <section id="team" class="relative z-10 border-t border-ink-800">
   <div class="mx-auto max-w-[1500px] px-6 py-20 md:px-10 md:py-24">
-    <SectionHeading label="Meet the team">
-      <p class="font-mono text-[11px] tracking-[0.14em] text-ink-300 uppercase">
-        {team.rosterLegend}
-      </p>
-    </SectionHeading>
-    {/* TODO: replace — the quote is from the client's outline; slots are layout only */}
+    <SectionHeading id="team" label={team.heading} />
     <blockquote
       class="font-brand max-w-[18ch] text-[34px] leading-[1.1] font-medium tracking-[-0.03em] text-paper md:text-[50px]"
     >
       {team.quote}
     </blockquote>
-    <div class="mt-12 grid grid-cols-1 gap-x-10 gap-y-6 sm:grid-cols-2 md:grid-cols-4">
+    <div class="mt-12 grid grid-cols-1 gap-x-10 gap-y-6 sm:grid-cols-2 md:grid-cols-3">
       {
-        team.slots.map((m) => (
+        team.members.map((m) => (
           <div class="border-t border-ink-700 pt-4">
-            <p class="font-mono text-[12px] tracking-[0.1em] text-ink-100 uppercase">
-              {team.namePlaceholder}
-            </p>
+            <p class="font-mono text-[12px] tracking-[0.1em] text-ink-100 uppercase">{m.name}</p>
             <p class="font-brand mt-1.5 text-[18px] font-medium text-paper">{m.role}</p>
             <p class="mt-1 font-mono text-[10px] tracking-[0.12em] text-ink-300 uppercase">
-              {m.area}
+              {m.focus}
             </p>
           </div>
         ))
