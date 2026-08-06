@@ -1,31 +1,16 @@
 ---
 /*
- * Site header — shared by the homepage (in-page anchors, rendered inside
- * Hero's full-height wrapper so the two fill exactly one viewport) and every
- * inner page (real page links, rendered via BaseLayout). Mostly static — the
- * only client JS is the inline <script> below, which just toggles the mobile
- * nav disclosure open/closed; that's plain UI state, so it doesn't warrant a
- * React island.
+ * Site header — one nav, same links, same targets, on every page (including
+ * the homepage). Rendered two ways: embedded inside Hero's full-height
+ * wrapper on the homepage (so the two fill exactly one viewport), and via
+ * BaseLayout on every inner page. Either way it's the same component with no
+ * per-page variants — mostly static, the only client JS is the inline
+ * <script> below, which just toggles the mobile nav disclosure open/closed.
  */
 import BrandLogo from './BrandLogo.astro';
 import content from '../../../data/content.json';
 
-interface NavLink {
-  href: string;
-  label: string;
-}
-
-interface Props {
-  links?: NavLink[];
-  ctaLabel?: string;
-  ctaHref?: string;
-}
-
-const {
-  links = content.home.nav.links,
-  ctaLabel = content.home.nav.ctaLabel,
-  ctaHref = '#contact',
-} = Astro.props;
+const { links, ctaLabel, ctaHref } = content.nav;
 ---
 
 <header class="relative z-20 border-b border-ink-800">

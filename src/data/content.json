@@ -8,37 +8,18 @@
     "email": "hello@britnova.com"
   },
 
+  "nav": {
+    "links": [
+      { "href": "/work", "label": "Work" },
+      { "href": "/services", "label": "Services" },
+      { "href": "/about", "label": "About" },
+      { "href": "/contact", "label": "Contact" }
+    ],
+    "ctaLabel": "Start a project",
+    "ctaHref": "/contact"
+  },
+
   "layout": {
-    "innerNav": {
-      "links": [
-        { "href": "/work", "label": "Work" },
-        { "href": "/#services", "label": "Services" },
-        { "href": "/about", "label": "About" },
-        { "href": "/contact", "label": "Contact" }
-      ],
-      "ctaLabel": "Start Project",
-      "mobileClosingLine": "Let's create something together"
-    },
-    "innerFooter": {
-      "tagline": "We design and build high-performance, scalable digital products using AI, Cloud, and modern web frameworks.",
-      "navLabel": "Navigation",
-      "navLinks": [
-        { "href": "/work", "label": "Featured Work" },
-        { "href": "/#services", "label": "Our Services" },
-        { "href": "/about", "label": "About Agency" },
-        { "href": "/contact", "label": "Get in Touch" }
-      ],
-      "socialsLabel": "Socials",
-      "socials": [
-        { "label": "GitHub", "href": "https://github.com" },
-        { "label": "LinkedIn", "href": "https://linkedin.com" },
-        { "label": "Twitter", "href": "https://twitter.com" }
-      ],
-      "legalLinks": [
-        { "label": "Privacy Policy", "href": "#" },
-        { "label": "Terms of Service", "href": "#" }
-      ]
-    },
     "cta": {
       "eyebrow": "Partner With Us",
       "headlineLine1": "Have an Idea?",
@@ -53,25 +34,6 @@
     "seo": {
       "title": "BritNova Tech | AI, Cloud & Web Engineering",
       "description": "An engineering studio working across machine learning, cloud infrastructure, delivery automation and the modern web."
-    },
-    "nav": {
-      "links": [
-        { "href": "#services", "label": "Services" },
-        { "href": "#stack", "label": "Stack" },
-        { "href": "#process", "label": "Process" },
-        { "href": "#contact", "label": "Contact" }
-      ],
-      "ctaLabel": "Start a project"
-    },
-    "footer": {
-      "copyrightName": "BritNova Tech",
-      "pagesLabel": "More",
-      "pageLinks": [
-        { "href": "/about", "label": "About Agency" },
-        { "href": "/services", "label": "Our Services" },
-        { "href": "/work", "label": "Featured Work" },
-        { "href": "/contact", "label": "Get in Touch" }
-      ]
     },
     "hero": {
       "eyebrow": "[ AI · Cloud · Web — Where technology evolves.. ]",
@@ -217,7 +179,7 @@
         { "label": "Email", "value": "hello@britnova.com", "href": "mailto:hello@britnova.com" },
         { "label": "Calendly", "value": "https://calendly.com/hello-britnova/30min" },
         { "label": "LinkedIn", "value": "https://www.linkedin.com/company/britnova-technologies" },
-        { "label": "WhatsApp", "value": "[ link TBD ]" }
+        { "label": "WhatsApp", "value": "+44 74 0521 2943" }
       ],
       "location": "[ Norwich, UK ]"
     }

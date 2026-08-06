@@ -1,72 +1,32 @@
 ---
 /*
- * Site footer — shared by the homepage (in-page anchors, plus a secondary
- * "More" row linking out to the real pages) and every inner page (the real
- * page links become the primary row; no secondary row needed since there's
- * nothing left to link to).
+ * Site footer — the same nav links as SiteHeader, one row, identical on
+ * every page. No secondary/"more" row: there's nothing left to link to that
+ * isn't already in the primary row.
  */
 import BrandLogo from './BrandLogo.astro';
 import content from '../../../data/content.json';
 
-interface NavLink {
-  href: string;
-  label: string;
-}
-
-interface Props {
-  links?: NavLink[];
-  copyrightName?: string;
-  pagesLabel?: string;
-  pageLinks?: NavLink[];
-}
-
-/*
- * `pagesLabel`/`pageLinks` intentionally have no JSON-sourced default: the
- * homepage passes them explicitly (its secondary "More" row, linking out to
- * the real pages). Inner pages leave them unset — their primary `links` row
- * already *is* the real page links, so a second row would just repeat it.
- */
-const {
-  links = content.home.nav.links,
-  copyrightName = content.home.footer.copyrightName,
-  pagesLabel,
-  pageLinks,
-} = Astro.props;
+const { links } = content.nav;
+const { legalName } = content.site;
 ---
 
 <footer class="relative z-10 border-t border-ink-800">
-  <div class="mx-auto max-w-[1500px] px-6 py-7 md:px-10">
-    <div
-      class="flex flex-col gap-4 font-mono text-[11px] tracking-[0.12em] text-ink-300 uppercase md:flex-row md:items-center md:justify-between"
-    >
-      <span class="font-sans text-[15px] tracking-normal text-ink-300 normal-case">
-        <BrandLogo id="footer" />
-      </span>
-      <nav class="flex flex-wrap gap-x-6 gap-y-2" aria-label="On this page">
-        {
-          links.map((l) => (
-            <a href={l.href} class="text-ink-300 transition-colors hover:text-paper">
-              {l.label}
-            </a>
-          ))
-        }
-      </nav>
-      <p>© {new Date().getFullYear()} {copyrightName}</p>
-    </div>
-
-    {
-      pageLinks && pageLinks.length > 0 && (
-        <div class="mt-6 flex flex-wrap items-baseline gap-x-6 gap-y-2 border-t border-ink-800 pt-6 font-mono text-[11px] tracking-[0.12em] text-ink-300 uppercase">
-          <span class="text-ink-300">{pagesLabel}</span>
-          <nav class="flex flex-wrap gap-x-6 gap-y-2" aria-label="Site pages">
-            {pageLinks.map((l) => (
-              <a href={l.href} class="text-ink-300 transition-colors hover:text-paper">
-                {l.label}
-              </a>
-            ))}
-          </nav>
-        </div>
-      )
-    }
+  <div
+    class="mx-auto flex max-w-[1500px] flex-col gap-4 px-6 py-7 font-mono text-[11px] tracking-[0.12em] text-ink-300 uppercase md:flex-row md:items-center md:justify-between md:px-10"
+  >
+    <span class="font-sans text-[15px] tracking-normal text-ink-300 normal-case">
+      <BrandLogo id="footer" />
+    </span>
+    <nav class="flex flex-wrap gap-x-6 gap-y-2" aria-label="Primary">
+      {
+        links.map((l) => (
+          <a href={l.href} class="text-ink-300 transition-colors hover:text-paper">
+            {l.label}
+          </a>
+        ))
+      }
+    </nav>
+    <p>© {new Date().getFullYear()} {legalName}</p>
   </div>
 </footer>

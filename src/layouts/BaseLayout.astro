@@ -2,7 +2,6 @@
 import '../styles/global.css';
 import SiteHeader from '../components/astro/home/SiteHeader.astro';
 import SiteFooter from '../components/astro/home/SiteFooter.astro';
-import content from '../data/content.json';
 
 interface Props {
   title?: string;
@@ -22,8 +21,6 @@ const {
   ogImage = '/images/og-default.jpg',
   chrome = true,
 } = Astro.props;
-
-const { links: innerNavLinks, ctaLabel: innerCtaLabel } = content.layout.innerNav;
 ---
 
 <!doctype html>
@@ -56,12 +53,12 @@ const { links: innerNavLinks, ctaLabel: innerCtaLabel } = content.layout.innerNa
   <body
     class="bg-ink-950 text-paper font-sans flex flex-col min-h-screen selection:bg-paper selection:text-ink-950"
   >
-    {chrome && <SiteHeader links={innerNavLinks} ctaLabel={innerCtaLabel} ctaHref="/contact" />}
+    {chrome && <SiteHeader />}
 
     <main class="flex-grow">
       <slot />
     </main>
 
-    {chrome && <SiteFooter links={innerNavLinks} copyrightName={content.site.legalName} />}
+    {chrome && <SiteFooter />}
   </body>
 </html>
