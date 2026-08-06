@@ -1,49 +1,23 @@
 ---
-/*
- * BritNova logo lockup.
- *
- * TODO: replace — hand-traced approximation of the 'b' mark from
- * britnova-linkedin-images/. Geometry measured off the 1080px icon and
- * expressed in a 120-unit viewBox:
- *
- *   bowl      centre (72.5, 68)  r 28.5
- *   counter   centre (74, 69)    r 14      (knocked out)
- *   stem      x 45 → 60.6, top y 25, rounded cap
- *   hook      annular sector, centre (48, 42.7), R 28.6 / r 13.6, 180° → 90°
- *
- * Close, not exact. Swap the <svg> body for the official vector when it lands —
- * everything imports this one file, so the swap is a single edit.
- *
- * Inherits `currentColor`, so the same mark works on light and dark bands —
- * exactly as the brand assets show it on light and dark walls.
- */
 interface Props {
-  /** Unique per instance — SVG mask ids must not collide on one page. */
-  id: string;
   /** Show the "BritNova / tech" wordmark next to the mark. */
   wordmark?: boolean;
 }
 
-const { id, wordmark = true } = Astro.props;
-const maskId = `bn-cut-${id}`;
+const { wordmark = true } = Astro.props;
 ---
 
 <span class="inline-flex items-center gap-2.5">
-  <svg viewBox="0 0 120 120" fill="none" aria-hidden="true" class="h-[1.15em] w-[1.15em] shrink-0">
-    <mask id={maskId}>
-      <rect width="120" height="120" fill="black"></rect>
-      <!-- hook: annular sector sweeping in from the left, flat cut at the tip -->
-      <path
-        d="M19.4 42.7 H34.4 A13.6 13.6 0 0 1 48 56.3 V71.3 A28.6 28.6 0 0 0 19.4 42.7 Z"
-        fill="white"></path>
-      <!-- ascender stem -->
-      <rect x="45" y="25" width="15.6" height="50" rx="7.8" fill="white"></rect>
-      <!-- bowl -->
-      <circle cx="72.5" cy="68" r="28.5" fill="white"></circle>
-      <!-- counter, knocked out -->
-      <circle cx="74" cy="69" r="14" fill="black"></circle>
-    </mask>
-    <rect width="120" height="120" fill="currentColor" mask={`url(#${maskId})`}></rect>
+  <svg
+    viewBox="0 0 1080 1080"
+    fill="none"
+    aria-hidden="true"
+    class="h-[1.15em] w-[1.15em] shrink-0"
+  >
+    <path
+      d="M0,0 L102,0 L112,5 L117,13 L118,18 L118,177 L123,175 L138,166 L149,160 L165,153 L177,148 L192,143 L215,138 L229,136 L247,135 L260,135 L285,137 L304,141 L319,145 L341,153 L357,161 L373,170 L388,180 L401,191 L409,198 L414,203 L424,213 L433,224 L444,240 L456,261 L462,274 L468,291 L474,312 L478,334 L480,354 L480,376 L476,408 L473,422 L467,444 L461,460 L454,476 L446,491 L437,505 L427,519 L415,533 L409,540 L407,540 L407,542 L405,542 L405,544 L397,551 L387,560 L370,572 L354,582 L339,590 L319,599 L296,606 L275,611 L244,615 L217,615 L203,613 L184,610 L159,604 L141,597 L131,593 L108,581 L97,574 L91,570 L77,559 L67,550 L60,543 L55,538 L50,533 L40,522 L36,516 L25,501 L13,480 L5,463 L-1,448 L-8,426 L-13,403 L-15,387 L-15,379 L-25,379 L-45,377 L-60,375 L-62,374 L-74,372 L-82,370 L-86,368 L-93,366 L-102,364 L-104,362 L-109,360 L-124,353 L-133,348 L-142,342 L-151,336 L-160,330 L-167,323 L-169,322 L-169,320 L-174,318 L-188,304 L-191,300 L-191,298 L-193,298 L-201,288 L-201,286 L-203,286 L-211,273 L-215,268 L-223,252 L-227,244 L-231,232 L-235,223 L-239,209 L-240,202 L-242,197 L-244,185 L-245,180 L-245,166 L-240,158 L-233,153 L-225,152 L-143,152 L-123,153 L-115,158 L-112,163 L-110,175 L-106,185 L-102,196 L-96,205 L-90,213 L-86,218 L-75,227 L-61,236 L-44,242 L-32,244 L-17,244 L-17,29 L-16,14 L-12,6 L-4,1 Z M245,269 L228,272 L212,278 L200,285 L176,299 L156,311 L140,321 L129,327 L119,333 L118,334 L118,377 L121,393 L126,408 L134,424 L141,435 L150,446 L155,451 L169,462 L185,471 L198,476 L216,480 L246,480 L261,477 L278,471 L293,463 L305,454 L314,446 L323,435 L329,426 L337,411 L342,396 L345,379 L345,350 L342,336 L337,322 L330,310 L319,297 L308,287 L293,278 L277,272 L260,269 Z "
+      fill="currentColor"
+      transform="translate(423,234)"></path>
   </svg>
 
   {
