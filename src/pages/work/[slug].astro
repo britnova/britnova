@@ -57,20 +57,14 @@ const { entry, nextEntry } = Astro.props;
         </p>
 
         <!-- Metadata Grid -->
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-6 pt-6 border-t border-ink-800 text-sm">
-          <div>
-            <span class="font-mono text-[11px] text-ink-300 block uppercase tracking-[0.14em] mb-1">
-              Client
-            </span>
-            <span class="font-semibold text-paper">{entry.client}</span>
-          </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-ink-800 text-sm">
           <div>
             <span class="font-mono text-[11px] text-ink-300 block uppercase tracking-[0.14em] mb-1">
               Year
             </span>
             <span class="font-semibold text-paper">{entry.year}</span>
           </div>
-          <div class="col-span-2 md:col-span-1">
+          <div class="col-span-1 sm:col-span-2">
             <span class="font-mono text-[11px] text-ink-300 block uppercase tracking-[0.14em] mb-1">
               Tags
             </span>
@@ -137,7 +131,7 @@ const { entry, nextEntry } = Astro.props;
                   {nextEntry.title}
                 </h4>
                 <p class="font-mono text-[11px] tracking-[0.14em] text-ink-300 uppercase mt-2">
-                  Client: {nextEntry.client}
+                  {nextEntry.year}
                 </p>
               </div>
               <div class="w-10 h-10 border border-ink-700 group-hover:border-paper flex items-center justify-center text-ink-300 group-hover:text-paper transition-colors">

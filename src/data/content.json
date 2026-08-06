@@ -214,7 +214,6 @@
       "shortLabel": "AI & ML",
       "title": "AI & Machine Learning Solutions",
       "description": "We build intelligent systems that automate processes, generate insights, and help businesses make smarter decisions.",
-      "icon": "🧠",
       "order": 1,
       "features": [
         "Predictive Analytics",
@@ -244,7 +243,6 @@
       "shortLabel": "DevOps & MLOps",
       "title": "DevOps & MLOps",
       "description": "We streamline development and deployment with scalable infrastructure and automated pipelines.",
-      "icon": "⚙️",
       "order": 2,
       "features": [
         "CI/CD Pipeline Setup",
@@ -274,7 +272,6 @@
       "shortLabel": "Web & Software",
       "title": "Web & Software Development",
       "description": "We build modern, scalable, and high-performance web applications tailored to your business.",
-      "icon": "💻",
       "order": 3,
       "features": [
         "Custom Web Applications",
@@ -304,7 +301,6 @@
       "shortLabel": "Cloud",
       "title": "Cloud Services",
       "description": "We help businesses deploy, scale, and optimize applications across cloud platforms.",
-      "icon": "☁️",
       "order": 4,
       "features": [
         "AWS / Azure / GCP Deployment",
@@ -338,7 +334,6 @@
       "description": "A computerized maintenance-management platform with asynchronous reporting, QR-based workflows, and Stripe billing.",
       "heroImage": "/images/work-fixalert.jpg",
       "tags": ["Web & Software Development", "React & Django", "Celery & Stripe"],
-      "client": "Arbisoft",
       "year": "2021–2026",
       "featured": true,
       "sections": [
@@ -368,7 +363,6 @@
       "description": "A React and Next.js career-pathing platform used by Fortune 500 companies, with Django APIs, a Looker analytics dashboard, and zero-downtime framework migrations.",
       "heroImage": "/images/work-landit.jpg",
       "tags": ["Web & Software Development", "React & Next.js", "Django", "Storybook & Cypress"],
-      "client": "Arbisoft",
       "year": "2021–2026",
       "featured": true,
       "sections": [
@@ -398,7 +392,6 @@
       "description": "A HIPAA-compliant telehealth platform on Django, PostgreSQL, and Kubernetes, with NLP-driven patient insights and real-time clinical data sync.",
       "heroImage": "/images/work-psychplus.jpg",
       "tags": ["Cloud Services", "DevOps & MLOps", "AI & Machine Learning", "Kubernetes & AWS"],
-      "client": "Arbisoft",
       "year": "2021–2026",
       "featured": true,
       "metrics": [{ "label": "Platform Uptime", "value": ">99.9%" }],
@@ -429,7 +422,6 @@
       "description": "An AI-powered voice and chat intake platform with fine-tuned language models, a containerized microservices backend, and automated CI/CD.",
       "heroImage": "/images/work-meetgabbi.jpg",
       "tags": ["AI & Machine Learning", "DevOps & MLOps", "Docker & AWS ECS"],
-      "client": "Arbisoft",
       "year": "2021–2026",
       "featured": true,
       "metrics": [{ "label": "Release Time Cut", "value": "30%" }],
@@ -459,7 +451,6 @@
       "title": "Enterprise API Platform, Monolith-to-Microservices Migration",
       "description": "A legacy monolith serving millions of daily requests, migrated to Kubernetes-orchestrated microservices on AWS without disrupting live enterprise traffic.",
       "tags": ["DevOps & MLOps", "Cloud Services", "Kubernetes & AWS"],
-      "client": "Arbisoft",
       "year": "2021–2026",
       "featured": false,
       "metrics": [
@@ -492,7 +483,6 @@
       "title": "Unlock Trader Capital, Algorithmic Trading Platform",
       "description": "Cloud architecture and a Django/Flask backend for a platform offering automated trading, real-time trade alerts, and professional trade execution for retail traders.",
       "tags": ["Cloud Services", "DevOps & MLOps", "Django & Flask"],
-      "client": "Arbisoft",
       "year": "2021–2026",
       "featured": true,
       "sections": [
@@ -522,7 +512,6 @@
       "description": "Cloud infrastructure for a computer vision platform running deep learning models for image classification, object detection, and visual analytics.",
       "heroImage": "/images/work-kito.jpg",
       "tags": ["AI & Machine Learning", "DevOps & MLOps", "Cloud Services"],
-      "client": "Arbisoft",
       "year": "2021–2026",
       "featured": true,
       "sections": [
@@ -551,7 +540,6 @@
       "title": "Rumi, Frontend CI/CD & Code Quality Infrastructure",
       "description": "A GitLab CI/CD pipeline and enforced code-quality tooling for Rumi's frontend, alongside architectural refactoring for state-management reliability.",
       "tags": ["Web & Software Development", "DevOps & MLOps", "GitLab CI & Vitest"],
-      "client": "Arbisoft",
       "year": "2021–2026",
       "featured": false,
       "sections": [
@@ -581,7 +569,6 @@
       "description": "New feature infrastructure, permissions logic, and structured feedback workflows built into Taiga's existing AngularJS and Django architecture.",
       "heroImage": "/images/work-taiga.jpg",
       "tags": ["Web & Software Development", "AngularJS & Django"],
-      "client": "Arbisoft",
       "year": "2021–2026",
       "featured": true,
       "sections": [
@@ -611,7 +598,6 @@
       "description": "A version upgrade and stability pass on a long-running Islamic Q&A platform founded in 2000, done without disrupting a large, active user base.",
       "heroImage": "/images/work-askimam.jpg",
       "tags": ["Web & Software Development", "Django"],
-      "client": "Arbisoft",
       "year": "2021–2026",
       "featured": true,
       "sections": [
