@@ -8,7 +8,6 @@ interface CaseStudy {
   description: string;
   slug: string;
   tags: string[];
-  client: string;
   year: string;
   heroImage?: string;
 }
@@ -79,8 +78,7 @@ export default function WorkGridFilters({ caseStudies }: Props) {
                 )}
                 <div className="flex flex-1 flex-col justify-between p-6 md:p-7">
                   <div>
-                    <div className="flex justify-between items-center mb-6 font-mono text-[12px] text-ink-300">
-                      <span>{study.client}</span>
+                    <div className="mb-6 font-mono text-[12px] text-ink-300">
                       <span>{study.year}</span>
                     </div>
 
