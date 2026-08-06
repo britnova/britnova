@@ -9,14 +9,20 @@
  * TODO: replace — the copy is placeholder, and every channel except the email
  * address is unresolved. Do NOT invent Calendly / LinkedIn / WhatsApp URLs;
  * fill in the real ones or delete those rows.
+ *
+ * The email channel has no value/href of its own in content.json — it's
+ * keyed "email" and resolved below from `site.email`, the single source of
+ * truth for the address, so the same channel with no href renders as inert
+ * text, never as a dead link.
  */
 import BriefForm from '../../react/BriefForm';
 import content from '../../../data/content.json';
 
-// TODO: replace — hello@britnova.com is the address used throughout the site
-// but has not been confirmed as the public inbox. The rest are unresolved:
-// a channel with no href renders as inert text, never as a dead link.
 const { eyebrow, headline, body, channels, location } = content.home.contact;
+const email = content.site.email;
+const resolvedChannels = channels.map((c) =>
+  c.key === 'email' ? { ...c, value: email, href: `mailto:${email}` } : c
+);
 ---
 
 <section id="contact" class="relative z-10 border-t border-ink-800">
@@ -38,7 +44,7 @@ const { eyebrow, headline, body, channels, location } = content.home.contact;
 
         <div class="mt-10 max-w-md border-t border-ink-800">
           {
-            channels.map((c) => {
+            resolvedChannels.map((c) => {
               const Row = c.href ? 'a' : 'div';
               return (
                 <Row

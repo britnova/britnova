@@ -5,6 +5,12 @@ import { Mail, MapPin, Globe } from 'lucide-react';
 import content from '../data/content.json';
 
 const { contactPage } = content;
+const email = content.site.email;
+// The email row has no value/href of its own in content.json — it's keyed
+// "email" and resolved here from `site.email`, the single source of truth.
+const info = contactPage.info.map((item) =>
+  item.key === 'email' ? { ...item, value: email, href: `mailto:${email}` } : item
+);
 
 const infoIcons = {
   email: Mail,
@@ -38,7 +44,7 @@ const infoIcons = {
           <!-- Contact items -->
           <div class="mt-12 space-y-6 lg:mt-0">
             {
-              contactPage.info.map((item) => {
+              info.map((item) => {
                 const Icon = infoIcons[item.key as keyof typeof infoIcons];
                 return (
                   <div class="flex items-start gap-4">
