@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Send, CheckCircle2, AlertCircle } from 'lucide-react';
+import content from '../../data/content.json';
 
 export default function ContactForm() {
   const [form, setForm] = useState({
@@ -12,13 +13,7 @@ export default function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const servicesList = [
-    'AI & Machine Learning',
-    'DevOps & MLOps',
-    'Web & Software Development',
-    'Cloud Services',
-    'Consulting / Other',
-  ];
+  const servicesList = content.contactForm.services;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,7 +37,7 @@ export default function ContactForm() {
         setErrorMessage(data.error || 'Failed to submit the form. Please try again.');
         setStatus('error');
       }
-    } catch (err) {
+    } catch {
       setErrorMessage('A network error occurred. Please try again.');
       setStatus('error');
     }

@@ -1,5 +1,8 @@
 ---
 import { ArrowUpRight } from 'lucide-react';
+import content from '../../data/content.json';
+
+const { cta } = content.layout;
 ---
 
 <section class="relative py-32 overflow-hidden border-b border-border-subtle bg-bg-dark">
@@ -12,39 +15,39 @@ import { ArrowUpRight } from 'lucide-react';
   <div class="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center">
     <!-- Tagline -->
     <span class="font-mono text-xs uppercase tracking-widest text-brand-accent mb-6"
-      >Partner With Us</span
+      >{cta.eyebrow}</span
     >
 
     <!-- Big Headline -->
     <h2
       class="font-display text-4xl md:text-7xl font-black uppercase tracking-tight text-text-light leading-[1.0] mb-8 max-w-3xl select-none"
     >
-      Have an Idea? <br />
-      Let's build it together.
+      {cta.headlineLine1}
+      <br />
+      {cta.headlineLine2}
     </h2>
 
     <!-- Subtitle -->
     <p class="text-base md:text-lg text-text-muted max-w-xl font-light leading-relaxed mb-12">
-      From custom AI workflows to enterprise-grade web experiences and optimized cloud
-      orchestration. We engineer solutions that deliver business value.
+      {cta.body}
     </p>
 
     <!-- Buttons -->
     <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
       <a
-        href="/contact"
+        href={cta.primary.href}
         class="group inline-flex items-center gap-2 bg-brand-accent text-bg-dark font-semibold px-8 py-4 rounded-full hover:bg-brand-accent/90 transition-all duration-300 shadow-[0_4px_20px_rgba(108,92,231,0.25)]"
       >
-        Get in Touch
+        {cta.primary.label}
         <ArrowUpRight
           className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300"
         />
       </a>
       <a
-        href="/services"
+        href={cta.secondary.href}
         class="inline-flex items-center gap-2 text-sm font-semibold text-text-light border border-border-subtle hover:border-text-light px-8 py-4 rounded-full transition-all duration-300 bg-bg-dark/50 backdrop-blur-sm"
       >
-        Our Capabilities
+        {cta.secondary.label}
       </a>
     </div>
   </div>

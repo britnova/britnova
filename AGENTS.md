@@ -12,7 +12,7 @@ Marketing website for a software development agency. Design direction: dark, bol
 - **Styling**: Tailwind CSS (custom theme — do not use default Tailwind palette/typography, use tokens defined in `tailwind.config.mjs`)
 - **Interactivity**: React, used only for islands that need client-side state (nav mobile menu, testimonial carousel, contact form, work-grid filters). Everything else must be static `.astro` components — do not reach for React by default.
 - **Animation**: Framer Motion, used inside React islands only
-- **Content**: Astro Content Collections for case studies (`src/content/work/*.md`) and services (`src/content/services/*.md`)
+- **Content**: single source of truth at `src/data/content.json` — every page's copy (homepage sections, services, work case studies, about, contact, nav, footer) lives there, not in markdown or scattered `.ts` data modules. Imported directly (`import content from '.../data/content.json'`); `resolveJsonModule` is enabled so this is fully typed with no wrapper needed.
 - **Package manager**: pnpm
 
 ## Commands
@@ -33,9 +33,8 @@ src/
   components/
     astro/        # static, non-interactive components (.astro)
     react/         # interactive islands only (.tsx)
-  content/
-    work/          # case study markdown files (content collection)
-    services/      # service markdown files (content collection)
+  data/
+    content.json   # single source of truth for ALL site copy
   layouts/
     BaseLayout.astro
   pages/
@@ -59,7 +58,7 @@ public/
 - **Styling**: Tailwind utility classes only — no separate CSS files per component unless doing something Tailwind genuinely can't express. Shared design tokens (colors, font sizes, spacing) live in `tailwind.config.mjs`, not hardcoded hex values in components.
 - **Images**: use Astro's `<Image />` component (`astro:assets`) for all local images to get automatic optimization. Never use raw `<img>` for local files.
 - **TypeScript**: use TypeScript for all React components and Astro frontmatter where props are involved. Define prop types explicitly, no `any`.
-- **Content**: never hardcode case study or service copy directly into page templates — pull from `src/content/*` collections so non-engineers can edit content later without touching layout code.
+- **Content**: never hardcode copy directly into page templates or components — pull from `src/data/content.json`, the single source of truth, so non-engineers can edit content later without touching layout code. Work case study bodies use a `sections: [{ heading, paragraphs }]` shape instead of markdown.
 - **Placeholders**: any placeholder text or image must include a `<!-- TODO: replace -->` (or `{/* TODO: replace */}` in JSX) comment so it's greppable before launch.
 
 ## Design Tokens (starting point — adjust in tailwind.config.mjs, don't hardcode elsewhere)
@@ -80,8 +79,8 @@ public/
 
 - Don't introduce a state management library (Redux, Zustand, etc.) — this site doesn't need one.
 - Don't use `client:load` by default — prefer `client:visible` or `client:idle`.
-- Don't hardcode copy or images that belong in content collections.
-- Don't add a CMS integration unless explicitly asked — content collections are sufficient for now.
+- Don't hardcode copy or images that belong in `src/data/content.json`.
+- Don't add a CMS integration unless explicitly asked — a single JSON file is sufficient for now.
 
 ## Open Questions / Placeholders to Flag
 

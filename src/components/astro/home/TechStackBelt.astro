@@ -10,18 +10,20 @@
  * TODO: replace — icon glyphs are hand-drawn approximations (TechIcon.astro),
  * NOT the official marks; swap for vendor SVGs and check each vendor's brand
  * guidelines before launch. Technologies not evidenced anywhere in the repo are
- * flagged `sourced: false` in src/data/techStack.ts and render with a †.
+ * flagged `sourced: false` in src/data/content.json and render with a †.
  */
 import SectionHeading from './SectionHeading.astro';
 import TechIcon from './TechIcon.astro';
-import { beltRows } from '../../../data/techStack';
+import content from '../../../data/content.json';
+
+const { belt, sectionLabel, proposedNote } = content.home.techStack;
 ---
 
 <section id="stack" class="relative z-10 overflow-hidden border-t border-ink-800">
   <div class="mx-auto max-w-[1500px] px-6 pt-20 md:px-10 md:pt-24">
-    <SectionHeading label="Stack / what we build with">
+    <SectionHeading label={sectionLabel}>
       <p class="font-mono text-[11px] tracking-[0.14em] text-ink-300 uppercase">
-        † proposed — confirm before launch
+        {proposedNote}
       </p>
     </SectionHeading>
   </div>
@@ -30,7 +32,7 @@ import { beltRows } from '../../../data/techStack';
   <div class="sbl-belt py-14 md:py-20">
     <div class="flex flex-col gap-3 md:gap-4">
       {
-        beltRows.map((row, ri) => (
+        belt.map((row, ri) => (
           <div
             class={`sbl-row sbl-row-${ri} flex w-max gap-3 md:gap-4 ${
               ri % 2 === 1 ? 'sbl-row-rev' : ''

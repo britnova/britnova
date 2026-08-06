@@ -6,25 +6,45 @@
  * launch. The inner pages still render the older shared `Footer` component.
  */
 import BrandLogo from './BrandLogo.astro';
-import { homeNav } from '../../../data/nav';
+import content from '../../../data/content.json';
+
+const { links: homeNav } = content.home.nav;
+const { copyrightName, pagesLabel, pageLinks } = content.home.footer;
 ---
 
 <footer class="relative z-10 border-t border-ink-800">
-  <div
-    class="mx-auto flex max-w-[1500px] flex-col gap-4 px-6 py-7 font-mono text-[11px] tracking-[0.12em] text-ink-300 uppercase md:flex-row md:items-center md:justify-between md:px-10"
-  >
-    <span class="font-sans text-[15px] tracking-normal text-ink-300 normal-case">
-      <BrandLogo id="footer" />
-    </span>
-    <nav class="flex flex-wrap gap-x-6 gap-y-2">
-      {
-        homeNav.map((l) => (
-          <a href={l.href} class="text-ink-300 transition-colors hover:text-paper">
-            {l.label}
-          </a>
-        ))
-      }
-    </nav>
-    <p>© {new Date().getFullYear()} BritNova Tech</p>
+  <div class="mx-auto max-w-[1500px] px-6 py-7 md:px-10">
+    <div
+      class="flex flex-col gap-4 font-mono text-[11px] tracking-[0.12em] text-ink-300 uppercase md:flex-row md:items-center md:justify-between"
+    >
+      <span class="font-sans text-[15px] tracking-normal text-ink-300 normal-case">
+        <BrandLogo id="footer" />
+      </span>
+      <nav class="flex flex-wrap gap-x-6 gap-y-2" aria-label="On this page">
+        {
+          homeNav.map((l) => (
+            <a href={l.href} class="text-ink-300 transition-colors hover:text-paper">
+              {l.label}
+            </a>
+          ))
+        }
+      </nav>
+      <p>© {new Date().getFullYear()} {copyrightName}</p>
+    </div>
+
+    <div
+      class="mt-6 flex flex-wrap items-baseline gap-x-6 gap-y-2 border-t border-ink-800 pt-6 font-mono text-[11px] tracking-[0.12em] text-ink-300 uppercase"
+    >
+      <span class="text-ink-300">{pagesLabel}</span>
+      <nav class="flex flex-wrap gap-x-6 gap-y-2" aria-label="Site pages">
+        {
+          pageLinks.map((l) => (
+            <a href={l.href} class="text-ink-300 transition-colors hover:text-paper">
+              {l.label}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
   </div>
 </footer>

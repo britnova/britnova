@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import content from '../../data/content.json';
 
 /*
  * Homepage contact form.
@@ -14,13 +15,7 @@ import { useState } from 'react';
 type Status = 'idle' | 'loading' | 'success' | 'error';
 type ContactApiError = { error?: string };
 
-const SERVICES = [
-  'AI & Machine Learning',
-  'DevOps & MLOps',
-  'Web & Software Development',
-  'Cloud Services',
-  'Consulting / Other',
-];
+const SERVICES = content.contactForm.services;
 
 const labelClass = 'mb-2 block font-mono text-[11px] tracking-[0.2em] text-ink-300 uppercase';
 const fieldClass =

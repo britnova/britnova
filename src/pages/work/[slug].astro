@@ -1,12 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection, render } from 'astro:content';
+import content from '../../data/content.json';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 export async function getStaticPaths() {
-  const workEntries = await getCollection('work');
+  const workEntries = content.work;
   return workEntries.map((entry, index) => ({
-    params: { slug: entry.id },
+    params: { slug: entry.slug },
     props: {
       entry,
       nextEntry: workEntries[(index + 1) % workEntries.length],
@@ -15,13 +15,9 @@ export async function getStaticPaths() {
 }
 
 const { entry, nextEntry } = Astro.props;
-const { Content } = await render(entry);
 ---
 
-<BaseLayout
-  title={`${entry.data.title} | Britnova Technologies`}
-  description={entry.data.description}
->
+<BaseLayout title={`${entry.title} | Britnova Technologies`} description={entry.description}>
   <article class="py-20 bg-bg-dark text-text-light">
     <div class="max-w-4xl mx-auto px-6">
       <!-- Back Link -->
@@ -41,10 +37,10 @@ const { Content } = await render(entry);
         <h1
           class="font-display text-4xl md:text-6xl font-black uppercase tracking-tight text-text-light mb-6 leading-tight"
         >
-          {entry.data.title}
+          {entry.title}
         </h1>
         <p class="text-lg md:text-xl text-text-muted font-light leading-relaxed mb-8">
-          {entry.data.description}
+          {entry.description}
         </p>
 
         <!-- Metadata Grid -->
@@ -55,13 +51,13 @@ const { Content } = await render(entry);
             <span class="font-mono text-xs text-text-muted block uppercase tracking-wider mb-1"
               >Client</span
             >
-            <span class="font-semibold text-text-light">{entry.data.client}</span>
+            <span class="font-semibold text-text-light">{entry.client}</span>
           </div>
           <div>
             <span class="font-mono text-xs text-text-muted block uppercase tracking-wider mb-1"
               >Year</span
             >
-            <span class="font-semibold text-text-light">{entry.data.year}</span>
+            <span class="font-semibold text-text-light">{entry.year}</span>
           </div>
           <div class="col-span-2 md:col-span-1">
             <span class="font-mono text-xs text-text-muted block uppercase tracking-wider mb-1"
@@ -69,7 +65,7 @@ const { Content } = await render(entry);
             >
             <div class="flex flex-wrap gap-1.5 mt-1">
               {
-                entry.data.tags.map((tag) => (
+                entry.tags.map((tag) => (
                   <span class="text-[10px] font-mono uppercase bg-bg-card border border-border-subtle px-2 py-0.5 rounded text-text-muted">
                     {tag}
                   </span>
@@ -82,9 +78,9 @@ const { Content } = await render(entry);
 
       <!-- Metrics Highlight -->
       {
-        entry.data.metrics && entry.data.metrics.length > 0 && (
+        entry.metrics && entry.metrics.length > 0 && (
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 p-6 rounded-2xl bg-bg-card border border-border-subtle mb-16">
-            {entry.data.metrics.map((metric) => (
+            {entry.metrics.map((metric) => (
               <div class="text-center sm:text-left border-b sm:border-b-0 sm:border-r border-border-subtle last:border-none pb-4 sm:pb-0 sm:pr-6 last:pr-0">
                 <span class="font-display text-3xl font-extrabold text-brand-accent block mb-1">
                   {metric.value}
@@ -98,11 +94,20 @@ const { Content } = await render(entry);
         )
       }
 
-      <!-- Markdown Content -->
+      <!-- Case Study Content -->
       <div
         class="prose prose-invert max-w-none prose-h2:font-display prose-h2:text-2xl prose-h2:font-bold prose-h2:uppercase prose-h2:tracking-tight prose-h2:border-b prose-h2:border-border-subtle prose-h2:pb-3 prose-h2:mt-12 prose-h2:mb-6 prose-p:text-text-muted prose-p:leading-relaxed prose-p:font-light prose-p:mb-6 prose-ul:list-disc prose-ul:pl-6 prose-ul:space-y-2 prose-ul:text-text-muted prose-ul:font-light"
       >
-        <Content />
+        {
+          entry.sections.map((section) => (
+            <>
+              <h2>{section.heading}</h2>
+              {section.paragraphs.map((paragraph) => (
+                <p>{paragraph}</p>
+              ))}
+            </>
+          ))
+        }
       </div>
 
       <!-- Next Project Link -->
@@ -113,16 +118,14 @@ const { Content } = await render(entry);
               Next Case Study
             </span>
             <a
-              href={`/work/${nextEntry.id}`}
+              href={`/work/${nextEntry.slug}`}
               class="group flex justify-between items-center py-6 px-8 rounded-2xl bg-bg-card border border-border-subtle hover:border-brand-accent/50 hover:bg-bg-card-hover transition-all duration-300"
             >
               <div>
                 <h4 class="font-display text-2xl font-bold text-text-light group-hover:text-brand-accent transition-colors">
-                  {nextEntry.data.title}
+                  {nextEntry.title}
                 </h4>
-                <p class="text-xs text-text-muted mt-1 font-mono">
-                  Client: {nextEntry.data.client}
-                </p>
+                <p class="text-xs text-text-muted mt-1 font-mono">Client: {nextEntry.client}</p>
               </div>
               <div class="w-10 h-10 rounded-full border border-border-subtle group-hover:border-brand-accent flex items-center justify-center text-text-muted group-hover:text-brand-accent transition-colors">
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />

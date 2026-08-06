@@ -16,7 +16,9 @@
  * theme. Until they are migrated the site has two visual identities.
  */
 import BrandLogo from './BrandLogo.astro';
-import { homeNav } from '../../../data/nav';
+import content from '../../../data/content.json';
+
+const { links: homeNav, ctaLabel } = content.home.nav;
 ---
 
 <header class="relative z-20 border-b border-ink-800">
@@ -43,7 +45,7 @@ import { homeNav } from '../../../data/nav';
         href="#contact"
         class="hidden rounded-sm bg-paper px-4 py-2 font-mono text-[11px] tracking-[0.14em] text-ink-950 uppercase transition-colors hover:bg-ink-200 md:inline-block"
       >
-        Start a project
+        {ctaLabel}
       </a>
 
       <button
@@ -82,7 +84,7 @@ import { homeNav } from '../../../data/nav';
         data-mobile-nav-link
         class="block rounded-sm bg-paper px-4 py-3 text-center font-mono text-[11px] tracking-[0.14em] text-ink-950 uppercase transition-colors hover:bg-ink-200"
       >
-        Start a project
+        {ctaLabel}
       </a>
     </div>
   </div>

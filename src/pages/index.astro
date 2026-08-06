@@ -23,9 +23,9 @@ import ProcessGrid from '../components/astro/home/ProcessGrid.astro';
 import TeamRoster from '../components/astro/home/TeamRoster.astro';
 import ContactSection from '../components/astro/home/ContactSection.astro';
 import SiteFooter from '../components/astro/home/SiteFooter.astro';
-import { getCollection } from 'astro:content';
+import content from '../data/content.json';
 
-const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const services = [...content.services].sort((a, b) => a.order - b.order);
 ---
 
 <BaseLayout

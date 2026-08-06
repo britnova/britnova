@@ -1,13 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
+import content from '../../data/content.json';
 
-const navLinks = [
-  { href: '/#work', label: 'Work' },
-  { href: '/#services', label: 'Services' },
-  { href: '/about', label: 'About' },
-  { href: '/contact', label: 'Contact' },
-];
+const { links: navLinks, ctaLabel, mobileClosingLine } = content.layout.innerNav;
 
 export default function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -60,7 +56,7 @@ export default function Nav() {
               href="/contact"
               className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-bg-dark bg-brand-accent px-4 py-2 rounded-full hover:bg-brand-accent/90 transition-all duration-200"
             >
-              Start Project
+              {ctaLabel}
               <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </nav>
@@ -118,7 +114,7 @@ export default function Nav() {
                   onClick={() => setIsOpen(false)}
                   className="inline-flex items-center justify-between w-full text-lg font-bold text-text-light hover:text-brand-accent transition-all duration-300"
                 >
-                  Let's create something together
+                  {mobileClosingLine}
                   <ArrowUpRight className="w-6 h-6 text-brand-accent" />
                 </a>
               </motion.div>

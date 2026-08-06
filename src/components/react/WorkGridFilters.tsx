@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import content from '../../data/content.json';
 
 interface CaseStudy {
   title: string;
@@ -15,13 +16,7 @@ interface Props {
   caseStudies: CaseStudy[];
 }
 
-const categories = [
-  'All',
-  'AI & Machine Learning',
-  'DevOps & MLOps',
-  'Web & Software Development',
-  'Cloud Services',
-];
+const categories = content.workPage.filterCategories;
 
 export default function WorkGridFilters({ caseStudies }: Props) {
   const [activeCategory, setActiveCategory] = useState('All');
