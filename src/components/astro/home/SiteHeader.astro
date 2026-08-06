@@ -1,24 +1,31 @@
 ---
 /*
- * Homepage header.
- *
- * The homepage supplies its own header rather than the shared `Nav` island,
- * because it is a single-page layout whose nav points at on-page anchors and
- * because it uses the monochrome brand palette rather than the older accent
- * theme still used by the inner pages. Mostly static — the only client JS is
- * the inline <script> below, which just toggles the mobile nav disclosure
- * open/closed; that's plain UI state, so it doesn't warrant a React island.
- *
- * Rendered inside Hero's full-height wrapper, so the two together fill exactly
- * one viewport.
- *
- * TODO: replace — the inner pages still use the old `Nav` island and accent
- * theme. Until they are migrated the site has two visual identities.
+ * Site header — shared by the homepage (in-page anchors, rendered inside
+ * Hero's full-height wrapper so the two fill exactly one viewport) and every
+ * inner page (real page links, rendered via BaseLayout). Mostly static — the
+ * only client JS is the inline <script> below, which just toggles the mobile
+ * nav disclosure open/closed; that's plain UI state, so it doesn't warrant a
+ * React island.
  */
 import BrandLogo from './BrandLogo.astro';
 import content from '../../../data/content.json';
 
-const { links: homeNav, ctaLabel } = content.home.nav;
+interface NavLink {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  links?: NavLink[];
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+const {
+  links = content.home.nav.links,
+  ctaLabel = content.home.nav.ctaLabel,
+  ctaHref = '#contact',
+} = Astro.props;
 ---
 
 <header class="relative z-20 border-b border-ink-800">
@@ -29,7 +36,7 @@ const { links: homeNav, ctaLabel } = content.home.nav;
 
     <nav class="hidden items-center gap-8 md:flex" aria-label="Primary">
       {
-        homeNav.map((l) => (
+        links.map((l) => (
           <a
             href={l.href}
             class="font-mono text-[12px] tracking-[0.14em] text-ink-300 uppercase transition-colors hover:text-paper"
@@ -42,7 +49,7 @@ const { links: homeNav, ctaLabel } = content.home.nav;
 
     <div class="flex items-center gap-3">
       <a
-        href="#contact"
+        href={ctaHref}
         class="hidden rounded-sm bg-paper px-4 py-2 font-mono text-[11px] tracking-[0.14em] text-ink-950 uppercase transition-colors hover:bg-ink-200 md:inline-block"
       >
         {ctaLabel}
@@ -67,7 +74,7 @@ const { links: homeNav, ctaLabel } = content.home.nav;
   >
     <nav class="flex flex-col px-6" aria-label="Mobile">
       {
-        homeNav.map((l) => (
+        links.map((l) => (
           <a
             href={l.href}
             data-mobile-nav-link
@@ -80,7 +87,7 @@ const { links: homeNav, ctaLabel } = content.home.nav;
     </nav>
     <div class="px-6 py-6">
       <a
-        href="#contact"
+        href={ctaHref}
         data-mobile-nav-link
         class="block rounded-sm bg-paper px-4 py-3 text-center font-mono text-[11px] tracking-[0.14em] text-ink-950 uppercase transition-colors hover:bg-ink-200"
       >

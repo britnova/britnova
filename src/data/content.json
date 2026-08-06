@@ -216,10 +216,10 @@
       "channels": [
         { "label": "Email", "value": "hello@britnova.com", "href": "mailto:hello@britnova.com" },
         { "label": "Calendly", "value": "[ link TBD ]" },
-        { "label": "LinkedIn", "value": "[ link TBD ]" },
+        { "label": "LinkedIn", "value": "https://www.linkedin.com/company/britnova-technologies" },
         { "label": "WhatsApp", "value": "[ link TBD ]" }
       ],
-      "location": "[ Location TBD ]"
+      "location": "[ Norwich, UK ]"
     }
   },
 

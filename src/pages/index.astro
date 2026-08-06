@@ -6,9 +6,9 @@
  *   Hero (full viewport, includes the header) → Why work with us → Services →
  *   Technology stack → How we work → Meet the team → Contact → Footer
  *
- * `chrome={false}` because this page supplies its own header and footer, in
- * the monochrome brand palette; the shared Nav/Footer still carry the older
- * accent theme used by the inner pages.
+ * `chrome={false}` because this page supplies its own header and footer
+ * directly (embedding SiteHeader inside Hero, so the two fill exactly one
+ * viewport) rather than via BaseLayout's shared-chrome path.
  *
  * TODO: replace — the page still renders placeholder copy throughout, and the
  * team section contains no real people. Grep `TODO: replace` under
@@ -44,7 +44,10 @@ const services = [...content.services].sort((a, b) => a.order - b.order);
     <ProcessGrid />
     <TeamRoster />
     <ContactSection />
-    <SiteFooter />
+    <SiteFooter
+      pagesLabel={content.home.footer.pagesLabel}
+      pageLinks={content.home.footer.pageLinks}
+    />
   </div>
 </BaseLayout>
 

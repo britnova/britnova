@@ -1,15 +1,37 @@
 ---
 /*
- * Homepage footer.
- *
- * TODO: replace — confirm the nav targets and the legal/company line before
- * launch. The inner pages still render the older shared `Footer` component.
+ * Site footer — shared by the homepage (in-page anchors, plus a secondary
+ * "More" row linking out to the real pages) and every inner page (the real
+ * page links become the primary row; no secondary row needed since there's
+ * nothing left to link to).
  */
 import BrandLogo from './BrandLogo.astro';
 import content from '../../../data/content.json';
 
-const { links: homeNav } = content.home.nav;
-const { copyrightName, pagesLabel, pageLinks } = content.home.footer;
+interface NavLink {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  links?: NavLink[];
+  copyrightName?: string;
+  pagesLabel?: string;
+  pageLinks?: NavLink[];
+}
+
+/*
+ * `pagesLabel`/`pageLinks` intentionally have no JSON-sourced default: the
+ * homepage passes them explicitly (its secondary "More" row, linking out to
+ * the real pages). Inner pages leave them unset — their primary `links` row
+ * already *is* the real page links, so a second row would just repeat it.
+ */
+const {
+  links = content.home.nav.links,
+  copyrightName = content.home.footer.copyrightName,
+  pagesLabel,
+  pageLinks,
+} = Astro.props;
 ---
 
 <footer class="relative z-10 border-t border-ink-800">
@@ -22,7 +44,7 @@ const { copyrightName, pagesLabel, pageLinks } = content.home.footer;
       </span>
       <nav class="flex flex-wrap gap-x-6 gap-y-2" aria-label="On this page">
         {
-          homeNav.map((l) => (
+          links.map((l) => (
             <a href={l.href} class="text-ink-300 transition-colors hover:text-paper">
               {l.label}
             </a>
@@ -32,19 +54,19 @@ const { copyrightName, pagesLabel, pageLinks } = content.home.footer;
       <p>© {new Date().getFullYear()} {copyrightName}</p>
     </div>
 
-    <div
-      class="mt-6 flex flex-wrap items-baseline gap-x-6 gap-y-2 border-t border-ink-800 pt-6 font-mono text-[11px] tracking-[0.12em] text-ink-300 uppercase"
-    >
-      <span class="text-ink-300">{pagesLabel}</span>
-      <nav class="flex flex-wrap gap-x-6 gap-y-2" aria-label="Site pages">
-        {
-          pageLinks.map((l) => (
-            <a href={l.href} class="text-ink-300 transition-colors hover:text-paper">
-              {l.label}
-            </a>
-          ))
-        }
-      </nav>
-    </div>
+    {
+      pageLinks && pageLinks.length > 0 && (
+        <div class="mt-6 flex flex-wrap items-baseline gap-x-6 gap-y-2 border-t border-ink-800 pt-6 font-mono text-[11px] tracking-[0.12em] text-ink-300 uppercase">
+          <span class="text-ink-300">{pagesLabel}</span>
+          <nav class="flex flex-wrap gap-x-6 gap-y-2" aria-label="Site pages">
+            {pageLinks.map((l) => (
+              <a href={l.href} class="text-ink-300 transition-colors hover:text-paper">
+                {l.label}
+              </a>
+            ))}
+          </nav>
+        </div>
+      )
+    }
   </div>
 </footer>
