@@ -5,7 +5,7 @@
     "legalName": "Britnova Technologies",
     "defaultTitle": "BritNova Tech | AI, Cloud & Web Engineering",
     "defaultDescription": "An engineering studio working across machine learning, cloud infrastructure, delivery automation and the modern web.",
-    "email": "hello@britnova.net"
+    "email": "contact@britnova.net"
   },
 
   "nav": {
@@ -187,7 +187,7 @@
       "headline": "Tell us what you're building.",
       "body": "A few lines about the problem is enough to start. We'll come back with questions, not a pitch deck.",
       "channels": [
-        { "label": "Email", "value": "hello@britnova.net", "href": "mailto:hello@britnova.net" },
+        { "key": "email", "label": "Email" },
         {
           "label": "Calendly",
           "value": "https://calendly.com/hello-britnova/30min",
@@ -672,12 +672,7 @@
     "headline": { "line1": "Let's build", "line2Prefix": "something", "accent": "great" },
     "body": "Ready to automate your workflows, scale your cloud infrastructure, or build a custom web solution? Drop us a line. We respond to all inquiries within 24 hours.",
     "info": [
-      {
-        "key": "email",
-        "label": "Email us",
-        "value": "hello@britnova.net",
-        "href": "mailto:hello@britnova.net"
-      },
+      { "key": "email", "label": "Email us" },
       { "key": "location", "label": "HQ Location", "value": "Norwich, UK" },
       { "key": "hours", "label": "Office Hours", "value": "Mon – Fri, 9:00 AM – 6:00 PM GMT" }
     ]
