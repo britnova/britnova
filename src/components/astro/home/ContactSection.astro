@@ -1,0 +1,101 @@
+---
+/*
+ * "Contact" — the homepage's closing section.
+ *
+ * Headline and direct channels on the left, the brief form on the right. The
+ * form is the only client-side island on the page (`client:visible`, since it
+ * is below the fold) and posts to the existing Resend endpoint.
+ *
+ * TODO: replace — the copy is placeholder, and every channel except the email
+ * address is unresolved. Do NOT invent Calendly / LinkedIn / WhatsApp URLs;
+ * fill in the real ones or delete those rows.
+ */
+import BriefForm from '../../react/BriefForm';
+
+// TODO: replace — hello@britnova.com is the address used throughout the site
+// but has not been confirmed as the public inbox. The rest are unresolved:
+// a channel with no href renders as inert text, never as a dead link.
+const channels: { label: string; value: string; href?: string }[] = [
+  { label: 'Email', value: 'hello@britnova.com', href: 'mailto:hello@britnova.com' },
+  { label: 'Calendly', value: '[ link TBD ]' },
+  { label: 'LinkedIn', value: '[ link TBD ]' },
+  { label: 'WhatsApp', value: '[ link TBD ]' },
+];
+
+/*
+ * TODO: replace — LOCATION IS NOT CONFIRMED. Nothing in the brand assets or
+ * content states where the studio is; "United Kingdom" would only be a guess
+ * from the name, so the whole row renders as a placeholder. Fill it in, or
+ * delete the row if the studio would rather not publish a location.
+ */
+const location = '[ Location TBD ]';
+---
+
+<section id="contact" class="relative z-10 border-t border-ink-800">
+  <div class="mx-auto max-w-[1500px] px-6 py-20 md:px-10 md:py-28">
+    <div class="grid grid-cols-1 gap-12 md:grid-cols-12">
+      <div class="md:col-span-5">
+        <p class="mb-6 font-mono text-[12px] tracking-[0.2em] text-ink-300 uppercase">
+          [ Available for new work ]
+        </p>
+        <h2
+          class="font-brand max-w-[14ch] text-[10.2vw] leading-[0.98] font-semibold tracking-[-0.045em] text-paper md:text-[4.7vw]"
+        >
+          Tell us what you're building.
+        </h2>
+
+        <p class="mt-6 max-w-md text-[17px] leading-relaxed text-ink-300">
+          A few lines about the problem is enough to start. We'll come back with questions, not a
+          pitch deck.
+        </p>
+
+        <div class="mt-10 max-w-md border-t border-ink-800">
+          {
+            channels.map((c) => {
+              const Row = c.href ? 'a' : 'div';
+              return (
+                <Row
+                  href={c.href}
+                  class="group flex items-baseline justify-between gap-6 border-b border-ink-800 py-4"
+                >
+                  <span class="font-mono text-[11px] tracking-[0.2em] text-ink-300 uppercase">
+                    {c.label}
+                  </span>
+                  <span
+                    class={
+                      c.href
+                        ? 'font-mono text-[15px] tracking-[0.04em] text-ink-100 transition-colors group-hover:text-paper'
+                        : 'font-mono text-[15px] tracking-[0.04em] text-ink-300'
+                    }
+                  >
+                    {c.value}
+                    {c.href && (
+                      <span
+                        aria-hidden="true"
+                        class="inline-block text-ink-300 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-paper"
+                      >
+                        {' '}
+                        ↗
+                      </span>
+                    )}
+                  </span>
+                </Row>
+              );
+            })
+          }
+
+          <div class="flex items-baseline justify-between gap-6 border-b border-ink-800 py-4">
+            <span class="font-mono text-[11px] tracking-[0.2em] text-ink-300 uppercase">
+              Location
+            </span>
+            <span class="font-mono text-[15px] tracking-[0.04em] text-ink-300">{location}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:col-span-6 md:col-start-7">
+        <BriefForm client:visible />
+      </div>
+    </div>
+  </div>
+</section>

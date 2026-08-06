@@ -1,0 +1,60 @@
+---
+/*
+ * BritNova logo lockup.
+ *
+ * TODO: replace — hand-traced approximation of the 'b' mark from
+ * britnova-linkedin-images/. Geometry measured off the 1080px icon and
+ * expressed in a 120-unit viewBox:
+ *
+ *   bowl      centre (72.5, 68)  r 28.5
+ *   counter   centre (74, 69)    r 14      (knocked out)
+ *   stem      x 45 → 60.6, top y 25, rounded cap
+ *   hook      annular sector, centre (48, 42.7), R 28.6 / r 13.6, 180° → 90°
+ *
+ * Close, not exact. Swap the <svg> body for the official vector when it lands —
+ * everything imports this one file, so the swap is a single edit.
+ *
+ * Inherits `currentColor`, so the same mark works on light and dark bands —
+ * exactly as the brand assets show it on light and dark walls.
+ */
+interface Props {
+  /** Unique per instance — SVG mask ids must not collide on one page. */
+  id: string;
+  /** Show the "BritNova / tech" wordmark next to the mark. */
+  wordmark?: boolean;
+}
+
+const { id, wordmark = true } = Astro.props;
+const maskId = `bn-cut-${id}`;
+---
+
+<span class="inline-flex items-center gap-2.5">
+  <svg viewBox="0 0 120 120" fill="none" aria-hidden="true" class="h-[1.15em] w-[1.15em] shrink-0">
+    <mask id={maskId}>
+      <rect width="120" height="120" fill="black"></rect>
+      <!-- hook: annular sector sweeping in from the left, flat cut at the tip -->
+      <path
+        d="M19.4 42.7 H34.4 A13.6 13.6 0 0 1 48 56.3 V71.3 A28.6 28.6 0 0 0 19.4 42.7 Z"
+        fill="white"></path>
+      <!-- ascender stem -->
+      <rect x="45" y="25" width="15.6" height="50" rx="7.8" fill="white"></rect>
+      <!-- bowl -->
+      <circle cx="72.5" cy="68" r="28.5" fill="white"></circle>
+      <!-- counter, knocked out -->
+      <circle cx="74" cy="69" r="14" fill="black"></circle>
+    </mask>
+    <rect width="120" height="120" fill="currentColor" mask={`url(#${maskId})`}></rect>
+  </svg>
+
+  {
+    wordmark && (
+      <span class="font-brand flex flex-col leading-none tracking-[-0.02em]">
+        <span>
+          <span class="font-bold">Brit</span>
+          <span class="font-normal">Nova</span>
+        </span>
+        <span class="mt-[0.12em] text-[0.42em] font-light tracking-[0.02em]">tech</span>
+      </span>
+    )
+  }
+</span>

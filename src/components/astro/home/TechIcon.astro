@@ -1,0 +1,125 @@
+---
+/*
+ * Technology glyphs.
+ *
+ * TODO: replace — every glyph here is a hand-drawn geometric APPROXIMATION of
+ * the technology's mark, or a plain monogram where faking the shape wasn't
+ * worth it. Before launch, swap for official brand SVGs (e.g. simple-icons or
+ * each vendor's press kit) and check each vendor's brand guidelines.
+ *
+ * All strokes/fills ride `currentColor`, so tiles can tint them freely.
+ */
+interface Props {
+  name: string;
+  class?: string;
+}
+const { name, class: className = '' } = Astro.props;
+
+// Shared attribute pair for outline-style shapes (no fill, just a stroke) —
+// every glyph below pairs this with its own `stroke-width`.
+const STROKE_ATTRS = 'fill="none" stroke="currentColor"';
+
+// Drawn glyphs, 24x24 grid. Path/shape data below is hand-authored — NOT
+// copied from simple-icons or any icon library (verified: simple-icons marks
+// are single filled bezier paths with no stroke, these are primitive
+// shapes/strokes). See the TODO above for sourcing official marks before
+// launch; until then, new entries should follow this same hand-drawn style.
+const glyphs: Record<string, string> = {
+  React:
+    '<circle cx="12" cy="12" r="1.7" fill="currentColor"/>' +
+    `<ellipse cx="12" cy="12" rx="9.5" ry="3.9" ${STROKE_ATTRS} stroke-width="1.2"/>` +
+    `<ellipse cx="12" cy="12" rx="9.5" ry="3.9" ${STROKE_ATTRS} stroke-width="1.2" transform="rotate(60 12 12)"/>` +
+    `<ellipse cx="12" cy="12" rx="9.5" ry="3.9" ${STROKE_ATTRS} stroke-width="1.2" transform="rotate(120 12 12)"/>`,
+  'Node.js': `<path d="M12 2.4 20.4 7.2v9.6L12 21.6 3.6 16.8V7.2Z" ${STROKE_ATTRS} stroke-width="1.4" stroke-linejoin="round"/>`,
+  'Next.js':
+    `<circle cx="12" cy="12" r="9" ${STROKE_ATTRS} stroke-width="1.3"/>` +
+    `<path d="M9.3 15.6V8.4l6.8 9.4" ${STROKE_ATTRS} stroke-width="1.3" stroke-linejoin="round"/>`,
+  GraphQL:
+    `<path d="M12 2.8 20 7.4v9.2L12 21.2 4 16.6V7.4Z" ${STROKE_ATTRS} stroke-width="1.1"/>` +
+    `<path d="M4 16.6 12 2.8l8 13.8Z" ${STROKE_ATTRS} stroke-width="1.1"/>` +
+    '<g fill="currentColor"><circle cx="12" cy="2.8" r="1.5"/><circle cx="20" cy="7.4" r="1.5"/><circle cx="20" cy="16.6" r="1.5"/><circle cx="12" cy="21.2" r="1.5"/><circle cx="4" cy="16.6" r="1.5"/><circle cx="4" cy="7.4" r="1.5"/></g>',
+  Terraform:
+    '<g fill="currentColor"><path d="M3.2 4.6 8 7.4v5.5L3.2 10.1Z"/><path d="M9 8 13.8 10.8v5.5L9 13.5Z"/><path d="M14.8 11.4 19.6 14.2v5.5l-4.8-2.8Z"/><path d="M14.8 4.9 19.6 7.7v5.5l-4.8-2.8Z"/></g>',
+  Kubernetes:
+    `<circle cx="12" cy="12" r="8.8" ${STROKE_ATTRS} stroke-width="1.2"/>` +
+    '<circle cx="12" cy="12" r="1.9" fill="currentColor"/>' +
+    '<g stroke="currentColor" stroke-width="1.1">' +
+    [0, 51.4, 102.9, 154.3, 205.7, 257.1, 308.6]
+      .map((a) => `<line x1="12" y1="4.8" x2="12" y2="8.6" transform="rotate(${a} 12 12)"/>`)
+      .join('') +
+    '</g>',
+  Docker:
+    '<g fill="currentColor"><rect x="4.6" y="10.8" width="3.6" height="3.6"/><rect x="9" y="10.8" width="3.6" height="3.6"/><rect x="13.4" y="10.8" width="3.6" height="3.6"/><rect x="9" y="6.4" width="3.6" height="3.6"/></g>' +
+    '<path d="M3.5 17.6h17" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>',
+  Prometheus:
+    `<path d="M12 2.8c2.7 3 5.3 5.5 5.3 9.1a5.3 5.3 0 0 1-10.6 0C6.7 8.3 9.3 5.8 12 2.8Z" ${STROKE_ATTRS} stroke-width="1.3" stroke-linejoin="round"/>` +
+    '<circle cx="12" cy="12.6" r="1.8" fill="currentColor"/>' +
+    '<path d="M8.4 20.4h7.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>',
+  Grafana:
+    '<g fill="currentColor"><rect x="3.6" y="13" width="3.2" height="7.4"/><rect x="8.4" y="9.2" width="3.2" height="11.2"/><rect x="13.2" y="11.2" width="3.2" height="9.2"/><rect x="18" y="5.6" width="3.2" height="14.8"/></g>',
+  Vercel: '<path d="M12 4.6 20.6 19.4H3.4Z" fill="currentColor"/>',
+  Cloudflare: `<path d="M6.6 17.6a3.9 3.9 0 0 1-.4-7.8 5.4 5.4 0 0 1 10.5-1.2 4.5 4.5 0 0 1 1 8.9Z" ${STROKE_ATTRS} stroke-width="1.3" stroke-linejoin="round"/>`,
+  'GitHub Actions':
+    `<circle cx="8" cy="8" r="4.4" ${STROKE_ATTRS} stroke-width="1.2"/>` +
+    `<circle cx="17.2" cy="16.4" r="2.9" ${STROKE_ATTRS} stroke-width="1.2"/>` +
+    `<path d="M8 12.4v1.8a2 2 0 0 0 2 2h4.3" ${STROKE_ATTRS} stroke-width="1.2"/>` +
+    '<path d="M6.9 6.3 10.1 8 6.9 9.7Z" fill="currentColor"/>',
+  'Hugging Face':
+    `<circle cx="12" cy="12" r="8.6" ${STROKE_ATTRS} stroke-width="1.3"/>` +
+    '<circle cx="9" cy="10" r="1.2" fill="currentColor"/><circle cx="15" cy="10" r="1.2" fill="currentColor"/>' +
+    `<path d="M8.4 13.4a4.6 4.6 0 0 0 7.2 0" ${STROKE_ATTRS} stroke-width="1.3" stroke-linecap="round"/>`,
+  PyTorch:
+    `<path d="M12 6.4a6.2 6.2 0 1 0 4.4 1.8" ${STROKE_ATTRS} stroke-width="1.5" stroke-linecap="round"/>` +
+    `<path d="M12 3.4v6.2" ${STROKE_ATTRS} stroke-width="1.5" stroke-linecap="round"/>` +
+    '<circle cx="16.3" cy="4.7" r="1.3" fill="currentColor"/>',
+  Python:
+    `<path d="M11.9 3.2c-2.8 0-4.3 1.2-4.3 3v2.2h4.6v.9H6.1c-1.9 0-3 1.5-3 3.7s1.1 3.7 3 3.7h1.5v-2.3c0-1.9 1.6-3 4.3-3h2.4c1.6 0 2.9-1.2 2.9-3V6.2c0-1.8-1.5-3-4.3-3Z" ${STROKE_ATTRS} stroke-width="1.2" stroke-linejoin="round"/>` +
+    `<path d="M12.1 20.8c2.8 0 4.3-1.2 4.3-3v-2.2h-4.6v-.9h6.1c1.9 0 3-1.5 3-3.7" ${STROKE_ATTRS} stroke-width="1.2" stroke-linejoin="round"/>` +
+    '<circle cx="9.7" cy="5.6" r="1" fill="currentColor"/><circle cx="14.3" cy="18.4" r="1" fill="currentColor"/>',
+  'IAM / VPC':
+    `<path d="M12 3 19 6v5.2c0 4.4-2.9 7.6-7 9.4-4.1-1.8-7-5-7-9.4V6Z" ${STROKE_ATTRS} stroke-width="1.3" stroke-linejoin="round"/>` +
+    '<circle cx="12" cy="10.6" r="1.7" fill="currentColor"/><path d="M12 12v3.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>',
+  LangChain:
+    `<rect x="2.6" y="8.8" width="11" height="6.4" rx="3.2" ${STROKE_ATTRS} stroke-width="1.4" transform="rotate(-18 8.1 12)"/>` +
+    `<rect x="10.4" y="8.8" width="11" height="6.4" rx="3.2" ${STROKE_ATTRS} stroke-width="1.4" transform="rotate(-18 15.9 12)"/>`,
+  'Vector DBs':
+    `<ellipse cx="12" cy="5.6" rx="7" ry="2.6" ${STROKE_ATTRS} stroke-width="1.3"/>` +
+    `<path d="M5 5.6v12.8c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6V5.6" ${STROKE_ATTRS} stroke-width="1.3"/>` +
+    `<path d="M5 12c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6" ${STROKE_ATTRS} stroke-width="1.3"/>`,
+};
+
+// Monogram fallbacks for marks not worth faking.
+const monograms: Record<string, string> = {
+  TypeScript: 'TS',
+  AWS: 'AWS',
+  Azure: 'Az',
+  GCP: 'GCP',
+  Postgres: 'Pg',
+  Serverless: 'λ',
+  REST: '{ }',
+  OpenAI: 'OAI',
+  Anthropic: 'A\\',
+  MCP: 'MCP',
+};
+
+const mono = (label: string) =>
+  `<rect x="2.4" y="2.4" width="19.2" height="19.2" rx="2" ${STROKE_ATTRS} stroke-width="1.1"/>` +
+  `<text x="12" y="15.3" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="${
+    label.length > 2 ? 7 : 9
+  }" font-weight="700" fill="currentColor">${label}</text>`;
+
+// Fail loud on a typo'd `Tech.name` from src/data/techStack.ts: today an
+// unmatched name would silently fall through to a raw 2-letter slice that's
+// indistinguishable from an intentional monogram. Flag it in dev instead.
+// (Full fix would be a shared literal-union type between the two files —
+// out of scope here; this just makes the mismatch visible.)
+if (import.meta.env.DEV && !(name in glyphs) && !(name in monograms)) {
+  console.warn(
+    `TechIcon: no glyph or monogram registered for "${name}" — check src/data/techStack.ts for a typo.`
+  );
+}
+
+const svg = glyphs[name] ?? mono(monograms[name] ?? name.slice(0, 2));
+---
+
+<svg viewBox="0 0 24 24" class={className} aria-hidden="true" set:html={svg} />

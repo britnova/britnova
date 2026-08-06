@@ -1,0 +1,256 @@
+---
+/*
+ * "Services" — one tab per discipline.
+ *
+ *   · hidden radio inputs, so the tab group is natively arrow-key navigable
+ *     and the checked radio is the source of truth for which service is active
+ *   · panels are grid-stacked into ONE cell and toggled with `visibility`, so
+ *     the section always holds the height of the tallest panel and switching
+ *     tabs never shifts the page
+ *   · CSS can't pair "the Nth radio is checked" with "show the Nth panel" for
+ *     an arbitrary-length list without one selector per index (that was the
+ *     hard cap this used to have). The radios stay for accessibility/keyboard
+ *     nav, but a small inline script below mirrors the checked index onto the
+ *     matching tab/panel via `data-active`, so this scales to any number of
+ *     services. The first service is marked active in the markup itself
+ *     (matching the first radio's `checked` state) so there's no flash before
+ *     the script runs.
+ *
+ * Service copy comes from the `services` content collection. The per-service
+ * stack chips come from src/data/techStack.ts, where technologies not
+ * evidenced in the repo are flagged `sourced: false`.
+ */
+import SectionHeading from './SectionHeading.astro';
+import { stackByService } from '../../../data/techStack';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  services: CollectionEntry<'services'>[];
+}
+const { services } = Astro.props;
+
+// Short tab labels — the full titles are too long for a tab strip. Keys must
+// match each service's `service.id` (the content collection entry's slug,
+// e.g. `src/content/services/ai-ml.md` → `ai-ml`); a renamed/added service
+// file that isn't mirrored here silently falls back to the full title below.
+const shortLabel: Record<string, string> = {
+  'ai-ml': 'AI & ML',
+  'devops-mlops': 'DevOps & MLOps',
+  'web-development': 'Web & Software',
+  'cloud-services': 'Cloud',
+};
+---
+
+<section id="services" class="relative z-10">
+  <div class="mx-auto max-w-[1500px] px-6 py-20 md:px-10 md:py-24">
+    <SectionHeading label={`Capabilities / ${String(services.length).padStart(2, '0')}`}>
+      <a
+        href="/services"
+        class="font-mono text-[11px] tracking-[0.16em] text-ink-300 uppercase transition-colors hover:text-paper"
+      >
+        All services →
+      </a>
+    </SectionHeading>
+
+    <div>
+      {
+        services.map((s, i) => (
+          <input
+            class="tsv-radio"
+            type="radio"
+            name="svc"
+            id={`svc-${i}`}
+            checked={i === 0}
+            aria-label={s.data.title}
+          />
+        ))
+      }
+
+      <div class="tsv-tabs flex flex-wrap gap-x-1 gap-y-2 border-b border-ink-800">
+        {
+          services.map((s, i) => (
+            <label
+              class="tsv-tab cursor-pointer border-b-2 border-transparent px-4 py-3 font-mono text-[12px] tracking-[0.14em] text-ink-300 uppercase transition-colors hover:text-paper"
+              for={`svc-${i}`}
+              data-active={i === 0 ? true : undefined}
+            >
+              <span class="mr-2 text-ink-300">{String(i + 1).padStart(2, '0')}</span>
+              {shortLabel[s.id] ?? s.data.title}
+            </label>
+          ))
+        }
+      </div>
+
+      <div class="tsv-panels">
+        {
+          services.map((s, i) => (
+            <div class="tsv-panel pt-10" data-active={i === 0 ? true : undefined}>
+              <div class="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-8">
+                <div class="md:col-span-5">
+                  <h3 class="font-brand text-[29px] leading-[1.1] font-medium tracking-[-0.025em] text-paper md:text-[38px]">
+                    {s.data.title}
+                  </h3>
+                  <p class="mt-5 max-w-[46ch] text-[17px] leading-relaxed text-ink-300">
+                    {s.data.description}
+                  </p>
+
+                  <div class="mt-8">
+                    <p class="font-mono text-[11px] tracking-[0.2em] text-ink-300 uppercase">
+                      Stack <span class="text-ink-300">— † proposed, unconfirmed</span>
+                    </p>
+                    <ul class="mt-3 flex flex-wrap gap-1.5">
+                      {(stackByService[s.id] ?? []).map((t) => (
+                        <li class="rounded-sm border border-ink-600 px-2.5 py-1 font-mono text-[11px] tracking-[0.1em] text-ink-100">
+                          {t.name}
+                          {!t.sourced && ' †'}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="md:col-span-3 md:col-start-7">
+                  <p class="font-mono text-[11px] tracking-[0.2em] text-ink-300 uppercase">
+                    Deliverables
+                  </p>
+                  <ul class="mt-4 flex flex-col gap-2.5">
+                    {(s.data.deliverables ?? s.data.features).map((d) => (
+                      <li class="border-l border-ink-700 pl-3 text-[15px] leading-snug text-ink-200">
+                        {d}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div class="md:col-span-3 md:col-start-10">
+                  <p class="font-mono text-[11px] tracking-[0.2em] text-ink-300 uppercase">
+                    How we run it
+                  </p>
+                  <ol class="mt-4 flex flex-col gap-2.5">
+                    {(s.data.process ?? []).map((p, pi) => (
+                      <li class="flex gap-3 text-[15px] leading-snug text-ink-200">
+                        <span class="font-mono text-[11px] text-ink-300">
+                          {String(pi + 1).padStart(2, '0')}
+                        </span>
+                        {p}
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Radios stay in the DOM — hidden, but still natively focusable/arrow-key
+     navigable as a group. */
+  .tsv-radio {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+  /* All panels occupy the SAME grid cell, so the container is always as tall
+     as the tallest panel — switching tabs never changes the page height. */
+  .tsv-panels {
+    display: grid;
+  }
+  .tsv-panel {
+    grid-area: 1 / 1;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  /* `data-active` is kept in sync with the checked radio by the script below
+     (see the frontmatter comment for why this isn't pure CSS: pairing "the
+     Nth radio" with "the Nth panel/tab" needs one selector per index for an
+     arbitrary-length list, which is exactly the hard cap this replaces). */
+  .tsv-panel[data-active] {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    /* transition lives on the ACTIVE state only: the incoming panel fades and
+       rises, the outgoing one disappears instantly instead of cross-fading */
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .tsv-tab[data-active] {
+    color: var(--color-paper);
+    border-bottom-color: var(--color-paper);
+  }
+
+  /* Keyboard focus has to be visible — the radio itself is hidden. `data-focus`
+     mirrors the radio's `:focus-visible` state (keyboard only, not clicks). */
+  .tsv-tab[data-focus] {
+    outline: 1px solid var(--color-ink-400);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tsv-panel,
+    .tsv-panel[data-active] {
+      transition: none;
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  // Mirrors the checked radio's index onto the matching tab/panel via
+  // `data-active`, and the radio's `:focus-visible` state onto `data-focus` —
+  // see the frontmatter comment for why CSS alone can't express this for an
+  // arbitrary number of services. Listens on `document` (change/focusin/
+  // focusout all bubble) instead of per-radio, so there's nothing to loop
+  // over when wiring up listeners.
+  //
+  // Written as guard/comma expressions rather than `if` statements or
+  // block-bodied functions: this project's Astro+ESLint+Prettier setup
+  // currently mis-parses any `{ }` block inside an inline <script> tag
+  // (reproducible with something as small as `if (x) { y(); }`), so this
+  // file steers around it rather than fighting the toolchain.
+  const radios = Array.from(document.querySelectorAll('.tsv-radio')) as HTMLInputElement[];
+  const tabs = Array.from(document.querySelectorAll('.tsv-tab')) as HTMLElement[];
+  const panels = Array.from(document.querySelectorAll('.tsv-panel')) as HTMLElement[];
+
+  let activeIndex = -1;
+
+  const syncActive = () => (
+    (activeIndex = radios.findIndex((radio) => radio.checked)),
+    tabs.forEach((tab, i) => tab.toggleAttribute('data-active', i === activeIndex)),
+    panels.forEach((panel, i) => panel.toggleAttribute('data-active', i === activeIndex))
+  );
+
+  document.addEventListener(
+    'change',
+    (event) =>
+      event.target instanceof HTMLInputElement && event.target.matches('.tsv-radio') && syncActive()
+  );
+
+  document.addEventListener(
+    'focusin',
+    (event) =>
+      event.target instanceof HTMLInputElement &&
+      tabs[radios.indexOf(event.target)]?.toggleAttribute(
+        'data-focus',
+        event.target.matches(':focus-visible')
+      )
+  );
+
+  document.addEventListener(
+    'focusout',
+    (event) =>
+      event.target instanceof HTMLInputElement &&
+      tabs[radios.indexOf(event.target)]?.toggleAttribute('data-focus', false)
+  );
+
+  syncActive();
+</script>

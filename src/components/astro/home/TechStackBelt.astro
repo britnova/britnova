@@ -1,0 +1,96 @@
+---
+/*
+ * "Technology stack" — a horizontal icon conveyor.
+ *
+ * Two rows in opposing directions, on different durations so they don't march
+ * in lockstep. Each row renders its tiles three times and the keyframe
+ * translates by exactly one copy's width, so two full copies are always on
+ * screen and the loop has no seam at any viewport width.
+ *
+ * TODO: replace — icon glyphs are hand-drawn approximations (TechIcon.astro),
+ * NOT the official marks; swap for vendor SVGs and check each vendor's brand
+ * guidelines before launch. Technologies not evidenced anywhere in the repo are
+ * flagged `sourced: false` in src/data/techStack.ts and render with a †.
+ */
+import SectionHeading from './SectionHeading.astro';
+import TechIcon from './TechIcon.astro';
+import { beltRows } from '../../../data/techStack';
+---
+
+<section id="stack" class="relative z-10 overflow-hidden border-t border-ink-800">
+  <div class="mx-auto max-w-[1500px] px-6 pt-20 md:px-10 md:pt-24">
+    <SectionHeading label="Stack / what we build with">
+      <p class="font-mono text-[11px] tracking-[0.14em] text-ink-300 uppercase">
+        † proposed — confirm before launch
+      </p>
+    </SectionHeading>
+  </div>
+
+  {/* the belt bleeds past the container on purpose; the section clips it */}
+  <div class="sbl-belt py-14 md:py-20">
+    <div class="flex flex-col gap-3 md:gap-4">
+      {
+        beltRows.map((row, ri) => (
+          <div
+            class={`sbl-row sbl-row-${ri} flex w-max gap-3 md:gap-4 ${
+              ri % 2 === 1 ? 'sbl-row-rev' : ''
+            }`}
+          >
+            {[0, 1, 2].map((copy) => (
+              <div class="flex shrink-0 gap-3 md:gap-4" aria-hidden={copy > 0}>
+                {row.map((t) => (
+                  <div class="sbl-tile flex w-28 shrink-0 flex-col items-center justify-center gap-3 border border-ink-800 bg-ink-900/70 py-6 md:w-32">
+                    <TechIcon name={t.name} class="h-9 w-9 text-ink-100 md:h-10 md:w-10" />
+                    <span class="px-1 text-center font-mono text-[10px] tracking-[0.1em] text-ink-300 uppercase">
+                      {t.name}
+                      {!t.sourced && ' †'}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .sbl-belt {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  }
+
+  .sbl-row {
+    animation: sbl-belt 44s linear infinite;
+  }
+  .sbl-row-1 {
+    animation-duration: 54s;
+  }
+  .sbl-row-rev {
+    animation-direction: reverse;
+  }
+
+  .sbl-tile {
+    transition:
+      border-color 0.3s ease,
+      color 0.3s ease;
+  }
+  .sbl-tile:hover {
+    border-color: var(--color-ink-500);
+  }
+
+  /* one copy's width — three copies are rendered, so two stay on screen */
+  @keyframes sbl-belt {
+    to {
+      transform: translateX(-33.3333%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sbl-row {
+      animation: none;
+    }
+  }
+</style>

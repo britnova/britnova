@@ -57,5 +57,11 @@ export default tseslint.config(
     rules: {
       'prettier/prettier': 'error',
     },
+  },
+  {
+    files: ['**/*.astro/**'],
+    rules: {
+      'prettier/prettier': 'off',
+    },
   }
 );

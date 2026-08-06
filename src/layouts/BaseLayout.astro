@@ -7,12 +7,20 @@ interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  /**
+   * Render the shared Nav + Footer. Set false when the page supplies its own
+   * chrome. The homepage sets this false — it supplies its own header and
+   * footer in the monochrome brand palette, while the inner pages still use
+   * the shared Nav/Footer.
+   */
+  chrome?: boolean;
 }
 
 const {
   title = 'Britnova Technologies | Intelligent AI, Cloud & Web Engineering',
   description = 'We design and build high-performance, scalable digital products using AI, Cloud, and modern web frameworks.',
   ogImage = '/images/og-default.jpg',
+  chrome = true,
 } = Astro.props;
 ---
 
@@ -47,14 +55,14 @@ const {
     class="bg-bg-dark text-text-light font-sans flex flex-col min-h-screen selection:bg-brand-accent selection:text-bg-dark"
   >
     <!-- Sticky Nav -->
-    <Nav client:load />
+    {chrome && <Nav client:visible />}
 
     <!-- Main Content Area -->
-    <main class="flex-grow pt-20">
+    <main class={chrome ? 'flex-grow pt-20' : 'flex-grow'}>
       <slot />
     </main>
 
     <!-- Footer -->
-    <Footer />
+    {chrome && <Footer />}
   </body>
 </html>

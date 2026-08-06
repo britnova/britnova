@@ -1,0 +1,16 @@
+---
+/*
+ * Shared section header: a mono-uppercase label on the left, a rule below,
+ * and optional trailing content (count, note, link) on the right.
+ */
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
+---
+
+<div class="mb-12 flex items-baseline justify-between border-b border-ink-800 pb-5">
+  <h2 class="font-mono text-[12px] tracking-[0.24em] text-ink-300 uppercase">{label}</h2>
+  <slot />
+</div>
