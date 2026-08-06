@@ -215,7 +215,7 @@
       "body": "A few lines about the problem is enough to start. We'll come back with questions, not a pitch deck.",
       "channels": [
         { "label": "Email", "value": "hello@britnova.com", "href": "mailto:hello@britnova.com" },
-        { "label": "Calendly", "value": "[ link TBD ]" },
+        { "label": "Calendly", "value": "https://calendly.com/hello-britnova/30min" },
         { "label": "LinkedIn", "value": "https://www.linkedin.com/company/britnova-technologies" },
         { "label": "WhatsApp", "value": "[ link TBD ]" }
       ],
