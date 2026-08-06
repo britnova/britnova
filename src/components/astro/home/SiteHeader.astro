@@ -11,6 +11,17 @@ import BrandLogo from './BrandLogo.astro';
 import content from '../../../data/content.json';
 
 const { links, ctaLabel, ctaHref } = content.nav;
+
+/*
+ * Active-page detection. "/" only matches the homepage exactly (otherwise
+ * every route would match); every other link also matches its own
+ * sub-routes (e.g. "/work" stays active on "/work/ai-automation"). The
+ * active link renders as plain text, not an <a> — there's nothing to
+ * navigate to, so clicking it can't trigger a reload.
+ */
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) =>
+  href === '/' ? currentPath === '/' : currentPath === href || currentPath.startsWith(`${href}/`);
 ---
 
 <header class="relative z-20 border-b border-ink-800">
@@ -21,14 +32,23 @@ const { links, ctaLabel, ctaHref } = content.nav;
 
     <nav class="hidden items-center gap-8 md:flex" aria-label="Primary">
       {
-        links.map((l) => (
-          <a
-            href={l.href}
-            class="font-mono text-[12px] tracking-[0.14em] text-ink-300 uppercase transition-colors hover:text-paper"
-          >
-            {l.label}
-          </a>
-        ))
+        links.map((l) =>
+          isActive(l.href) ? (
+            <span
+              aria-current="page"
+              class="border-b-2 border-paper font-mono text-[12px] tracking-[0.14em] text-paper uppercase"
+            >
+              {l.label}
+            </span>
+          ) : (
+            <a
+              href={l.href}
+              class="border-b-2 border-transparent font-mono text-[12px] tracking-[0.14em] text-ink-300 uppercase transition-colors hover:text-paper"
+            >
+              {l.label}
+            </a>
+          )
+        )
       }
     </nav>
 
@@ -59,15 +79,24 @@ const { links, ctaLabel, ctaHref } = content.nav;
   >
     <nav class="flex flex-col px-6" aria-label="Mobile">
       {
-        links.map((l) => (
-          <a
-            href={l.href}
-            data-mobile-nav-link
-            class="border-b border-ink-800 py-4 font-mono text-[13px] tracking-[0.14em] text-ink-300 uppercase transition-colors last:border-b-0 hover:text-paper"
-          >
-            {l.label}
-          </a>
-        ))
+        links.map((l) =>
+          isActive(l.href) ? (
+            <span
+              aria-current="page"
+              class="border-b border-ink-800 py-4 font-mono text-[13px] tracking-[0.14em] text-paper uppercase last:border-b-0"
+            >
+              {l.label}
+            </span>
+          ) : (
+            <a
+              href={l.href}
+              data-mobile-nav-link
+              class="border-b border-ink-800 py-4 font-mono text-[13px] tracking-[0.14em] text-ink-300 uppercase transition-colors last:border-b-0 hover:text-paper"
+            >
+              {l.label}
+            </a>
+          )
+        )
       }
     </nav>
     <div class="px-6 py-6">
