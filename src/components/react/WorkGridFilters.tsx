@@ -10,6 +10,7 @@ interface CaseStudy {
   tags: string[];
   client: string;
   year: string;
+  heroImage?: string;
 }
 
 interface Props {
@@ -64,38 +65,50 @@ export default function WorkGridFilters({ caseStudies }: Props) {
             >
               <a
                 href={`/work/${study.slug}`}
-                className="group flex h-full flex-col justify-between border border-ink-800 p-6 transition-colors hover:border-ink-500 md:p-7"
+                className="group flex h-full flex-col justify-between border border-ink-800 transition-colors hover:border-ink-500"
               >
-                <div>
-                  <div className="flex justify-between items-center mb-6 font-mono text-[12px] text-ink-300">
-                    <span>{study.client}</span>
-                    <span>{study.year}</span>
+                {study.heroImage && (
+                  <div className="aspect-[16/10] overflow-hidden border-b border-ink-800 bg-ink-900">
+                    <img
+                      src={study.heroImage}
+                      alt=""
+                      loading="lazy"
+                      className="h-full w-full object-cover object-top grayscale transition-all duration-300 group-hover:grayscale-0"
+                    />
+                  </div>
+                )}
+                <div className="flex flex-1 flex-col justify-between p-6 md:p-7">
+                  <div>
+                    <div className="flex justify-between items-center mb-6 font-mono text-[12px] text-ink-300">
+                      <span>{study.client}</span>
+                      <span>{study.year}</span>
+                    </div>
+
+                    <h3 className="font-brand text-[22px] font-medium leading-tight tracking-[-0.02em] text-paper mb-3">
+                      {study.title}
+                    </h3>
+
+                    <p className="text-[15px] leading-relaxed text-ink-300 mb-6">
+                      {study.description}
+                    </p>
                   </div>
 
-                  <h3 className="font-brand text-[22px] font-medium leading-tight tracking-[-0.02em] text-paper mb-3">
-                    {study.title}
-                  </h3>
+                  <div>
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {study.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="border border-ink-700 px-2.5 py-0.5 font-mono text-[10px] tracking-[0.1em] text-ink-300 uppercase"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
 
-                  <p className="text-[15px] leading-relaxed text-ink-300 mb-6">
-                    {study.description}
-                  </p>
-                </div>
-
-                <div>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {study.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="border border-ink-700 px-2.5 py-0.5 font-mono text-[10px] tracking-[0.1em] text-ink-300 uppercase"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center gap-1.5 text-xs font-semibold text-ink-100 group-hover:text-paper transition-colors duration-300">
-                    View Case Study
-                    <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+                    <div className="flex items-center gap-1.5 text-xs font-semibold text-ink-100 group-hover:text-paper transition-colors duration-300">
+                      View Case Study
+                      <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+                    </div>
                   </div>
                 </div>
               </a>

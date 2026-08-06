@@ -5,7 +5,7 @@
     "legalName": "Britnova Technologies",
     "defaultTitle": "BritNova Tech | AI, Cloud & Web Engineering",
     "defaultDescription": "An engineering studio working across machine learning, cloud infrastructure, delivery automation and the modern web.",
-    "email": "hello@britnova.com"
+    "email": "hello@britnova.net"
   },
 
   "nav": {
@@ -162,14 +162,24 @@
       ]
     },
     "team": {
+      "heading": "Leadership Team",
       "quote": "Clients hire people, not logos.",
-      "rosterLegend": "placeholder roster — replace with the real team",
-      "namePlaceholder": "[ Name TBD ]",
-      "slots": [
-        { "role": "Founder", "area": "Direction & delivery" },
-        { "role": "Engineering lead", "area": "Architecture & review" },
-        { "role": "AI / ML engineer", "area": "Models & pipelines" },
-        { "role": "Cloud & DevOps engineer", "area": "Infrastructure & releases" }
+      "members": [
+        {
+          "name": "Khalil ur Rehman",
+          "role": "Chief Executive Officer (CEO)",
+          "focus": "Business Strategy • Client Partnerships"
+        },
+        {
+          "name": "Ali Arham",
+          "role": "Chief Technology Officer (CTO)",
+          "focus": "Technology Strategy • Cloud Engineering"
+        },
+        {
+          "name": "Abubakar Khawaja",
+          "role": "Engineering Lead & Software Architect",
+          "focus": "Delivery Excellence • Platform Engineering"
+        }
       ]
     },
     "contact": {
@@ -177,7 +187,7 @@
       "headline": "Tell us what you're building.",
       "body": "A few lines about the problem is enough to start. We'll come back with questions, not a pitch deck.",
       "channels": [
-        { "label": "Email", "value": "hello@britnova.com", "href": "mailto:hello@britnova.com" },
+        { "label": "Email", "value": "hello@britnova.net", "href": "mailto:hello@britnova.net" },
         {
           "label": "Calendly",
           "value": "https://calendly.com/hello-britnova/30min",
@@ -323,106 +333,304 @@
 
   "work": [
     {
-      "slug": "ai-automation",
-      "title": "AI Automation Platform",
-      "description": "Automated document ingestion and intelligence workflows using custom machine learning models.",
-      "heroImage": "/images/work-ai.jpg",
-      "tags": ["AI & Machine Learning", "Intelligent Automation", "Python"],
-      "client": "Veridia Logistics",
-      "year": "2025",
+      "slug": "fixalert",
+      "title": "FixAlert, Maintenance Platform",
+      "description": "A computerized maintenance-management platform with asynchronous reporting, QR-based workflows, and Stripe billing.",
+      "heroImage": "/images/work-fixalert.jpg",
+      "tags": ["Web & Software Development", "React & Django", "Celery & Stripe"],
+      "client": "Arbisoft",
+      "year": "2021–2026",
       "featured": true,
-      "metrics": [
-        { "label": "Processing Time Reduction", "value": "75%" },
-        { "label": "Data Extraction Accuracy", "value": "99.8%" },
-        { "label": "Operational Cost Saved", "value": "$120k/yr" }
-      ],
       "sections": [
         {
           "heading": "Challenge",
           "paragraphs": [
-            "Veridia Logistics was processing thousands of international shipping manifest documents manually every single day. The manual transcription was error-prone, bottlenecked supply chain dispatch schedules, and caused significant customs delays due to minor clerical errors."
+            "FixAlert needed its reporting and maintenance-tracking workflows rebuilt: database queries were slowing under load, PDF report generation and payments ran synchronously, and the analytics views needed more advanced filtering than the UI supported."
           ]
         },
         {
           "heading": "Solution",
           "paragraphs": [
-            "We engineered a custom AI document processing platform that integrated optical character recognition (OCR) and localized large language models (LLMs). The platform reads multi-format PDFs, extracts complex tabular shipment lists, cross-references them with customs databases, and flags anomalies directly inside a React dashboard."
+            "We eliminated N+1 queries and reworked database access patterns to keep the API responsive under heavy load. We moved bulk PDF generation, QR code workflows, and Stripe payments to asynchronous Celery pipelines. On the frontend, we revamped the UI, rebuilt the reporting metric views with React Query, and added nested filtering across analytics, property management, and role-based views."
           ]
         },
         {
           "heading": "Results",
           "paragraphs": [
-            "The system went from proof of concept to full production in under 8 weeks. It now processes over 95% of manifests without human intervention, and customs clearance is faster as a result."
+            "The API stayed responsive under load with the N+1 fixes in place, and reporting, PDF generation, and payments now run as background jobs instead of blocking the request cycle."
           ]
         }
       ]
     },
     {
-      "slug": "cloud-infra",
-      "title": "Cloud Infrastructure Setup",
-      "description": "Zero-downtime cloud migration and automated Kubernetes orchestrations.",
-      "heroImage": "/images/work-cloud.jpg",
-      "tags": ["Cloud Services", "DevOps & MLOps", "Terraform & AWS"],
-      "client": "Apex MedTech",
-      "year": "2024",
+      "slug": "landit",
+      "title": "Landit, Career Platform",
+      "description": "A React and Next.js career-pathing platform used by Fortune 500 companies, with Django APIs, a Looker analytics dashboard, and zero-downtime framework migrations.",
+      "heroImage": "/images/work-landit.jpg",
+      "tags": ["Web & Software Development", "React & Next.js", "Django", "Storybook & Cypress"],
+      "client": "Arbisoft",
+      "year": "2021–2026",
       "featured": true,
-      "metrics": [
-        { "label": "Deployment Speed", "value": "10x Faster" },
-        { "label": "Production Uptime", "value": "99.99%" },
-        { "label": "Cloud Spend Reduction", "value": "35%" }
-      ],
       "sections": [
         {
           "heading": "Challenge",
           "paragraphs": [
-            "Apex MedTech had critical healthcare services running on fragile on-premise servers. Deployments required hours of manual configuration and had to be done overnight to avoid outages. Furthermore, HIPAA-compliant encryption standards were not automated."
+            "Landit's frontend was running on aging dependencies: Material UI v4, React Router v4, and Formik, all due for migration without disrupting a live platform serving Fortune 500 clients like Pfizer, MetLife, and NBCUniversal. Stakeholders also had no direct visibility into platform metrics."
           ]
         },
         {
           "heading": "Solution",
           "paragraphs": [
-            "We modeled their complete server matrix into Terraform configurations and set up a secure, multi-region AWS environment. We moved their core microservices to Amazon Elastic Kubernetes Service (EKS), with automated horizontal pod autoscaling and SSL/TLS termination."
+            "We executed zero-downtime migrations to Material UI v5 and React Router v5, and moved form handling from Formik to React Hook Form for better performance and maintainability. We also built out the testing infrastructure behind the growing Material UI component library: Storybook for component-level documentation and regression checks, and Jest/Cypress for unit and end-to-end coverage, so new features stopped quietly breaking things that already worked. On the backend, we built and maintained the APIs, developed transactional email workflows with SendGrid, and owned the design and delivery of a Google Looker analytics dashboard."
           ]
         },
         {
           "heading": "Results",
           "paragraphs": [
-            "The agency now deploys multiple production updates daily with zero disruption to active doctor-patient sessions. Right-sizing server capacity also cut their operational infrastructure costs."
+            "The migrations shipped with zero downtime, the component library stayed reliable as it grew, and stakeholders gained real-time visibility into key platform metrics through the new Looker dashboard."
           ]
         }
       ]
     },
     {
-      "slug": "ecommerce",
-      "title": "E-Commerce System",
-      "description": "High-performance, modular full-stack e-commerce engine powering global retail storefronts.",
-      "heroImage": "/images/work-ecommerce.jpg",
-      "tags": ["Web & Software Development", "React & Next.js", "Node.js"],
-      "client": "Aura Retail",
-      "year": "2025",
+      "slug": "psychplus",
+      "title": "PsychPlus, Telehealth Platform",
+      "description": "A HIPAA-compliant telehealth platform on Django, PostgreSQL, and Kubernetes, with NLP-driven patient insights and real-time clinical data sync.",
+      "heroImage": "/images/work-psychplus.jpg",
+      "tags": ["Cloud Services", "DevOps & MLOps", "AI & Machine Learning", "Kubernetes & AWS"],
+      "client": "Arbisoft",
+      "year": "2021–2026",
       "featured": true,
-      "metrics": [
-        { "label": "Lighthouse Performance", "value": "98/100" },
-        { "label": "Conversion Rate Bump", "value": "+24%" },
-        { "label": "Checkout Response Time", "value": "140ms" }
-      ],
+      "metrics": [{ "label": "Platform Uptime", "value": ">99.9%" }],
       "sections": [
         {
           "heading": "Challenge",
           "paragraphs": [
-            "Aura Retail faced severe performance bottlenecks during promotional drops, where sudden spikes in traffic led to page lag and cart drops. Their legacy monolithic system couldn't handle concurrent checkout sessions without database locks."
+            "PsychPlus needed a telehealth platform that could handle real-time clinical data, patient-provider matching at scale, and strict HIPAA compliance for protected health information as it moves between clinical systems, on top of the NLP and predictive modeling behind its mental-health analytics."
           ]
         },
         {
           "heading": "Solution",
           "paragraphs": [
-            "We rebuilt the frontend storefront using Next.js with static site generation and incremental regeneration, paired with a headless Shopify Integration. The backend checkout flow was moved to decoupled, serverless microservices on AWS Lambda with Redis caching, preventing database contention."
+            "We architected the platform on Django and PostgreSQL on AWS RDS, and used Kubernetes for container orchestration so patient-matching and data services could scale and recover automatically. We optimized patient-provider matching through SQL query tuning and Redis caching, and worked with data engineering to streamline the ETL pipelines behind it. On the AI side, we built NLP and predictive models that turn patient data into personalized care insights and recommendations. We integrated HL7 ADT message processing to keep patient events synchronized across clinical systems, with HIPAA-compliant handling of PHI in transit throughout."
           ]
         },
         {
           "heading": "Results",
           "paragraphs": [
-            "The site saw 0% downtime during their largest seasonal product launch of the year. Page load performance jumped, and average order value rose with it."
+            "The platform has maintained over 99.9% uptime, with response times holding steady under peak traffic. Clinical data flows securely between systems in real time, personalized insights reach patients through the NLP layer, and compliant PHI handling is built into every layer that touches it."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "meet-gabbi",
+      "title": "Meet Gabbi, AI Conversational Platform",
+      "description": "An AI-powered voice and chat intake platform with fine-tuned language models, a containerized microservices backend, and automated CI/CD.",
+      "heroImage": "/images/work-meetgabbi.jpg",
+      "tags": ["AI & Machine Learning", "DevOps & MLOps", "Docker & AWS ECS"],
+      "client": "Arbisoft",
+      "year": "2021–2026",
+      "featured": true,
+      "metrics": [{ "label": "Release Time Cut", "value": "30%" }],
+      "sections": [
+        {
+          "heading": "Challenge",
+          "paragraphs": [
+            "Meet Gabbi needed a backend that could keep up with an evolving AI assistant. Conversational products live on frequent model and prompt updates, and every one of those changes is a deployment risk if the infrastructure underneath isn't built for fast, safe releases."
+          ]
+        },
+        {
+          "heading": "Solution",
+          "paragraphs": [
+            "We designed and implemented a microservices backend on Python/Flask, Docker, and AWS ECS, splitting retrieval, inference, and chat handling into services that could scale and deploy independently instead of shipping as one monolith. On the AI side, we layered in fine-tuned language models for natural dialogue and context-aware responses. We set up a GitHub Actions CI/CD pipeline that automated build, test, and deployment, and worked with product and frontend teams in an Agile setup to turn feature requirements directly into deployable pipelines."
+          ]
+        },
+        {
+          "heading": "Results",
+          "paragraphs": [
+            "The automated pipeline cut release time by 30%, turning what used to be a manual, risky release process into a repeatable one, with infrastructure changes staying in step with product changes instead of trailing behind them."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "enterprise-api-platform",
+      "title": "Enterprise API Platform, Monolith-to-Microservices Migration",
+      "description": "A legacy monolith serving millions of daily requests, migrated to Kubernetes-orchestrated microservices on AWS without disrupting live enterprise traffic.",
+      "tags": ["DevOps & MLOps", "Cloud Services", "Kubernetes & AWS"],
+      "client": "Arbisoft",
+      "year": "2021–2026",
+      "featured": false,
+      "metrics": [
+        { "label": "Less Downtime", "value": "25%" },
+        { "label": "Faster API Responses", "value": "40%" }
+      ],
+      "sections": [
+        {
+          "heading": "Challenge",
+          "paragraphs": [
+            "Legacy monoliths hit a wall as traffic grows: a single deployable application becomes a single point of failure, and every release risks taking the whole platform down. The challenge was migrating a production system already serving enterprise clients to a microservices architecture without disrupting the millions of requests it was already handling daily."
+          ]
+        },
+        {
+          "heading": "Solution",
+          "paragraphs": [
+            "We broke apart the legacy Django/Flask monolith into independently deployable services running on Docker and Kubernetes, removing the single-point-of-failure risk of the old architecture. We re-architected the RESTful API layer for enterprise-scale traffic through service isolation, query optimization, and caching, and layered Jenkins and GitHub Actions CI/CD on top of the new Kubernetes setup."
+          ]
+        },
+        {
+          "heading": "Results",
+          "paragraphs": [
+            "The migration cut API response times by 40% and downtime by 25%, moving the team from bi-weekly manual releases to daily automated ones while still scaling to serve millions of daily requests."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "unlock-trader-capital",
+      "title": "Unlock Trader Capital, Algorithmic Trading Platform",
+      "description": "Cloud architecture and a Django/Flask backend for a platform offering automated trading, real-time trade alerts, and professional trade execution for retail traders.",
+      "tags": ["Cloud Services", "DevOps & MLOps", "Django & Flask"],
+      "client": "Arbisoft",
+      "year": "2021–2026",
+      "featured": true,
+      "sections": [
+        {
+          "heading": "Challenge",
+          "paragraphs": [
+            "Trading systems have zero tolerance for infrastructure that's mostly reliable. Latency costs money directly, and downtime during market hours isn't an inconvenience, it's a missed trade. Unlock Trader Capital needed infrastructure that could support algorithmic trading and real-time data analytics without the lag or instability that's fatal in fintech."
+          ]
+        },
+        {
+          "heading": "Solution",
+          "paragraphs": [
+            "We structured the Django/Flask backend and cloud setup around the response-time demands of algorithmic trading, where delays translate directly into missed opportunities, and prioritized infrastructure resilience given the financial stakes of any downtime during active trading windows. We also built out the cloud foundation supporting the real-time data analytics feeding the trading algorithms, not just the trading logic itself."
+          ]
+        },
+        {
+          "heading": "Results",
+          "paragraphs": [
+            "The platform runs on infrastructure built for the latency and reliability automated trading demands, supporting live algorithmic trading and real-time trade alerts without introducing lag during active market hours."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "kito",
+      "title": "KITO, Computer Vision Platform",
+      "description": "Cloud infrastructure for a computer vision platform running deep learning models for image classification, object detection, and visual analytics.",
+      "heroImage": "/images/work-kito.jpg",
+      "tags": ["AI & Machine Learning", "DevOps & MLOps", "Cloud Services"],
+      "client": "Arbisoft",
+      "year": "2021–2026",
+      "featured": true,
+      "sections": [
+        {
+          "heading": "Challenge",
+          "paragraphs": [
+            "Computer vision workloads are infrastructure-hungry. Training and running inference on deep learning models needs serious compute, and without the right architecture, costs spiral fast or performance craters under real usage. KITO needed infrastructure that could handle both training and real-time inference without one starving the other."
+          ]
+        },
+        {
+          "heading": "Solution",
+          "paragraphs": [
+            "We built deep learning models for image classification, object detection, and visual analytics, and set up cloud infrastructure sized for both the training and inference sides of that workload. Model serving was structured to scale with demand rather than running fixed, over-provisioned capacity around the clock, balancing performance against the cost overhead compute-heavy CV models tend to introduce."
+          ]
+        },
+        {
+          "heading": "Results",
+          "paragraphs": [
+            "Training and real-time inference now run on the same infrastructure without either starving the other, and inference capacity scales with demand instead of sitting over-provisioned."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "rumi",
+      "title": "Rumi, Frontend CI/CD & Code Quality Infrastructure",
+      "description": "A GitLab CI/CD pipeline and enforced code-quality tooling for Rumi's frontend, alongside architectural refactoring for state-management reliability.",
+      "tags": ["Web & Software Development", "DevOps & MLOps", "GitLab CI & Vitest"],
+      "client": "Arbisoft",
+      "year": "2021–2026",
+      "featured": false,
+      "sections": [
+        {
+          "heading": "Challenge",
+          "paragraphs": [
+            "As frontend codebases grow, quality erodes fast without enforced standards and automated pipelines: inconsistent code, manual deploys, and bugs that slip through because nothing catches them before merge. Rumi's codebase needed infrastructure that enforced quality automatically instead of relying on manual review discipline."
+          ]
+        },
+        {
+          "heading": "Solution",
+          "paragraphs": [
+            "We built out a GitLab CI pipeline to automate build, test, and deployment, and set up ESLint, Prettier, and pre-commit hooks so quality checks ran before code ever reached the pipeline. We wrote unit and integration tests with Vitest to give the pipeline something real to gate on, and refactored the frontend architecture to cut unnecessary re-renders and improve state-management reliability."
+          ]
+        },
+        {
+          "heading": "Results",
+          "paragraphs": [
+            "Quality checks now run automatically before every merge instead of depending on manual review, and the release process no longer has manual steps in it."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "taiga",
+      "title": "Taiga, Open-Source Agile Project Management",
+      "description": "New feature infrastructure, permissions logic, and structured feedback workflows built into Taiga's existing AngularJS and Django architecture.",
+      "heroImage": "/images/work-taiga.jpg",
+      "tags": ["Web & Software Development", "AngularJS & Django"],
+      "client": "Arbisoft",
+      "year": "2021–2026",
+      "featured": true,
+      "sections": [
+        {
+          "heading": "Challenge",
+          "paragraphs": [
+            "Taiga is an established open-source Agile project management tool, so any new feature has to slot into its existing modular architecture without breaking what's already there. Backend endpoints, frontend controllers, and permission logic all had to stay consistent with the existing system instead of being bolted on."
+          ]
+        },
+        {
+          "heading": "Solution",
+          "paragraphs": [
+            "We designed and built the Requestor and Feedback modules across Taiga's AngularJS frontend and Django backend: new models, API endpoints, and reusable directives and controllers within the existing modular structure rather than one-off code that would fragment the codebase. We implemented role-based access control for both features by extending Taiga's existing permission model instead of working around it."
+          ]
+        },
+        {
+          "heading": "Results",
+          "paragraphs": [
+            "The Requestor and Feedback modules shipped as part of Taiga's existing modular architecture, extending its permission system instead of working around it, without introducing one-off code that would have fragmented the codebase."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "askimam",
+      "title": "AskImam, Platform Stability & Version Upgrade",
+      "description": "A version upgrade and stability pass on a long-running Islamic Q&A platform founded in 2000, done without disrupting a large, active user base.",
+      "heroImage": "/images/work-askimam.jpg",
+      "tags": ["Web & Software Development", "Django"],
+      "client": "Arbisoft",
+      "year": "2021–2026",
+      "featured": true,
+      "sections": [
+        {
+          "heading": "Challenge",
+          "paragraphs": [
+            "Upgrading a live platform's core dependencies is one of the riskier jobs in production work: done wrong, it breaks existing functionality for real users with no warning. AskImam, founded in 2000, needed a version upgrade and stability pass without taking the platform down or introducing regressions for its established user base."
+          ]
+        },
+        {
+          "heading": "Solution",
+          "paragraphs": [
+            "We upgraded the project to a newer stack version while resolving the major bugs that surfaced along the way, prioritizing stability over a rushed migration. We also updated the Django admin dashboard to make day-to-day platform management more reliable, and integrated Google Analytics to give the team visibility into user engagement."
+          ]
+        },
+        {
+          "heading": "Results",
+          "paragraphs": [
+            "The upgrade shipped without downtime or regressions for AskImam's active user base, and the team now has real usage data to inform what comes next."
           ]
         }
       ]
@@ -481,10 +689,10 @@
       {
         "key": "email",
         "label": "Email us",
-        "value": "hello@britnova.com",
-        "href": "mailto:hello@britnova.com"
+        "value": "hello@britnova.net",
+        "href": "mailto:hello@britnova.net"
       },
-      { "key": "location", "label": "HQ Location", "value": "London, United Kingdom" },
+      { "key": "location", "label": "HQ Location", "value": "Norwich, UK" },
       { "key": "hours", "label": "Office Hours", "value": "Mon – Fri, 9:00 AM – 6:00 PM GMT" }
     ]
   },

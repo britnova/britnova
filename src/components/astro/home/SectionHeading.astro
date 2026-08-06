@@ -2,15 +2,31 @@
 /*
  * Shared section header: a mono-uppercase label on the left, a rule below,
  * and optional trailing content (count, note, link) on the right.
+ *
+ * `id`, when passed, turns the label into a self-link to the section's own
+ * anchor (`#why`, `#services`, ...) — clicking the title updates the URL
+ * hash, so the address bar becomes a shareable link straight to that
+ * section. Native <a href="#id"> behavior; no JS needed.
  */
 interface Props {
   label: string;
+  id?: string;
 }
 
-const { label } = Astro.props;
+const { label, id } = Astro.props;
 ---
 
 <div class="mb-12 flex items-baseline justify-between border-b border-ink-800 pb-5">
-  <h2 class="font-mono text-[12px] tracking-[0.24em] text-ink-300 uppercase">{label}</h2>
+  <h2 class="font-mono text-[12px] tracking-[0.24em] text-ink-300 uppercase">
+    {
+      id ? (
+        <a href={`#${id}`} class="transition-colors hover:text-paper">
+          {label}
+        </a>
+      ) : (
+        label
+      )
+    }
+  </h2>
   <slot />
 </div>

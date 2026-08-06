@@ -29,7 +29,7 @@ const { eyebrow, headline, body, channels, location } = content.home.contact;
         <h2
           class="font-brand max-w-[14ch] text-[10.2vw] leading-[0.98] font-semibold tracking-[-0.045em] text-paper md:text-[4.7vw]"
         >
-          {headline}
+          <a href="#contact" class="transition-colors hover:text-ink-200">{headline}</a>
         </h2>
 
         <p class="mt-6 max-w-md text-[17px] leading-relaxed text-ink-300">
@@ -45,14 +45,14 @@ const { eyebrow, headline, body, channels, location } = content.home.contact;
                   href={c.href}
                   class="group flex items-baseline justify-between gap-6 border-b border-ink-800 py-4"
                 >
-                  <span class="font-mono text-[11px] tracking-[0.2em] text-ink-300 uppercase">
+                  <span class="shrink-0 font-mono text-[11px] tracking-[0.2em] text-ink-300 uppercase">
                     {c.label}
                   </span>
                   <span
                     class={
                       c.href
-                        ? 'font-mono text-[15px] tracking-[0.04em] text-ink-100 transition-colors group-hover:text-paper'
-                        : 'font-mono text-[15px] tracking-[0.04em] text-ink-300'
+                        ? 'min-w-0 shrink break-words text-right font-mono text-[15px] tracking-[0.04em] text-ink-100 transition-colors group-hover:text-paper'
+                        : 'min-w-0 shrink break-words text-right font-mono text-[15px] tracking-[0.04em] text-ink-300'
                     }
                   >
                     {c.value}
@@ -72,10 +72,14 @@ const { eyebrow, headline, body, channels, location } = content.home.contact;
           }
 
           <div class="flex items-baseline justify-between gap-6 border-b border-ink-800 py-4">
-            <span class="font-mono text-[11px] tracking-[0.2em] text-ink-300 uppercase">
+            <span class="shrink-0 font-mono text-[11px] tracking-[0.2em] text-ink-300 uppercase">
               Location
             </span>
-            <span class="font-mono text-[15px] tracking-[0.04em] text-ink-300">{location}</span>
+            <span
+              class="min-w-0 shrink break-words text-right font-mono text-[15px] tracking-[0.04em] text-ink-300"
+            >
+              {location}
+            </span>
           </div>
         </div>
       </div>
