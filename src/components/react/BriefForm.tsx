@@ -12,6 +12,7 @@ import { useState } from 'react';
  */
 
 type Status = 'idle' | 'loading' | 'success' | 'error';
+type ContactApiError = { error?: string };
 
 const SERVICES = [
   'AI & Machine Learning',
@@ -29,11 +30,18 @@ export default function BriefForm() {
   const [form, setForm] = useState({
     name: '',
     email: '',
-    service: SERVICES[0],
+    service: '',
     message: '',
   });
   const [status, setStatus] = useState<Status>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -49,11 +57,11 @@ export default function BriefForm() {
 
       if (res.ok) {
         setStatus('success');
-        setForm({ name: '', email: '', service: SERVICES[0], message: '' });
+        setForm({ name: '', email: '', service: '', message: '' });
         return;
       }
 
-      const data = await res.json().catch(() => ({}));
+      const data: ContactApiError = await res.json().catch(() => ({}));
       setErrorMessage(data.error || 'Could not send the brief. Please try again.');
       setStatus('error');
     } catch {
@@ -112,7 +120,7 @@ export default function BriefForm() {
                 placeholder="Your name"
                 value={form.name}
                 disabled={status === 'loading'}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                onChange={handleChange}
                 className={fieldClass}
               />
             </div>
@@ -130,7 +138,7 @@ export default function BriefForm() {
                 placeholder="you@company.com"
                 value={form.email}
                 disabled={status === 'loading'}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                onChange={handleChange}
                 className={fieldClass}
               />
             </div>
@@ -142,11 +150,15 @@ export default function BriefForm() {
               <select
                 id="brief-service"
                 name="service"
+                required
                 value={form.service}
                 disabled={status === 'loading'}
-                onChange={(e) => setForm({ ...form, service: e.target.value })}
+                onChange={handleChange}
                 className={fieldClass}
               >
+                <option value="" disabled className="bg-ink-950">
+                  -- Select project type --
+                </option>
                 {SERVICES.map((s) => (
                   <option key={s} value={s} className="bg-ink-950">
                     {s}
@@ -167,7 +179,7 @@ export default function BriefForm() {
                 placeholder="What are you building?"
                 value={form.message}
                 disabled={status === 'loading'}
-                onChange={(e) => setForm({ ...form, message: e.target.value })}
+                onChange={handleChange}
                 className={`${fieldClass} resize-none`}
               />
             </div>

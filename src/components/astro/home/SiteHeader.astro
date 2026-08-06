@@ -5,7 +5,9 @@
  * The homepage supplies its own header rather than the shared `Nav` island,
  * because it is a single-page layout whose nav points at on-page anchors and
  * because it uses the monochrome brand palette rather than the older accent
- * theme still used by the inner pages. It is static — no client JS.
+ * theme still used by the inner pages. Mostly static — the only client JS is
+ * the inline <script> below, which just toggles the mobile nav disclosure
+ * open/closed; that's plain UI state, so it doesn't warrant a React island.
  *
  * Rendered inside Hero's full-height wrapper, so the two together fill exactly
  * one viewport.
@@ -14,13 +16,7 @@
  * theme. Until they are migrated the site has two visual identities.
  */
 import BrandLogo from './BrandLogo.astro';
-
-const nav = [
-  { href: '#services', label: 'Services' },
-  { href: '#stack', label: 'Stack' },
-  { href: '#process', label: 'Process' },
-  { href: '#contact', label: 'Contact' },
-];
+import { homeNav } from '../../../data/nav';
 ---
 
 <header class="relative z-20 border-b border-ink-800">
@@ -31,7 +27,7 @@ const nav = [
 
     <nav class="hidden items-center gap-8 md:flex" aria-label="Primary">
       {
-        nav.map((l) => (
+        homeNav.map((l) => (
           <a
             href={l.href}
             class="font-mono text-[12px] tracking-[0.14em] text-ink-300 uppercase transition-colors hover:text-paper"
@@ -42,11 +38,84 @@ const nav = [
       }
     </nav>
 
-    <a
-      href="#contact"
-      class="rounded-sm bg-paper px-4 py-2 font-mono text-[11px] tracking-[0.14em] text-ink-950 uppercase transition-colors hover:bg-ink-200"
-    >
-      Start a project
-    </a>
+    <div class="flex items-center gap-3">
+      <a
+        href="#contact"
+        class="hidden rounded-sm bg-paper px-4 py-2 font-mono text-[11px] tracking-[0.14em] text-ink-950 uppercase transition-colors hover:bg-ink-200 md:inline-block"
+      >
+        Start a project
+      </a>
+
+      <button
+        type="button"
+        id="mobile-nav-toggle"
+        class="inline-flex items-center rounded-sm border border-ink-700 px-3 py-2 font-mono text-[11px] tracking-[0.14em] text-ink-300 uppercase transition-colors hover:border-ink-400 hover:text-paper md:hidden"
+        aria-expanded="false"
+        aria-controls="mobile-nav-panel"
+      >
+        <span data-mobile-nav-label>Menu</span>
+      </button>
+    </div>
+  </div>
+
+  <div
+    id="mobile-nav-panel"
+    class="absolute inset-x-0 top-full border-b border-ink-800 bg-ink-950 md:hidden"
+    hidden
+  >
+    <nav class="flex flex-col px-6" aria-label="Mobile">
+      {
+        homeNav.map((l) => (
+          <a
+            href={l.href}
+            data-mobile-nav-link
+            class="border-b border-ink-800 py-4 font-mono text-[13px] tracking-[0.14em] text-ink-300 uppercase transition-colors last:border-b-0 hover:text-paper"
+          >
+            {l.label}
+          </a>
+        ))
+      }
+    </nav>
+    <div class="px-6 py-6">
+      <a
+        href="#contact"
+        data-mobile-nav-link
+        class="block rounded-sm bg-paper px-4 py-3 text-center font-mono text-[11px] tracking-[0.14em] text-ink-950 uppercase transition-colors hover:bg-ink-200"
+      >
+        Start a project
+      </a>
+    </div>
   </div>
 </header>
+
+<script>
+  // Mobile nav disclosure — plain open/close UI state, no framework needed.
+  // Panel visibility is driven by the `hidden` attribute; `aria-expanded` on
+  // the toggle button is the source of truth for open/closed.
+  const toggle = document.getElementById('mobile-nav-toggle');
+  const panel = document.getElementById('mobile-nav-panel');
+  const label = toggle?.querySelector('[data-mobile-nav-label]');
+
+  if (toggle && panel) {
+    const setOpen = (open: boolean) => {
+      panel.hidden = !open;
+      toggle.setAttribute('aria-expanded', String(open));
+      if (label) label.textContent = open ? 'Close' : 'Menu';
+    };
+
+    toggle.addEventListener('click', () => {
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    panel.querySelectorAll('[data-mobile-nav-link]').forEach((link) => {
+      link.addEventListener('click', () => setOpen(false));
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+  }
+</script>

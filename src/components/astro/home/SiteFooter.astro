@@ -6,13 +6,7 @@
  * launch. The inner pages still render the older shared `Footer` component.
  */
 import BrandLogo from './BrandLogo.astro';
-
-const nav = [
-  { href: '#services', label: 'Services' },
-  { href: '#stack', label: 'Stack' },
-  { href: '#process', label: 'Process' },
-  { href: '#contact', label: 'Contact' },
-];
+import { homeNav } from '../../../data/nav';
 ---
 
 <footer class="relative z-10 border-t border-ink-800">
@@ -24,7 +18,7 @@ const nav = [
     </span>
     <nav class="flex flex-wrap gap-x-6 gap-y-2">
       {
-        nav.map((l) => (
+        homeNav.map((l) => (
           <a href={l.href} class="text-ink-300 transition-colors hover:text-paper">
             {l.label}
           </a>

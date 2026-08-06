@@ -7,16 +7,13 @@
  * advice: no years-in-business, client counts, logos or awards, because none
  * of those are verified. See src/data/homeContent.ts.
  */
+import SectionHeading from './SectionHeading.astro';
 import { whyUs } from '../../../data/homeContent';
 ---
 
 <section id="why" class="relative z-10 border-t border-ink-800">
   <div class="mx-auto max-w-[1500px] px-6 py-20 md:px-10 md:py-24">
-    <div class="mb-12 flex items-baseline justify-between border-b border-ink-800 pb-5">
-      <h2 class="font-mono text-[12px] tracking-[0.24em] text-ink-300 uppercase">
-        Why work with us / {String(whyUs.length).padStart(2, '0')}
-      </h2>
-    </div>
+    <SectionHeading label={`Why work with us / ${String(whyUs.length).padStart(2, '0')}`} />
     <div class="grid grid-cols-1 gap-12 md:grid-cols-12">
       {/* TODO: replace — placeholder statement */}
       <h3
