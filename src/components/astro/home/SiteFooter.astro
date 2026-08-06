@@ -9,6 +9,12 @@ import content from '../../../data/content.json';
 
 const { links } = content.nav;
 const { legalName } = content.site;
+
+// Same active-page rule as SiteHeader: the current page renders as plain
+// text (nothing to navigate to), everything else as a link.
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) =>
+  href === '/' ? currentPath === '/' : currentPath === href || currentPath.startsWith(`${href}/`);
 ---
 
 <footer class="relative z-10 border-t border-ink-800">
@@ -20,11 +26,17 @@ const { legalName } = content.site;
     </span>
     <nav class="flex flex-wrap gap-x-6 gap-y-2" aria-label="Primary">
       {
-        links.map((l) => (
-          <a href={l.href} class="text-ink-300 transition-colors hover:text-paper">
-            {l.label}
-          </a>
-        ))
+        links.map((l) =>
+          isActive(l.href) ? (
+            <span aria-current="page" class="text-paper">
+              {l.label}
+            </span>
+          ) : (
+            <a href={l.href} class="text-ink-300 transition-colors hover:text-paper">
+              {l.label}
+            </a>
+          )
+        )
       }
     </nav>
     <p>© {new Date().getFullYear()} {legalName}</p>

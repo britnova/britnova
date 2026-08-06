@@ -10,6 +10,7 @@
 
   "nav": {
     "links": [
+      { "href": "/", "label": "Home" },
       { "href": "/work", "label": "Work" },
       { "href": "/services", "label": "Services" },
       { "href": "/about", "label": "About" },
@@ -24,7 +25,7 @@
       "eyebrow": "Partner With Us",
       "headlineLine1": "Have an Idea?",
       "headlineLine2": "Let's build it together.",
-      "body": "From custom AI workflows to enterprise-grade web experiences and optimized cloud orchestration. We engineer solutions that deliver business value.",
+      "body": "Custom AI workflows, enterprise-grade web experiences, cloud orchestration: we build what your business actually needs.",
       "primary": { "label": "Get in Touch", "href": "/contact" },
       "secondary": { "label": "Our Capabilities", "href": "/services" }
     }
@@ -38,7 +39,7 @@
     "hero": {
       "eyebrow": "[ AI · Cloud · Web — Where technology evolves.. ]",
       "headline": "We build the systems other teams are afraid to touch.",
-      "subhead": "BritNova is an engineering studio that designs, builds, and operates AI platforms, cloud infrastructure, and custom software for startups and growing businesses. The same senior engineers who architect your system are the ones who ship and support it.",
+      "subhead": "BritNova is an engineering studio for startups and growing businesses, building and operating AI platforms, cloud infrastructure, and custom software. The same senior engineers who architect your system are the ones who ship and support it.",
       "ctaPrimary": { "label": "Start a project", "href": "#contact" },
       "ctaSecondary": { "label": "What we do", "href": "#services" }
     },
@@ -47,7 +48,7 @@
       "items": [
         {
           "title": "Experienced engineers",
-          "body": "Senior people on every engagement — nobody learns on your budget."
+          "body": "Senior people on every engagement, nobody learns on your budget."
         },
         {
           "title": "Transparent communication",
@@ -55,7 +56,7 @@
         },
         {
           "title": "Modern technology stack",
-          "body": "Current tools, boring where it matters — chosen for longevity, not fashion."
+          "body": "Current tools, boring where it matters: chosen for longevity, not fashion."
         },
         {
           "title": "Fast delivery",
@@ -63,7 +64,7 @@
         },
         {
           "title": "Scalable architecture",
-          "body": "Built to survive growth — in load, in team size, in scope."
+          "body": "Built to survive growth: in load, in team size, in scope."
         },
         {
           "title": "Long-term partnership",
@@ -145,14 +146,14 @@
     },
     "process": {
       "steps": [
-        { "title": "Discovery call", "detail": "30 minutes on what you actually need — no deck." },
+        { "title": "Discovery call", "detail": "30 minutes on what you actually need, no deck." },
         {
           "title": "Requirements & planning",
           "detail": "Scope, priorities and a plan you can hold us to."
         },
         {
           "title": "Architecture & design",
-          "detail": "System design before code — decisions on paper first."
+          "detail": "System design before code: decisions on paper first."
         },
         { "title": "Development", "detail": "Short iterations; something working every week." },
         { "title": "Testing", "detail": "Automated where it pays, manual where it matters." },
@@ -177,11 +178,23 @@
       "body": "A few lines about the problem is enough to start. We'll come back with questions, not a pitch deck.",
       "channels": [
         { "label": "Email", "value": "hello@britnova.com", "href": "mailto:hello@britnova.com" },
-        { "label": "Calendly", "value": "https://calendly.com/hello-britnova/30min" },
-        { "label": "LinkedIn", "value": "https://www.linkedin.com/company/britnova-technologies" },
-        { "label": "WhatsApp", "value": "+44 74 0521 2943" }
+        {
+          "label": "Calendly",
+          "value": "https://calendly.com/hello-britnova/30min",
+          "href": "https://calendly.com/hello-britnova/30min"
+        },
+        {
+          "label": "LinkedIn",
+          "value": "https://www.linkedin.com/company/britnova-technologies",
+          "href": "https://www.linkedin.com/company/britnova-technologies"
+        },
+        {
+          "label": "WhatsApp",
+          "value": "+44 74 0521 2943",
+          "href": "https://wa.me/447405212943"
+        }
       ],
-      "location": "[ Norwich, UK ]"
+      "location": "Norwich, UK"
     }
   },
 
@@ -212,8 +225,8 @@
         "Production Deployment & Monitoring"
       ],
       "body": [
-        "Intelligence is no longer a luxury; it is the core of modern business efficiency. We design and build bespoke machine learning models, natural language processing pipelines, and agentic workflows that plug directly into your business logic.",
-        "Whether you need to predict demand trends, automate cognitive back-office tasks, or build next-generation customer assistance platforms, our engineering team brings mathematical rigor and production experience to deliver solutions that go far beyond wrapper APIs."
+        "We design and build bespoke machine learning models, natural language processing pipelines, and agentic workflows that plug directly into your business logic.",
+        "Whether you need to predict demand trends, automate back-office tasks, or build customer assistance platforms, our engineering team brings mathematical rigor and production experience to deliver solutions that go far beyond wrapper APIs."
       ]
     },
     {
@@ -243,7 +256,7 @@
       ],
       "body": [
         "Speed is nothing without stability. We build the pipelines and infrastructure that allow your product teams to ship code with total confidence. By treating infrastructure strictly as code and introducing strict observability, we eliminate 'it works on my machine' problems.",
-        "Additionally, our MLOps practice bridges the gap between data science and operations. We establish reproducible training runs, automated model validation, and drift detection to ensure your AI systems remain robust and cost-effective in production."
+        "Our MLOps practice connects data science and operations. We establish reproducible training runs, automated model validation, and drift detection to keep your AI systems robust and cost-effective in production."
       ]
     },
     {
@@ -273,7 +286,7 @@
       ],
       "body": [
         "The web is the primary window to your business. We engineer web applications that are blisteringly fast, accessible, and designed to convert. Our front-end philosophy values performance above all, utilizing static-first rendering, modern web APIs, and carefully hydration-controlled React islands.",
-        "Behind the scenes, we develop clean, modular APIs and resilient databases capable of processing high-volume transactions, keeping your user experience smooth and uninterrupted under any load."
+        "Behind the scenes, we develop clean, modular APIs and resilient databases capable of processing high-volume transactions, so your user experience stays smooth and uninterrupted under any load."
       ]
     },
     {
@@ -302,8 +315,8 @@
         "Cost Optimization & Rightsizing Audit"
       ],
       "body": [
-        "Scaling shouldn't mean runaway cloud bills. We design resilient cloud architectures that scale up automatically to meet traffic spikes and scale down to minimize overhead. Security and compliance are built into our design by default, utilizing strict IAM roles, VPC isolation, and end-to-end encryption.",
-        "Whether you are migrating legacy servers to the cloud or looking to leverage serverless computing for event-driven workflows, we align your infrastructure with your bottom line."
+        "Scaling shouldn't mean runaway cloud bills. We design resilient cloud architectures that scale up automatically to meet traffic spikes and scale down to minimize overhead. Security and compliance are built into our design by default, using strict IAM roles, VPC isolation, and end-to-end encryption.",
+        "Whether you're migrating legacy servers to the cloud or want serverless computing for event-driven workflows, we build infrastructure sized to your actual budget."
       ]
     }
   ],
@@ -339,7 +352,7 @@
         {
           "heading": "Results",
           "paragraphs": [
-            "The system went from proof of concept to full production in under 8 weeks. It now processes over 95% of manifests without human intervention, ensuring rapid custom clearance times."
+            "The system went from proof of concept to full production in under 8 weeks. It now processes over 95% of manifests without human intervention, and customs clearance is faster as a result."
           ]
         }
       ]
@@ -368,13 +381,13 @@
         {
           "heading": "Solution",
           "paragraphs": [
-            "We modeled their complete server matrix into Terraform configurations, establishing a secure multi-region AWS setup. We moved their core microservices into Amazon Elastic Kubernetes Service (EKS) with automated horizontal pod autoscaling and automated SSL/TLS termination."
+            "We modeled their complete server matrix into Terraform configurations and set up a secure, multi-region AWS environment. We moved their core microservices to Amazon Elastic Kubernetes Service (EKS), with automated horizontal pod autoscaling and SSL/TLS termination."
           ]
         },
         {
           "heading": "Results",
           "paragraphs": [
-            "The agency now deploys multiple production updates daily with zero disruption to active doctor-patient sessions. Operational infrastructure costs were slashed by optimization of server capacities."
+            "The agency now deploys multiple production updates daily with zero disruption to active doctor-patient sessions. Right-sizing server capacity also cut their operational infrastructure costs."
           ]
         }
       ]
@@ -409,7 +422,7 @@
         {
           "heading": "Results",
           "paragraphs": [
-            "The site saw 0% downtime during their largest seasonal product launch of the year. The page load performance jumped, resulting in a direct increase in average order value."
+            "The site saw 0% downtime during their largest seasonal product launch of the year. Page load performance jumped, and average order value rose with it."
           ]
         }
       ]
@@ -423,12 +436,12 @@
     },
     "eyebrow": "About Our Agency",
     "headline": { "prefix": "About", "accent": "Britnova" },
-    "intro": "We are a forward-thinking technology company helping businesses build scalable digital products using AI, cloud, and modern web technologies.",
+    "intro": "We're a technology company that helps businesses build scalable digital products using AI, cloud, and modern web technologies.",
     "story": {
       "title": "Our Story",
       "paragraphs": [
-        "Britnova Technologies was founded with a simple vision — to bridge the gap between complex, emerging technology and tangible business value. We noticed that many companies were either getting lost in AI hype or running fragile legacy systems that bottlenecked growth.",
-        "We specialize in AI/ML model deployment, DevOps pipeline automations, and modern full-stack development, delivering engineering solutions that are not only powerful but also scalable and maintainable.",
+        "Britnova Technologies was founded on a simple idea: connect complex, emerging technology to tangible business value. We noticed that many companies were either getting lost in AI hype or running fragile legacy systems that bottlenecked growth.",
+        "We specialize in AI/ML model deployment, DevOps pipeline automation, and modern full-stack development. The engineering solutions we deliver are powerful, but also scalable and maintainable.",
         "From startups launching their first products to growing enterprises modernizing their tech stack, we work side-by-side with product teams to turn technical concepts into production-ready software."
       ]
     },
