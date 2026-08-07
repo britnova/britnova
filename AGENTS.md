@@ -31,7 +31,9 @@ Run `pnpm build` before considering any task complete to confirm the site compil
 ```
 src/
   components/
-    astro/        # static, non-interactive components (.astro)
+    astro/
+      shared/      # used across multiple pages: SiteHeader, SiteFooter, BrandLogo, SectionHeading, CTASection
+      home/        # homepage-only sections: Hero, WhyUs, ServicesTabs, TechStackBelt, TechIcon, ProcessGrid, TeamRoster, ContactSection
     react/         # interactive islands only (.tsx)
   data/
     content.json   # single source of truth for ALL site copy
@@ -54,6 +56,7 @@ public/
 ## Conventions
 
 - **Component naming**: PascalCase for both `.astro` and `.tsx` components
+- **Component placement**: `astro/home/` is for homepage-only sections. The moment a component is used by a second page, it belongs in `astro/shared/`, not `home/`.
 - **Static-first**: default to `.astro` components. Only create a React component when the section needs client-side state, animation orchestration, or event handling that Astro can't do statically. Use `client:visible` (not `client:load`) for below-the-fold islands to minimize hydration cost.
 - **Styling**: Tailwind utility classes only — no separate CSS files per component unless doing something Tailwind genuinely can't express. Shared design tokens (colors, font sizes, spacing) live in `tailwind.config.mjs`, not hardcoded hex values in components.
 - **Images**: use Astro's `<Image />` component (`astro:assets`) for all local images to get automatic optimization. Never use raw `<img>` for local files.
