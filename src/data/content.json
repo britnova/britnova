@@ -334,7 +334,6 @@
       "description": "A computerized maintenance-management platform with asynchronous reporting, QR-based workflows, and Stripe billing.",
       "heroImage": "/images/work-fixalert.jpg",
       "tags": ["Web & Software Development", "React & Django", "Celery & Stripe"],
-      "year": "2021–2026",
       "featured": true,
       "sections": [
         {
@@ -363,7 +362,6 @@
       "description": "A React and Next.js career-pathing platform used by Fortune 500 companies, with Django APIs, a Looker analytics dashboard, and zero-downtime framework migrations.",
       "heroImage": "/images/work-landit.jpg",
       "tags": ["Web & Software Development", "React & Next.js", "Django", "Storybook & Cypress"],
-      "year": "2021–2026",
       "featured": true,
       "sections": [
         {
@@ -392,7 +390,6 @@
       "description": "A HIPAA-compliant telehealth platform on Django, PostgreSQL, and Kubernetes, with NLP-driven patient insights and real-time clinical data sync.",
       "heroImage": "/images/work-psychplus.jpg",
       "tags": ["Cloud Services", "DevOps & MLOps", "AI & Machine Learning", "Kubernetes & AWS"],
-      "year": "2021–2026",
       "featured": true,
       "metrics": [{ "label": "Platform Uptime", "value": ">99.9%" }],
       "sections": [
@@ -422,7 +419,6 @@
       "description": "An AI-powered voice and chat intake platform with fine-tuned language models, a containerized microservices backend, and automated CI/CD.",
       "heroImage": "/images/work-meetgabbi.jpg",
       "tags": ["AI & Machine Learning", "DevOps & MLOps", "Docker & AWS ECS"],
-      "year": "2021–2026",
       "featured": true,
       "metrics": [{ "label": "Release Time Cut", "value": "30%" }],
       "sections": [
@@ -451,7 +447,6 @@
       "title": "Enterprise API Platform, Monolith-to-Microservices Migration",
       "description": "A legacy monolith serving millions of daily requests, migrated to Kubernetes-orchestrated microservices on AWS without disrupting live enterprise traffic.",
       "tags": ["DevOps & MLOps", "Cloud Services", "Kubernetes & AWS"],
-      "year": "2021–2026",
       "featured": false,
       "metrics": [
         { "label": "Less Downtime", "value": "25%" },
@@ -483,7 +478,6 @@
       "title": "Unlock Trader Capital, Algorithmic Trading Platform",
       "description": "Cloud architecture and a Django/Flask backend for a platform offering automated trading, real-time trade alerts, and professional trade execution for retail traders.",
       "tags": ["Cloud Services", "DevOps & MLOps", "Django & Flask"],
-      "year": "2021–2026",
       "featured": true,
       "sections": [
         {
@@ -512,7 +506,6 @@
       "description": "Cloud infrastructure for a computer vision platform running deep learning models for image classification, object detection, and visual analytics.",
       "heroImage": "/images/work-kito.jpg",
       "tags": ["AI & Machine Learning", "DevOps & MLOps", "Cloud Services"],
-      "year": "2021–2026",
       "featured": true,
       "sections": [
         {
@@ -540,7 +533,6 @@
       "title": "Rumi, Frontend CI/CD & Code Quality Infrastructure",
       "description": "A GitLab CI/CD pipeline and enforced code-quality tooling for Rumi's frontend, alongside architectural refactoring for state-management reliability.",
       "tags": ["Web & Software Development", "DevOps & MLOps", "GitLab CI & Vitest"],
-      "year": "2021–2026",
       "featured": false,
       "sections": [
         {
@@ -569,7 +561,6 @@
       "description": "New feature infrastructure, permissions logic, and structured feedback workflows built into Taiga's existing AngularJS and Django architecture.",
       "heroImage": "/images/work-taiga.jpg",
       "tags": ["Web & Software Development", "AngularJS & Django"],
-      "year": "2021–2026",
       "featured": true,
       "sections": [
         {
@@ -598,7 +589,6 @@
       "description": "A version upgrade and stability pass on a long-running Islamic Q&A platform founded in 2000, done without disrupting a large, active user base.",
       "heroImage": "/images/work-askimam.jpg",
       "tags": ["Web & Software Development", "Django"],
-      "year": "2021–2026",
       "featured": true,
       "sections": [
         {
@@ -626,8 +616,7 @@
       "title": "Wear To Fit, Streetwear E-Commerce Platform",
       "description": "A Shopify storefront for a Lahore-based streetwear and athleisure brand, built end to end from theme to checkout.",
       "heroImage": "/images/work-weartofit.jpg",
-      "tags": ["Web & Software Development", "Shopify", "E-Commerce"],
-      "year": "2023–2026",
+      "tags": ["WordPress & Shopify", "Shopify", "E-Commerce"],
       "featured": true,
       "sections": [
         {
@@ -646,6 +635,34 @@
           "heading": "Results",
           "paragraphs": [
             "The store now ships across Pakistan, from Lahore and Karachi to Islamabad and Peshawar, with a live catalog running into the hundreds of products across menswear, womenswear, jewelry, and nutrition. The site today reports over 12,000 customers served and a 4.8-star average rating."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "hi-legal",
+      "title": "HI Legal, Solicitors Website",
+      "description": "A WordPress site for a Newport solicitors firm, covering corporate law, litigation, immigration, and property services.",
+      "heroImage": "/images/work-hilegal.jpg",
+      "tags": ["WordPress & Shopify", "WordPress", "Legal Services"],
+      "featured": true,
+      "sections": [
+        {
+          "heading": "Challenge",
+          "paragraphs": [
+            "HI Legal needed a site built specifically around a law firm's needs: clear service pages across corporate, litigation, immigration, and property law, a team presence built around its solicitors, and a way to keep clients informed with regularly updated legal news."
+          ]
+        },
+        {
+          "heading": "Solution",
+          "paragraphs": [
+            "We built the WordPress site end to end: theme, page structure, and content setup across services, team profiles, and a legal news section the firm can publish to directly. Service pages are organized by practice area so visitors can go straight to the kind of legal help they need, and a consultation booking flow sits at the top of the site instead of being buried in a contact page."
+          ]
+        },
+        {
+          "heading": "Results",
+          "paragraphs": [
+            "The site now covers HI Legal's full range of practice areas for individuals, families, and businesses across England and Wales, with a legal news section the firm keeps current and a consultation booking path built into the homepage."
           ]
         }
       ]
@@ -730,7 +747,8 @@
       "AI & Machine Learning",
       "DevOps & MLOps",
       "Web & Software Development",
-      "Cloud Services"
+      "Cloud Services",
+      "WordPress & Shopify"
     ]
   },
 

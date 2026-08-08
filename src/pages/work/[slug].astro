@@ -56,27 +56,19 @@ const { entry, nextEntry } = Astro.props;
           {entry.description}
         </p>
 
-        <!-- Metadata Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-ink-800 text-sm">
-          <div>
-            <span class="font-mono text-[11px] text-ink-300 block uppercase tracking-[0.14em] mb-1">
-              Year
-            </span>
-            <span class="font-semibold text-paper">{entry.year}</span>
-          </div>
-          <div class="col-span-1 sm:col-span-2">
-            <span class="font-mono text-[11px] text-ink-300 block uppercase tracking-[0.14em] mb-1">
-              Tags
-            </span>
-            <div class="flex flex-wrap gap-1.5 mt-1">
-              {
-                entry.tags.map((tag) => (
-                  <span class="border border-ink-700 px-2.5 py-0.5 font-mono text-[10px] tracking-[0.1em] text-ink-300 uppercase">
-                    {tag}
-                  </span>
-                ))
-              }
-            </div>
+        <!-- Tags -->
+        <div class="pt-6 border-t border-ink-800 text-sm">
+          <span class="font-mono text-[11px] text-ink-300 block uppercase tracking-[0.14em] mb-1">
+            Tags
+          </span>
+          <div class="flex flex-wrap gap-1.5 mt-1">
+            {
+              entry.tags.map((tag) => (
+                <span class="border border-ink-700 px-2.5 py-0.5 font-mono text-[10px] tracking-[0.1em] text-ink-300 uppercase">
+                  {tag}
+                </span>
+              ))
+            }
           </div>
         </div>
       </div>
@@ -126,14 +118,9 @@ const { entry, nextEntry } = Astro.props;
               href={`/work/${nextEntry.slug}`}
               class="group flex justify-between items-center p-6 border border-ink-800 hover:border-ink-500 transition-colors"
             >
-              <div>
-                <h4 class="font-brand text-[22px] md:text-[26px] font-semibold tracking-[-0.02em] text-paper">
-                  {nextEntry.title}
-                </h4>
-                <p class="font-mono text-[11px] tracking-[0.14em] text-ink-300 uppercase mt-2">
-                  {nextEntry.year}
-                </p>
-              </div>
+              <h4 class="font-brand text-[22px] md:text-[26px] font-semibold tracking-[-0.02em] text-paper">
+                {nextEntry.title}
+              </h4>
               <div class="w-10 h-10 border border-ink-700 group-hover:border-paper flex items-center justify-center text-ink-300 group-hover:text-paper transition-colors">
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </div>
