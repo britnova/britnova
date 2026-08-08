@@ -1,0 +1,88 @@
+---
+/*
+ * Manual theme switch. Fixed to the top-right of the viewport (not part of
+ * SiteHeader, which scrolls with the page) so it stays reachable while
+ * scrolling, positioned below the header's own height so the two never
+ * overlap on any breakpoint (both ~65-68px tall — header and mobile-menu
+ * button share the same top-right corner otherwise).
+ *
+ * The <html data-theme> attribute is the single source of truth. This
+ * component never resolves the initial theme itself — BaseLayout's inline
+ * head script already did that before paint (see its comment for why) — it
+ * only reads that result to sync its own icon/label, then reacts to clicks
+ * and live system-preference changes from there.
+ */
+import { Sun, Moon } from 'lucide-react';
+---
+
+<button
+  type="button"
+  id="theme-toggle"
+  class="fixed top-20 right-4 z-30 flex h-10 w-10 items-center justify-center rounded-full border border-ink-700 bg-ink-950/90 text-ink-300 shadow-lg backdrop-blur-sm transition-colors hover:border-ink-400 hover:text-paper md:right-6"
+  aria-label="Switch to light theme"
+>
+  <Sun className="theme-toggle-sun h-4 w-4" />
+  <Moon className="theme-toggle-moon h-4 w-4" />
+</button>
+
+<style>
+  /* Only one icon shows at a time, driven by the attribute BaseLayout's head
+     script (and this component's own script, on click) set on <html> —
+     no JS needed just to swap which icon is visible. */
+  .theme-toggle-moon {
+    display: none;
+  }
+  :global(html[data-theme='light']) .theme-toggle-sun {
+    display: none;
+  }
+  :global(html[data-theme='light']) .theme-toggle-moon {
+    display: block;
+  }
+</style>
+
+<script>
+  import { THEME_STORAGE_KEY } from '../../../utils/theme';
+
+  const toggle = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+
+  const label = () =>
+    root.dataset.theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme';
+
+  const sync = () => toggle?.setAttribute('aria-label', label());
+
+  const apply = (theme: 'light' | 'dark') => (
+    theme === 'light' ? (root.dataset.theme = 'light') : delete root.dataset.theme,
+    sync()
+  );
+
+  const readStored = () => {
+    try {
+      return localStorage.getItem(THEME_STORAGE_KEY);
+    } catch {
+      return null;
+    }
+  };
+
+  toggle?.addEventListener('click', () => {
+    const next = root.dataset.theme === 'light' ? 'dark' : 'light';
+    apply(next);
+    // Storage unavailable is a silent no-op — theme still applies for this
+    // page view, it just won't persist. Matches the head script's fallback.
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, next);
+    } catch {
+      /* noop */
+    }
+  });
+
+  // Live-follow the OS only while the visitor hasn't made an explicit
+  // choice — a stored value always wins, matching the head script's order.
+  const media = window.matchMedia('(prefers-color-scheme: light)');
+  media.addEventListener('change', (event) => {
+    const stored = readStored();
+    if (stored !== 'light' && stored !== 'dark') apply(event.matches ? 'light' : 'dark');
+  });
+
+  sync();
+</script>

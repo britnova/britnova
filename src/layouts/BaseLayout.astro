@@ -2,6 +2,8 @@
 import '../styles/global.css';
 import SiteHeader from '../components/astro/shared/SiteHeader.astro';
 import SiteFooter from '../components/astro/shared/SiteFooter.astro';
+import SiteThemeToggle from '../components/astro/shared/SiteThemeToggle.astro';
+import { THEME_STORAGE_KEY } from '../utils/theme';
 
 interface Props {
   title?: string;
@@ -27,6 +29,31 @@ const {
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!--
+      Theme resolution — must run before first paint, so it's inline/blocking
+      (`is:inline` stops Astro deferring it as a module) and placed first in
+      <head>, ahead of anything that could paint. Stored choice wins; else
+      system preference; else dark (the implicit default — see the
+      [data-theme="light"] block in global.css, there's no explicit "dark"
+      attribute value, absence of the attribute IS dark).
+    -->
+    <script is:inline define:vars={{ THEME_STORAGE_KEY }}>
+      (function () {
+        let stored = null;
+        try {
+          stored = localStorage.getItem(THEME_STORAGE_KEY);
+        } catch {
+          /* noop — falls through to system preference below */
+        }
+        const theme =
+          stored === 'light' || stored === 'dark'
+            ? stored
+            : window.matchMedia('(prefers-color-scheme: light)').matches
+              ? 'light'
+              : 'dark';
+        if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
@@ -60,5 +87,11 @@ const {
     </main>
 
     {chrome && <SiteFooter />}
+
+    {
+      /* Unconditional — unlike SiteHeader/SiteFooter, this isn't page chrome
+       the homepage supplies itself; it's a fixed overlay every page needs. */
+    }
+    <SiteThemeToggle />
   </body>
 </html>
