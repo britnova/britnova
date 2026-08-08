@@ -66,12 +66,12 @@ export default function WorkGridFilters({ caseStudies }: Props) {
                 className="group flex h-full flex-col justify-between border border-ink-800 transition-colors hover:border-ink-500"
               >
                 {study.heroImage && (
-                  <div className="aspect-[16/10] overflow-hidden border-b border-ink-800 bg-ink-900">
+                  <div className="aspect-16/10 overflow-hidden border-b border-ink-800 bg-ink-900">
                     <img
                       src={study.heroImage}
                       alt=""
                       loading="lazy"
-                      className="h-full w-full object-cover object-top grayscale transition-all duration-300 group-hover:grayscale-0"
+                      className="h-full w-full object-cover object-top transition-all duration-300"
                     />
                   </div>
                 )}
@@ -91,7 +91,7 @@ export default function WorkGridFilters({ caseStudies }: Props) {
                       {study.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="border border-ink-700 px-2.5 py-0.5 font-mono text-[10px] tracking-[0.1em] text-ink-300 uppercase"
+                          className="border border-ink-700 px-2.5 py-0.5 font-mono text-[10px] tracking-widest text-ink-300 uppercase"
                         >
                           {tag}
                         </span>
