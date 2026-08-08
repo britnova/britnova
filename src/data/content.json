@@ -620,6 +620,35 @@
           ]
         }
       ]
+    },
+    {
+      "slug": "wear-to-fit",
+      "title": "Wear To Fit, Streetwear E-Commerce Platform",
+      "description": "A Shopify storefront for a Lahore-based streetwear and athleisure brand, built end to end from theme to checkout.",
+      "heroImage": "/images/work-weartofit.jpg",
+      "tags": ["Web & Software Development", "Shopify", "E-Commerce"],
+      "year": "2023–2026",
+      "featured": true,
+      "sections": [
+        {
+          "heading": "Challenge",
+          "paragraphs": [
+            "Wear To Fit needed a store that could go up against international streetwear brands on quality and design without matching their prices. The catalog had to span menswear, womenswear, jewelry, and nutrition products, and it needed to ship nationwide from day one."
+          ]
+        },
+        {
+          "heading": "Solution",
+          "paragraphs": [
+            "We built the Shopify storefront end to end: theme design, the product catalog structure, and checkout. Collections were organized around how people actually shop, New Arrivals, Best Sellers, and category pages like T-Shirts, Trousers, and Summer Tracksuits, instead of one flat product list, and we added WhatsApp chat so customers could reach support directly from the storefront."
+          ]
+        },
+        {
+          "heading": "Results",
+          "paragraphs": [
+            "The store now ships across Pakistan, from Lahore and Karachi to Islamabad and Peshawar, with a live catalog running into the hundreds of products across menswear, womenswear, jewelry, and nutrition. The site today reports over 12,000 customers served and a 4.8-star average rating."
+          ]
+        }
+      ]
     }
   ],
 
