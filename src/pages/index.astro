@@ -66,4 +66,20 @@ const services = [...content.services].sort((a, b) => a.order - b.order);
     -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
     mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
   }
+
+  /* The white gradient above reads as a sheen on the dark background but is
+     invisible (white-on-near-white) once light mode is active — invert to a
+     faint dark gradient instead, same stops/angle, so the effect survives
+     the theme switch instead of just vanishing. */
+  :global(html[data-theme='light']) .home-sheen {
+    background: linear-gradient(
+      115deg,
+      rgba(0, 0, 0, 0.055) 0%,
+      rgba(0, 0, 0, 0) 28%,
+      rgba(0, 0, 0, 0.03) 44%,
+      rgba(0, 0, 0, 0) 62%,
+      rgba(0, 0, 0, 0.045) 78%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
 </style>
