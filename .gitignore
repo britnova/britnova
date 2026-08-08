@@ -19,3 +19,7 @@ dist/
 
 # cache files
 .pnpm-store/
+
+# Sales/ops playbook doc + its build script — unrelated to the site itself
+Britnova-Sales-and-Operations-Playbook.docx
+docs/playbook/
