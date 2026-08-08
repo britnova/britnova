@@ -39,15 +39,18 @@
  * copied from the /prototype pass without re-verifying: muted text (ink-300)
  * 7.46:1, primary text (paper) 17.72:1, interactive borders (ink-700 — the
  * token BriefForm's inputs and the mobile nav toggle actually border with)
- * 3.05:1. ink-800/ink-900, used for purely decorative section dividers, are
- * intentionally low-contrast — WCAG's 3:1 non-text floor applies to active
- * UI component boundaries, not hairlines between sections.
+ * 3.42:1 (deliberate headroom above the 3:1 floor, not a bare pass — an
+ * earlier draft landed at 3.05:1, uncomfortably close to the line for a
+ * single future hex tweak to fail). ink-800/ink-900, used for purely
+ * decorative section dividers, are intentionally low-contrast — WCAG's 3:1
+ * non-text floor applies to active UI component boundaries, not hairlines
+ * between sections.
  */
 :root[data-theme='light'] {
   --color-ink-950: #faf7f2;
   --color-ink-900: #f2ede3;
   --color-ink-800: #e5ddc9;
-  --color-ink-700: #9c8d6e;
+  --color-ink-700: #93846a;
   --color-ink-600: #8c7f64;
   --color-ink-500: #75694f;
   --color-ink-400: #645941;

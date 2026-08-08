@@ -3,6 +3,7 @@ import '../styles/global.css';
 import SiteHeader from '../components/astro/shared/SiteHeader.astro';
 import SiteFooter from '../components/astro/shared/SiteFooter.astro';
 import SiteThemeToggle from '../components/astro/shared/SiteThemeToggle.astro';
+import { THEME_STORAGE_KEY } from '../utils/theme';
 
 interface Props {
   title?: string;
@@ -36,11 +37,11 @@ const {
       [data-theme="light"] block in global.css, there's no explicit "dark"
       attribute value, absence of the attribute IS dark).
     -->
-    <script is:inline>
+    <script is:inline define:vars={{ THEME_STORAGE_KEY }}>
       (function () {
         let stored = null;
         try {
-          stored = localStorage.getItem('britnova-theme');
+          stored = localStorage.getItem(THEME_STORAGE_KEY);
         } catch {
           /* noop — falls through to system preference below */
         }

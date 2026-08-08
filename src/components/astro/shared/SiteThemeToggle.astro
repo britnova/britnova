@@ -41,7 +41,8 @@ import { Sun, Moon } from 'lucide-react';
 </style>
 
 <script>
-  const STORAGE_KEY = 'britnova-theme';
+  import { THEME_STORAGE_KEY } from '../../../utils/theme';
+
   const toggle = document.getElementById('theme-toggle');
   const root = document.documentElement;
 
@@ -57,7 +58,7 @@ import { Sun, Moon } from 'lucide-react';
 
   const readStored = () => {
     try {
-      return localStorage.getItem(STORAGE_KEY);
+      return localStorage.getItem(THEME_STORAGE_KEY);
     } catch {
       return null;
     }
@@ -69,7 +70,7 @@ import { Sun, Moon } from 'lucide-react';
     // Storage unavailable is a silent no-op — theme still applies for this
     // page view, it just won't persist. Matches the head script's fallback.
     try {
-      localStorage.setItem(STORAGE_KEY, next);
+      localStorage.setItem(THEME_STORAGE_KEY, next);
     } catch {
       /* noop */
     }
