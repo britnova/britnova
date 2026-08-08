@@ -27,6 +27,37 @@
   --font-brand: 'Poppins', 'Outfit', sans-serif;
 }
 
+/*
+ * Light theme — "Editorial Paper": warm ivory background, warm-gray text and
+ * borders. Same ~11-token ladder as the dark theme above, remapped, so every
+ * component that already reads the --color-ink-* / --color-paper tokens gets light-mode
+ * support with no per-component changes. Applied via [data-theme="light"] on
+ * <html> (see BaseLayout.astro's before-paint resolution script); absence of
+ * the attribute keeps the dark values above as the default.
+ *
+ * Values are contrast-checked against ink-950 (the page background), not
+ * copied from the /prototype pass without re-verifying: muted text (ink-300)
+ * 7.46:1, primary text (paper) 17.72:1, interactive borders (ink-700 — the
+ * token BriefForm's inputs and the mobile nav toggle actually border with)
+ * 3.05:1. ink-800/ink-900, used for purely decorative section dividers, are
+ * intentionally low-contrast — WCAG's 3:1 non-text floor applies to active
+ * UI component boundaries, not hairlines between sections.
+ */
+:root[data-theme='light'] {
+  --color-ink-950: #faf7f2;
+  --color-ink-900: #f2ede3;
+  --color-ink-800: #e5ddc9;
+  --color-ink-700: #9c8d6e;
+  --color-ink-600: #8c7f64;
+  --color-ink-500: #75694f;
+  --color-ink-400: #645941;
+  --color-ink-300: #59503b;
+  --color-ink-200: #3f3930;
+  --color-ink-100: #282319;
+  --color-paper: #14100b;
+  color-scheme: light;
+}
+
 @layer base {
   body {
     /* background/text color and selection are set via Tailwind utilities on
