@@ -39,7 +39,7 @@
     "hero": {
       "eyebrow": "[ AI · Cloud · Web — Where technology evolves.. ]",
       "headline": "We build the systems other teams are afraid to touch.",
-      "subhead": "BritNova is an engineering studio for startups and growing businesses, building and operating AI platforms, cloud infrastructure, and custom software. The same senior engineers who architect your system are the ones who ship and support it.",
+      "subhead": "BritNova builds and runs AI platforms, cloud infrastructure, and custom software for growing businesses. The engineers who design it also ship and support it.",
       "ctaPrimary": { "label": "Start a project", "href": "#contact" },
       "ctaSecondary": { "label": "What we do", "href": "#services" }
     },
