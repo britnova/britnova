@@ -17,8 +17,7 @@
  *     the script runs.
  *
  * Service copy comes from content.json's `services` array. The per-service
- * stack chips come from content.json's `home.techStack.byService`, where
- * technologies not evidenced in the repo are flagged `sourced: false`.
+ * stack chips come from content.json's `home.techStack.byService`.
  */
 import SectionHeading from '../shared/SectionHeading.astro';
 import content from '../../../data/content.json';
@@ -40,18 +39,13 @@ interface Props {
 }
 const { services } = Astro.props;
 
-const stackByService = content.home.techStack.byService as Record<
-  string,
-  { name: string; sourced: boolean }[]
->;
+const { heading } = content.home.servicesSection;
+const stackByService = content.home.techStack.byService as Record<string, { name: string }[]>;
 ---
 
 <section id="services" class="relative z-10">
   <div class="mx-auto max-w-[1500px] px-6 py-20 md:px-10 md:py-24">
-    <SectionHeading
-      id="services"
-      label={`Capabilities / ${String(services.length).padStart(2, '0')}`}
-    >
+    <SectionHeading id="services" label={heading}>
       <a
         href="/services"
         class="font-mono text-[11px] tracking-[0.16em] text-ink-300 uppercase transition-colors hover:text-paper"
@@ -104,13 +98,12 @@ const stackByService = content.home.techStack.byService as Record<
 
                   <div class="mt-8">
                     <p class="font-mono text-[11px] tracking-[0.2em] text-ink-300 uppercase">
-                      Stack <span class="text-ink-300">— † proposed, unconfirmed</span>
+                      Stack
                     </p>
                     <ul class="mt-3 flex flex-wrap gap-1.5">
                       {(stackByService[s.id] ?? []).map((t) => (
                         <li class="rounded-sm border border-ink-600 px-2.5 py-1 font-mono text-[11px] tracking-[0.1em] text-ink-100">
                           {t.name}
-                          {!t.sourced && ' †'}
                         </li>
                       ))}
                     </ul>

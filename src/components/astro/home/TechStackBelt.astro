@@ -9,23 +9,18 @@
  *
  * TODO: replace — icon glyphs are hand-drawn approximations (TechIcon.astro),
  * NOT the official marks; swap for vendor SVGs and check each vendor's brand
- * guidelines before launch. Technologies not evidenced anywhere in the repo are
- * flagged `sourced: false` in src/data/content.json and render with a †.
+ * guidelines before launch.
  */
 import SectionHeading from '../shared/SectionHeading.astro';
 import TechIcon from './TechIcon.astro';
 import content from '../../../data/content.json';
 
-const { belt, sectionLabel, proposedNote } = content.home.techStack;
+const { belt, sectionLabel } = content.home.techStack;
 ---
 
 <section id="stack" class="relative z-10 overflow-hidden border-t border-ink-800">
   <div class="mx-auto max-w-[1500px] px-6 pt-20 md:px-10 md:pt-24">
-    <SectionHeading id="stack" label={sectionLabel}>
-      <p class="font-mono text-[11px] tracking-[0.14em] text-ink-300 uppercase">
-        {proposedNote}
-      </p>
-    </SectionHeading>
+    <SectionHeading id="stack" label={sectionLabel} />
   </div>
 
   {/* the belt bleeds past the container on purpose; the section clips it */}
@@ -45,7 +40,6 @@ const { belt, sectionLabel, proposedNote } = content.home.techStack;
                     <TechIcon name={t.name} class="h-9 w-9 text-ink-100 md:h-10 md:w-10" />
                     <span class="px-1 text-center font-mono text-[10px] tracking-[0.1em] text-ink-300 uppercase">
                       {t.name}
-                      {!t.sourced && ' †'}
                     </span>
                   </div>
                 ))}
