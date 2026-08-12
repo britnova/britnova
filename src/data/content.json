@@ -44,6 +44,7 @@
       "ctaSecondary": { "label": "What we do", "href": "#services" }
     },
     "whyUs": {
+      "heading": "Why work with us",
       "headline": "Small team. Senior people. No handoffs.",
       "items": [
         {
@@ -72,79 +73,82 @@
         }
       ]
     },
+    "servicesSection": {
+      "heading": "Capabilities"
+    },
     "techStack": {
       "sectionLabel": "Stack / what we build with",
-      "proposedNote": "† proposed — confirm before launch",
       "byService": {
         "ai-ml": [
-          { "name": "Python", "sourced": true },
-          { "name": "LLM fine-tuning", "sourced": true },
-          { "name": "Document parsing", "sourced": true },
-          { "name": "Predictive models", "sourced": true },
-          { "name": "PyTorch", "sourced": false },
-          { "name": "Hugging Face", "sourced": false }
+          { "name": "Python" },
+          { "name": "LLM fine-tuning" },
+          { "name": "Document parsing" },
+          { "name": "Predictive models" },
+          { "name": "PyTorch" },
+          { "name": "Hugging Face" }
         ],
         "devops-mlops": [
-          { "name": "Terraform", "sourced": true },
-          { "name": "Kubernetes", "sourced": true },
-          { "name": "Prometheus", "sourced": true },
-          { "name": "Grafana", "sourced": true },
-          { "name": "Docker", "sourced": false },
-          { "name": "GitHub Actions", "sourced": false }
+          { "name": "Terraform" },
+          { "name": "Kubernetes" },
+          { "name": "Prometheus" },
+          { "name": "Grafana" },
+          { "name": "Docker" },
+          { "name": "GitHub Actions" }
         ],
         "web-development": [
-          { "name": "React", "sourced": true },
-          { "name": "Next.js", "sourced": true },
-          { "name": "Node.js", "sourced": true },
-          { "name": "GraphQL", "sourced": true },
-          { "name": "REST", "sourced": true },
-          { "name": "TypeScript", "sourced": false }
+          { "name": "React" },
+          { "name": "Next.js" },
+          { "name": "Node.js" },
+          { "name": "GraphQL" },
+          { "name": "REST" },
+          { "name": "TypeScript" }
         ],
         "cloud-services": [
-          { "name": "AWS", "sourced": true },
-          { "name": "Azure", "sourced": true },
-          { "name": "GCP", "sourced": true },
-          { "name": "Serverless", "sourced": true },
-          { "name": "IAM / VPC", "sourced": true },
-          { "name": "Postgres", "sourced": false }
+          { "name": "AWS" },
+          { "name": "Azure" },
+          { "name": "GCP" },
+          { "name": "Serverless" },
+          { "name": "IAM / VPC" },
+          { "name": "Postgres" }
         ]
       },
       "belt": [
         [
-          { "name": "Python", "sourced": true },
-          { "name": "TypeScript", "sourced": false },
-          { "name": "Node.js", "sourced": true },
-          { "name": "React", "sourced": true },
-          { "name": "Next.js", "sourced": true },
-          { "name": "GraphQL", "sourced": true },
-          { "name": "REST", "sourced": true },
-          { "name": "Postgres", "sourced": false },
-          { "name": "Vercel", "sourced": true },
-          { "name": "Cloudflare", "sourced": true },
-          { "name": "GitHub Actions", "sourced": false },
-          { "name": "Prometheus", "sourced": true },
-          { "name": "Grafana", "sourced": true }
+          { "name": "Python" },
+          { "name": "TypeScript" },
+          { "name": "Node.js" },
+          { "name": "React" },
+          { "name": "Next.js" },
+          { "name": "GraphQL" },
+          { "name": "REST" },
+          { "name": "Postgres" },
+          { "name": "Vercel" },
+          { "name": "Cloudflare" },
+          { "name": "GitHub Actions" },
+          { "name": "Prometheus" },
+          { "name": "Grafana" }
         ],
         [
-          { "name": "AWS", "sourced": true },
-          { "name": "Azure", "sourced": true },
-          { "name": "GCP", "sourced": true },
-          { "name": "Terraform", "sourced": true },
-          { "name": "Kubernetes", "sourced": true },
-          { "name": "Docker", "sourced": false },
-          { "name": "Serverless", "sourced": true },
-          { "name": "IAM / VPC", "sourced": true },
-          { "name": "OpenAI", "sourced": false },
-          { "name": "Anthropic", "sourced": false },
-          { "name": "LangChain", "sourced": false },
-          { "name": "Vector DBs", "sourced": false },
-          { "name": "MCP", "sourced": false },
-          { "name": "PyTorch", "sourced": false },
-          { "name": "Hugging Face", "sourced": false }
+          { "name": "AWS" },
+          { "name": "Azure" },
+          { "name": "GCP" },
+          { "name": "Terraform" },
+          { "name": "Kubernetes" },
+          { "name": "Docker" },
+          { "name": "Serverless" },
+          { "name": "IAM / VPC" },
+          { "name": "OpenAI" },
+          { "name": "Anthropic" },
+          { "name": "LangChain" },
+          { "name": "Vector DBs" },
+          { "name": "MCP" },
+          { "name": "PyTorch" },
+          { "name": "Hugging Face" }
         ]
       ]
     },
     "process": {
+      "heading": "How we work",
       "steps": [
         { "title": "Discovery call", "detail": "30 minutes on what you actually need, no deck." },
         {

@@ -15,10 +15,7 @@ const { whyUs } = content.home;
 
 <section id="why" class="relative z-10 border-t border-ink-800">
   <div class="mx-auto max-w-[1500px] px-6 py-20 md:px-10 md:py-24">
-    <SectionHeading
-      id="why"
-      label={`Why work with us / ${String(whyUs.items.length).padStart(2, '0')}`}
-    />
+    <SectionHeading id="why" label={whyUs.heading} />
     <div class="grid grid-cols-1 gap-12 md:grid-cols-12">
       {/* TODO: replace — placeholder statement */}
       <h3
