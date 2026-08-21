@@ -203,12 +203,17 @@
           "href": "https://www.linkedin.com/company/britnova-technologies"
         },
         {
-          "label": "WhatsApp",
+          "label": "WhatsApp (UK)",
           "value": "+44 74 0521 2943",
           "href": "https://wa.me/447405212943"
+        },
+        {
+          "label": "WhatsApp (PK)",
+          "value": "+92 320 407 1050",
+          "href": "https://wa.me/923204071050"
         }
       ],
-      "location": "Norwich, UK"
+      "location": "Norwich, UK · Lahore, Pakistan"
     }
   },
 
@@ -723,7 +728,19 @@
     "body": "Ready to automate your workflows, scale your cloud infrastructure, or build a custom web solution? Drop us a line. We respond to all inquiries within 24 hours.",
     "info": [
       { "key": "email", "label": "Email us" },
-      { "key": "location", "label": "HQ Location", "value": "Norwich, UK" },
+      {
+        "key": "whatsappUk",
+        "label": "WhatsApp (UK)",
+        "value": "+44 74 0521 2943",
+        "href": "https://wa.me/447405212943"
+      },
+      {
+        "key": "whatsappPk",
+        "label": "WhatsApp (PK)",
+        "value": "+92 320 407 1050",
+        "href": "https://wa.me/923204071050"
+      },
+      { "key": "location", "label": "HQ Location", "value": "Norwich, UK · Lahore, Pakistan" },
       { "key": "hours", "label": "Office Hours", "value": "Mon – Fri, 9:00 AM – 6:00 PM GMT" }
     ]
   },
