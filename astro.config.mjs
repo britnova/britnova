@@ -9,6 +9,14 @@ import netlify from '@astrojs/netlify';
 
 // https://astro.build/config
 export default defineConfig({
+  /*
+   * Canonical origin. Without this, Astro has no idea what host it is building
+   * for, so `Astro.url` on a prerendered page falls back to the dev origin and
+   * every og:/twitter: tag ships pointing at http://localhost:4321 — which
+   * makes every social share preview on the site fail to resolve.
+   */
+  site: 'https://britnova.net',
+
   vite: {
     plugins: [tailwindcss()],
   },
