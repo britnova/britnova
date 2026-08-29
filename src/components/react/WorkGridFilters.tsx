@@ -68,7 +68,7 @@ export default function WorkGridFilters({ caseStudies }: Props) {
 
       {/* Case studies list */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredStudies.map((study) => (
+        {filteredStudies.map((study, i) => (
           /* Keyed on the category so cards re-mount, re-running the animation. */
           <div
             key={`${activeCategory}-${study.slug}`}
@@ -87,7 +87,12 @@ export default function WorkGridFilters({ caseStudies }: Props) {
                     width={study.image.width}
                     height={study.image.height}
                     alt=""
-                    loading="lazy"
+                    /* The grid is 3-up on desktop, so the first row is above the
+                       fold and one of these IS the LCP element. Lazy-loading it
+                       cost ~1s of load delay: the fetch cannot start until layout
+                       proves the image is visible. */
+                    loading={i < 3 ? 'eager' : 'lazy'}
+                    fetchPriority={i === 0 ? 'high' : undefined}
                     decoding="async"
                     className="h-full w-full object-cover object-top transition-all duration-300"
                   />

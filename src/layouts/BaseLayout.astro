@@ -83,6 +83,11 @@ const analyticsEnabled = import.meta.env.PROD;
       crossorigin
     />
 
+    <!-- Pages can inject their own critical <head> tags here — /work uses it to
+         preload its LCP image, which the browser otherwise cannot discover until
+         it has laid the grid out. -->
+    <slot name="head" />
+
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
