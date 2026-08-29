@@ -90,12 +90,13 @@ const analyticsEnabled = import.meta.env.PROD;
     <!-- Fonts are self-hosted (see @font-face in global.css), so nothing on the
          critical path touches a third-party origin.
 
-         These six are every face used above the fold: Inter for body copy,
-         Poppins 600 for the h1, JetBrains Mono 400 for nav/eyebrows/buttons,
-         and Poppins 300/400/700 for the three weights in the wordmark. They are
-         preloaded because global.css declares font-display: optional — the
-         browser only uses a face it already has by first paint, so a face that
-         is not preloaded would silently render in the fallback. -->
+         Every face the site can render is preloaded: Inter for body copy,
+         Poppins 600 for the h1, 500 for section headings, 300/400/700 for the
+         wordmark, and JetBrains Mono 400 for nav/eyebrows/buttons. With
+         font-display: block a face that is discovered late (at style-match
+         time, after the inlined CSS is parsed) becomes a critical-path fetch
+         holding its text invisible; preloading moves that fetch to head parse,
+         in parallel with everything else. -->
     <link
       rel="preload"
       href="/fonts/inter-300-700-latin.woff2"
@@ -134,6 +135,13 @@ const analyticsEnabled = import.meta.env.PROD;
     <link
       rel="preload"
       href="/fonts/poppins-300-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/poppins-500-latin.woff2"
       as="font"
       type="font/woff2"
       crossorigin
