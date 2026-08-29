@@ -1,6 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import content from '../../data/content.json';
+import { getWorkImage, HERO_WIDTHS, HERO_SIZES } from '../../utils/workImages';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 export async function getStaticPaths() {
@@ -15,6 +17,8 @@ export async function getStaticPaths() {
 }
 
 const { entry, nextEntry } = Astro.props;
+
+const heroImage = getWorkImage(entry.heroImage);
 ---
 
 <BaseLayout title={`${entry.title} | Britnova Technologies`} description={entry.description}>
@@ -29,13 +33,19 @@ const { entry, nextEntry } = Astro.props;
         Back to portfolio
       </a>
 
-      <!-- Hero Image -->
+      <!-- LCP element on this page, hence eager + high priority. -->
       {
-        entry.heroImage && (
+        heroImage && (
           <div class="mb-12 aspect-[16/9] overflow-hidden border border-ink-800 bg-ink-900">
-            <img
-              src={entry.heroImage}
+            <Image
+              src={heroImage}
               alt={`${entry.title} homepage`}
+              width={896}
+              widths={HERO_WIDTHS}
+              sizes={HERO_SIZES}
+              format="webp"
+              loading="eager"
+              fetchpriority="high"
               class="h-full w-full object-cover object-top"
             />
           </div>

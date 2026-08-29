@@ -1,11 +1,40 @@
 ---
+import { getImage } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import WorkGridFilters from '../../components/react/WorkGridFilters';
 import CTASection from '../../components/astro/shared/CTASection.astro';
 import content from '../../data/content.json';
+import { getWorkImage, CARD_WIDTHS, CARD_SIZES } from '../../utils/workImages';
 
-const caseStudies = content.work;
 const { workPage } = content;
+
+/* React islands can't use <Image> (build-time Astro only), so run the same
+   pipeline here and hand the island plain, serialisable attributes. */
+const caseStudies = await Promise.all(
+  content.work.map(async (study) => {
+    const asset = getWorkImage(study.heroImage);
+    if (!asset) return { ...study, image: undefined };
+
+    const optimised = await getImage({
+      src: asset,
+      width: 400, // else the no-srcset fallback is the 2880px original
+
+      widths: CARD_WIDTHS,
+      format: 'webp',
+    });
+
+    return {
+      ...study,
+      image: {
+        src: optimised.src,
+        srcSet: optimised.srcSet.attribute,
+        sizes: CARD_SIZES,
+        width: optimised.attributes.width ?? asset.width,
+        height: optimised.attributes.height ?? asset.height,
+      },
+    };
+  })
+);
 ---
 
 <BaseLayout title={workPage.seo.title} description={workPage.seo.description}>
