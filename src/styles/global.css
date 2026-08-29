@@ -2,18 +2,22 @@
    and no CSS -> font-file chain across two extra domains. unicode-range means
    a latin-only visitor never downloads the -ext files.
 
-   font-display is `optional`, not `swap`: swap guarantees a visible flash where
-   text paints in the fallback and then flips to the real face mid-read. With
-   optional the browser either has the font in time and uses it from the very
-   first paint, or keeps the fallback for that pageview and never swaps. The
-   above-the-fold faces are preloaded in BaseLayout so they win that race; the
-   metric-matched fallbacks below mean the rare miss is a glyph difference, not
-   a reflow. */
+   font-display is `block`: the text is held (invisible) until the face
+   arrives, then paints in the brand font directly — the fallback is never
+   shown. `swap` paints Arial first and flips it mid-read; `optional` uses
+   whichever face happens to be ready at first paint, so a hard refresh (cold
+   cache) rendered a different font than a normal one. Both were rejected for
+   exactly those visible artefacts. The cost of `block` is that text paint
+   waits on the font — bounded by preloading every above-the-fold face from
+   our own origin (see BaseLayout) and the immutable cache, so the wait is
+   one small same-origin fetch on first visit and zero after. If a face ever
+   exceeds the ~3s block timeout, the metric-matched fallbacks below take
+   over without moving anything. */
 @font-face {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 300 700;
-  font-display: optional;
+  font-display: block;
   src: url('/fonts/inter-300-700-latin-ext.woff2') format('woff2');
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
@@ -24,7 +28,7 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 300 700;
-  font-display: optional;
+  font-display: block;
   src: url('/fonts/inter-300-700-latin.woff2') format('woff2');
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
@@ -34,7 +38,7 @@
   font-family: 'JetBrains Mono';
   font-style: normal;
   font-weight: 400;
-  font-display: optional;
+  font-display: block;
   src: url('/fonts/jetbrains-mono-400-latin-ext.woff2') format('woff2');
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
@@ -45,7 +49,7 @@
   font-family: 'JetBrains Mono';
   font-style: normal;
   font-weight: 400;
-  font-display: optional;
+  font-display: block;
   src: url('/fonts/jetbrains-mono-400-latin.woff2') format('woff2');
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
@@ -55,7 +59,7 @@
   font-family: 'JetBrains Mono';
   font-style: normal;
   font-weight: 700;
-  font-display: optional;
+  font-display: block;
   src: url('/fonts/jetbrains-mono-700-latin-ext.woff2') format('woff2');
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
@@ -66,7 +70,7 @@
   font-family: 'JetBrains Mono';
   font-style: normal;
   font-weight: 700;
-  font-display: optional;
+  font-display: block;
   src: url('/fonts/jetbrains-mono-700-latin.woff2') format('woff2');
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
@@ -76,7 +80,7 @@
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 300;
-  font-display: optional;
+  font-display: block;
   src: url('/fonts/poppins-300-latin-ext.woff2') format('woff2');
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
@@ -87,7 +91,7 @@
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 300;
-  font-display: optional;
+  font-display: block;
   src: url('/fonts/poppins-300-latin.woff2') format('woff2');
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
@@ -97,7 +101,7 @@
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
-  font-display: optional;
+  font-display: block;
   src: url('/fonts/poppins-400-latin-ext.woff2') format('woff2');
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
@@ -108,7 +112,7 @@
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
-  font-display: optional;
+  font-display: block;
   src: url('/fonts/poppins-400-latin.woff2') format('woff2');
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
@@ -118,7 +122,7 @@
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
-  font-display: optional;
+  font-display: block;
   src: url('/fonts/poppins-500-latin-ext.woff2') format('woff2');
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
@@ -129,7 +133,7 @@
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
-  font-display: optional;
+  font-display: block;
   src: url('/fonts/poppins-500-latin.woff2') format('woff2');
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
@@ -139,7 +143,7 @@
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 600;
-  font-display: optional;
+  font-display: block;
   src: url('/fonts/poppins-600-latin-ext.woff2') format('woff2');
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
@@ -150,7 +154,7 @@
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 600;
-  font-display: optional;
+  font-display: block;
   src: url('/fonts/poppins-600-latin.woff2') format('woff2');
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
@@ -160,7 +164,7 @@
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 700;
-  font-display: optional;
+  font-display: block;
   src: url('/fonts/poppins-700-latin-ext.woff2') format('woff2');
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
@@ -171,7 +175,7 @@
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 700;
-  font-display: optional;
+  font-display: block;
   src: url('/fonts/poppins-700-latin.woff2') format('woff2');
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
@@ -233,7 +237,7 @@
 
   /* TODO: replace — Poppins stands in for the wordmark's face (closest
      widely available match to its geometric single-storey 'a'). */
-  --font-brand: 'Poppins', 'Poppins Fallback', 'Outfit', sans-serif;
+  --font-brand: 'Poppins', 'Poppins Fallback', sans-serif;
 }
 
 /*
