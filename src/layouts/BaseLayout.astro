@@ -71,13 +71,53 @@ const analyticsEnabled = import.meta.env.PROD;
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Fonts are self-hosted (see @font-face in global.css), so there is no
-         render-blocking request to fonts.googleapis.com and no second origin
-         for the files. Poppins 600 is preloaded because the LCP element on
-         most pages is an <h1> in font-brand at that weight; the rest swap in. -->
+    <!-- Fonts are self-hosted (see @font-face in global.css), so nothing on the
+         critical path touches a third-party origin.
+
+         These six are every face used above the fold: Inter for body copy,
+         Poppins 600 for the h1, JetBrains Mono 400 for nav/eyebrows/buttons,
+         and Poppins 300/400/700 for the three weights in the wordmark. They are
+         preloaded because global.css declares font-display: optional — the
+         browser only uses a face it already has by first paint, so a face that
+         is not preloaded would silently render in the fallback. -->
+    <link
+      rel="preload"
+      href="/fonts/inter-300-700-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <link
       rel="preload"
       href="/fonts/poppins-600-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/jetbrains-mono-400-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/poppins-700-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/poppins-400-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/poppins-300-latin.woff2"
       as="font"
       type="font/woff2"
       crossorigin
