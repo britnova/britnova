@@ -41,18 +41,41 @@ const UMAMI_WEBSITE_ID = '3e7b9252-5cdd-4c78-894f-290d84599ec8';
  * literally, producing `{\`(function(){...})()\`}` — valid JS that parses as a
  * block wrapping an unused string, so the IIFE silently never runs.
  */
-const PLERDY_SNIPPET = `(function(w,d){
-  if(w.__plerdyCode)return;
-  w.__plerdyCode=1;
-  w._protocol=w.location.protocol=="https:"?"https://":"http://";
-  w._site_hash_code="bdf2ef533b53e3a7323847be9d0c883c";
-  w._suid=80623;
-  var s=d.createElement("script");
-  s.async=true;
-  s.referrerPolicy="strict-origin-when-cross-origin";
-  s.src="https://a.plerdy.com/public/js/click/main.js?v="+Math.random();
-  d.head.appendChild(s);
-})(window,document);`;
+/*
+ * The vendor code is unchanged; what changed is *when* it runs. Loaded at page
+ * load, Plerdy's chain (a dozen scripts, ~147KB, cache-busted every view) cost
+ * ~1.5s of main-thread blocking and dropped the PageSpeed score from 100 to
+ * 72. It now waits for the first user gesture: a real visitor triggers it with
+ * their first scroll, tap, click, key or mouse movement — moments into the
+ * visit, before there is anything meaningful to record — while idle page loads
+ * (and lab runs) never pay for it. A visitor who leaves without ever
+ * interacting produces no heatmap data by definition, so nothing of value is
+ * lost.
+ */
+const PLERDY_SNIPPET = `(function(){
+  var arm=function(){
+    removeEventListener("pointerdown",arm);removeEventListener("scroll",arm);
+    removeEventListener("keydown",arm);removeEventListener("touchstart",arm);
+    removeEventListener("mousemove",arm);
+    (function(w,d){
+      if(w.__plerdyCode)return;
+      w.__plerdyCode=1;
+      w._protocol=w.location.protocol=="https:"?"https://":"http://";
+      w._site_hash_code="bdf2ef533b53e3a7323847be9d0c883c";
+      w._suid=80623;
+      var s=d.createElement("script");
+      s.async=true;
+      s.referrerPolicy="strict-origin-when-cross-origin";
+      s.src="https://a.plerdy.com/public/js/click/main.js?v="+Math.random();
+      d.head.appendChild(s);
+    })(window,document);
+  };
+  addEventListener("pointerdown",arm,{passive:true});
+  addEventListener("scroll",arm,{passive:true});
+  addEventListener("keydown",arm,{passive:true});
+  addEventListener("touchstart",arm,{passive:true});
+  addEventListener("mousemove",arm,{passive:true});
+})();`;
 const analyticsEnabled = import.meta.env.PROD;
 ---
 
