@@ -13,3 +13,7 @@ pnpm-lock.yaml
 package-lock.json
 
 timeouts.json
+
+# research/reference docs contain illustrative (intentionally partial)
+# code fragments that prettier tries to parse as real source
+docs/
