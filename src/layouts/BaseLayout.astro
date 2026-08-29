@@ -70,7 +70,21 @@ const analyticsEnabled = import.meta.env.PROD;
       })();
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+
+    <!-- Fonts are self-hosted (see @font-face in global.css), so there is no
+         render-blocking request to fonts.googleapis.com and no second origin
+         for the files. Poppins 600 is preloaded because the LCP element on
+         most pages is an <h1> in font-brand at that weight; the rest swap in. -->
+    <link
+      rel="preload"
+      href="/fonts/poppins-600-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- Primary Meta Tags -->

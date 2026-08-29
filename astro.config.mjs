@@ -17,6 +17,15 @@ export default defineConfig({
    */
   site: 'https://britnova.net',
 
+  /*
+   * Inline the stylesheet instead of linking it. The site's CSS is a few KB
+   * over the wire, and a linked stylesheet is a render-blocking request on the
+   * critical path; inlining removes that round trip entirely. Trade-off is no
+   * cross-page CSS caching, which is the right way round for a marketing site
+   * where most visits are a single page.
+   */
+  build: { inlineStylesheets: 'always' },
+
   vite: {
     plugins: [tailwindcss()],
   },
