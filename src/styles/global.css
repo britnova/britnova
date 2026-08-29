@@ -282,3 +282,15 @@
     animation: none;
   }
 }
+
+/* Skip layout for sections that start offscreen. The homepage carries ~920
+   elements across seven sections, and Style & Layout was the largest slice of
+   main-thread work before first paint even though only the hero is visible.
+   `auto` on contain-intrinsic-size means the browser substitutes a placeholder
+   height until a section has been rendered once, then remembers the real one —
+   which is what keeps this from trading FCP for layout shift. The first two
+   children are excluded so nothing above the fold is affected. */
+main > section:nth-child(n + 3) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
