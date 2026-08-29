@@ -11,7 +11,7 @@ Marketing website for a software development agency. Design direction: dark, bol
 - **Framework**: Astro (App Router-style file-based routing, static output)
 - **Styling**: Tailwind CSS (custom theme — do not use default Tailwind palette/typography, use tokens defined in `tailwind.config.mjs`)
 - **Interactivity**: React, used only for islands that need client-side state (nav mobile menu, testimonial carousel, contact form, work-grid filters). Everything else must be static `.astro` components — do not reach for React by default.
-- **Animation**: Framer Motion, used inside React islands only
+- **Animation**: CSS transitions, keyframes and `content-visibility` — no animation library. Framer Motion was removed: it cost ~125KB of client JS to serve a single fade-and-scale on the work grid. If an interaction genuinely cannot be expressed in CSS, raise it before adding a dependency; the budget below comes first.
 - **Content**: single source of truth at `src/data/content.json` — every page's copy (homepage sections, services, work case studies, about, contact, nav, footer) lives there, not in markdown or scattered `.ts` data modules. Imported directly (`import content from '.../data/content.json'`); `resolveJsonModule` is enabled so this is fully typed with no wrapper needed.
 - **Package manager**: pnpm
 
@@ -57,7 +57,7 @@ public/
 
 - **Component naming**: PascalCase for both `.astro` and `.tsx` components
 - **Component placement**: `astro/home/` is for homepage-only sections. The moment a component is used by a second page, it belongs in `astro/shared/`, not `home/`.
-- **Static-first**: default to `.astro` components. Only create a React component when the section needs client-side state, animation orchestration, or event handling that Astro can't do statically. Use `client:visible` (not `client:load`) for below-the-fold islands to minimize hydration cost.
+- **Static-first**: default to `.astro` components. Only create a React component when the section needs client-side state or event handling that Astro can't do statically. Animation on its own is not a reason — do it in CSS. Use `client:visible` (not `client:load`) for below-the-fold islands to minimize hydration cost.
 - **Styling**: Tailwind utility classes only — no separate CSS files per component unless doing something Tailwind genuinely can't express. Shared design tokens (colors, font sizes, spacing) live in `tailwind.config.mjs`, not hardcoded hex values in components.
 - **Images**: use Astro's `<Image />` component (`astro:assets`) for all local images to get automatic optimization. Never use raw `<img>` for local files.
 - **TypeScript**: use TypeScript for all React components and Astro frontmatter where props are involved. Define prop types explicitly, no `any`.
