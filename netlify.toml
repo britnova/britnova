@@ -4,3 +4,11 @@
 
 [build.environment]
   NODE_VERSION = "22.23.1"
+
+# Font filenames are stable and their contents never change, so they can be
+# cached indefinitely. Without this they inherit Netlify's default, which
+# PageSpeed flags under "Use efficient cache lifetimes".
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

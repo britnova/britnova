@@ -71,14 +71,16 @@ const analyticsEnabled = import.meta.env.PROD;
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Linked, not @import-ed from global.css, so fonts are discoverable in
-         the initial HTML. gstatic needs crossorigin: font fetches are CORS.
-         Weights are only those in use — Poppins 300/400/700 is BrandLogo. -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Fonts are self-hosted (see @font-face in global.css), so there is no
+         render-blocking request to fonts.googleapis.com and no second origin
+         for the files. Poppins 600 is preloaded because the LCP element on
+         most pages is an <h1> in font-brand at that weight; the rest swap in. -->
     <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="preload"
+      href="/fonts/poppins-600-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
 
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
