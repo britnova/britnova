@@ -4,15 +4,18 @@
  *
  * Section order:
  *   Hero (full viewport, includes the header) → Why work with us → Services →
- *   Technology stack → How we work → Meet the team → Contact → Footer
+ *   Technology stack → How we work → Contact → Footer
  *
  * `chrome={false}` because this page supplies its own header and footer
  * directly (embedding SiteHeader inside Hero, so the two fill exactly one
  * viewport) rather than via BaseLayout's shared-chrome path.
  *
- * TODO: replace — the page still renders placeholder copy throughout, and the
- * team section contains no real people. Grep `TODO: replace` under
- * src/components/astro/home and src/data before launch.
+ * TeamRoster is built and wired to content.home.team, but is not rendered here:
+ * the roster still holds placeholder people. Re-add <TeamRoster /> between
+ * ProcessGrid and ContactSection once there are real names to list.
+ *
+ * TODO: replace — the page still renders placeholder copy throughout. Grep
+ * `TODO: replace` under src/components/astro/home and src/data before launch.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/astro/home/Hero.astro';
@@ -20,7 +23,6 @@ import WhyUs from '../components/astro/home/WhyUs.astro';
 import ServicesTabs from '../components/astro/home/ServicesTabs.astro';
 import TechStackBelt from '../components/astro/home/TechStackBelt.astro';
 import ProcessGrid from '../components/astro/home/ProcessGrid.astro';
-import TeamRoster from '../components/astro/home/TeamRoster.astro';
 import ContactSection from '../components/astro/home/ContactSection.astro';
 import SiteFooter from '../components/astro/shared/SiteFooter.astro';
 import content from '../data/content.json';
@@ -42,7 +44,6 @@ const services = [...content.services].sort((a, b) => a.order - b.order);
     <ServicesTabs services={services} />
     <TechStackBelt />
     <ProcessGrid />
-    <TeamRoster />
     <ContactSection />
     <SiteFooter />
   </div>
