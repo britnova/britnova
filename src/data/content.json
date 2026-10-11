@@ -212,17 +212,17 @@
           "href": "https://www.linkedin.com/company/britnova-technologies"
         },
         {
-          "label": "WhatsApp (UK)",
+          "label": "Contact (UK)",
           "value": "+44 74 0521 2943",
           "href": "https://wa.me/447405212943"
         },
         {
-          "label": "WhatsApp (PK)",
+          "label": "Contact (PK)",
           "value": "+92 320 407 1050",
           "href": "https://wa.me/923204071050"
         },
         {
-          "label": "Phone (Canada)",
+          "label": "Contact (Canada)",
           "value": "+1 289 707 2233",
           "href": "tel:+12897072233"
         }
@@ -763,7 +763,7 @@
       { "key": "email", "label": "Email us" },
       {
         "key": "phones",
-        "label": "Phone & WhatsApp",
+        "label": "Contact",
         "numbers": [
           {
             "region": "UK",
