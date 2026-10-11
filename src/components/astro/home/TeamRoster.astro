@@ -24,24 +24,24 @@ const members = team.members.map((m) => ({
     >
       {team.quote}
     </blockquote>
-    <div class="mt-12 grid grid-cols-1 gap-x-10 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="mt-12 grid grid-cols-1 gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
       {
         members.map((m) => (
-          <div class="border-t border-ink-700 pt-4">
+          <div class="border-t border-ink-700 pt-8 text-center">
             {m.portrait && (
               <Image
                 src={m.portrait}
                 alt={`Portrait of ${m.name}`}
-                width={112}
-                height={112}
+                width={192}
+                height={192}
                 densities={[1, 2]}
                 loading="lazy"
-                class="mb-4 h-28 w-28 rounded-sm object-cover"
+                class="mx-auto mb-6 h-40 w-40 rounded-full object-cover ring-1 ring-ink-700 md:h-48 md:w-48"
               />
             )}
             <p class="font-mono text-[12px] tracking-[0.1em] text-ink-100 uppercase">{m.name}</p>
             <p class="font-brand mt-1.5 text-[18px] font-medium text-paper">{m.role}</p>
-            <p class="mt-1 font-mono text-[10px] tracking-[0.12em] text-ink-300 uppercase">
+            <p class="mt-2 font-mono text-[12px] tracking-[0.08em] text-ink-200 uppercase">
               {m.focus}
             </p>
           </div>
