@@ -2,10 +2,18 @@
 /*
  * "Leadership Team" — the real people behind BritNova.
  */
+import { Image } from 'astro:assets';
 import SectionHeading from '../shared/SectionHeading.astro';
 import content from '../../../data/content.json';
+import { getTeamImage } from '../../../utils/teamImages';
 
 const { team } = content.home;
+
+/* `photo` is optional per member; cards without one render text-only. */
+const members = team.members.map((m) => ({
+  ...m,
+  portrait: getTeamImage((m as { photo?: string }).photo),
+}));
 ---
 
 <section id="team" class="relative z-10 border-t border-ink-800">
@@ -16,10 +24,21 @@ const { team } = content.home;
     >
       {team.quote}
     </blockquote>
-    <div class="mt-12 grid grid-cols-1 gap-x-10 gap-y-6 sm:grid-cols-2 md:grid-cols-3">
+    <div class="mt-12 grid grid-cols-1 gap-x-10 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
       {
-        team.members.map((m) => (
+        members.map((m) => (
           <div class="border-t border-ink-700 pt-4">
+            {m.portrait && (
+              <Image
+                src={m.portrait}
+                alt={`Portrait of ${m.name}`}
+                width={112}
+                height={112}
+                densities={[1, 2]}
+                loading="lazy"
+                class="mb-4 h-28 w-28 rounded-sm object-cover"
+              />
+            )}
             <p class="font-mono text-[12px] tracking-[0.1em] text-ink-100 uppercase">{m.name}</p>
             <p class="font-brand mt-1.5 text-[18px] font-medium text-paper">{m.role}</p>
             <p class="mt-1 font-mono text-[10px] tracking-[0.12em] text-ink-300 uppercase">

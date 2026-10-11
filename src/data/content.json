@@ -3,8 +3,8 @@
     "brandName": "BritNova",
     "brandSuffix": "tech",
     "legalName": "Britnova Technologies",
-    "defaultTitle": "BritNova Tech | AI, Cloud & Web Engineering",
-    "defaultDescription": "An engineering studio working across machine learning, cloud infrastructure, delivery automation and the modern web.",
+    "defaultTitle": "BritNova Tech | AI, Cloud, Web & Workforce Growth",
+    "defaultDescription": "An engineering studio working across machine learning, cloud infrastructure, delivery automation and the modern web, helping organizations grow their people alongside their technology.",
     "email": "contact@britnova.net"
   },
 
@@ -25,7 +25,7 @@
       "eyebrow": "Partner With Us",
       "headlineLine1": "Have an Idea?",
       "headlineLine2": "Let's build it together.",
-      "body": "Custom AI workflows, enterprise-grade web experiences, cloud orchestration: we build what your business actually needs.",
+      "body": "Custom AI workflows, enterprise-grade web experiences, cloud orchestration, workforce and organizational growth: we deliver what your business actually needs.",
       "primary": { "label": "Get in Touch", "href": "/contact" },
       "secondary": { "label": "Our Capabilities", "href": "/services" }
     }
@@ -33,13 +33,13 @@
 
   "home": {
     "seo": {
-      "title": "BritNova Tech | AI, Cloud & Web Engineering",
-      "description": "An engineering studio working across machine learning, cloud infrastructure, delivery automation and the modern web."
+      "title": "BritNova Tech | AI, Cloud, Web & Workforce Growth",
+      "description": "An engineering studio working across machine learning, cloud infrastructure, delivery automation and the modern web, helping organizations grow their people alongside their technology."
     },
     "hero": {
-      "eyebrow": "[ AI · Cloud · Web — Where technology evolves.. ]",
+      "eyebrow": "[ AI · Cloud · Web · People — Where technology evolves.. ]",
       "headline": "We build the systems other teams are afraid to touch.",
-      "subhead": "BritNova builds and runs AI platforms, cloud infrastructure, and custom software for growing businesses. The engineers who design it also ship and support it.",
+      "subhead": "BritNova builds and runs AI platforms, cloud infrastructure, and custom software for growing businesses. The engineers who design it also ship and support it. We also help growing organizations scale their people alongside their technology.",
       "ctaPrimary": { "label": "Start a project", "href": "#contact" },
       "ctaSecondary": { "label": "What we do", "href": "#services" }
     },
@@ -177,12 +177,20 @@
         {
           "name": "Ali Arham",
           "role": "Chief Technology Officer (CTO)",
-          "focus": "Technology Strategy • Cloud Engineering"
+          "focus": "Technology Strategy • Cloud Engineering",
+          "photo": "ali-arham.webp"
         },
         {
           "name": "Abubakar Khawaja",
           "role": "Board Director & Head of Engineering",
-          "focus": "Delivery Excellence • Platform Engineering"
+          "focus": "Delivery Excellence • Platform Engineering",
+          "photo": "abubakar-khawaja.webp"
+        },
+        {
+          "name": "Nikki Buchan",
+          "role": "Partner, Canada",
+          "focus": "Growth Strategy • People & AI",
+          "photo": "nikki-buchan.webp"
         }
       ]
     },
@@ -211,9 +219,14 @@
           "label": "WhatsApp (PK)",
           "value": "+92 320 407 1050",
           "href": "https://wa.me/923204071050"
+        },
+        {
+          "label": "Phone (Canada)",
+          "value": "+1 289 707 2233",
+          "href": "tel:+12897072233"
         }
       ],
-      "location": "Norwich, UK · Lahore, Pakistan"
+      "location": "Norwich, UK · Lahore, Pakistan · Canada"
     }
   },
 
@@ -332,6 +345,26 @@
       "body": [
         "Scaling shouldn't mean runaway cloud bills. We design resilient cloud architectures that scale up automatically to meet traffic spikes and scale down to minimize overhead. Security and compliance are built into our design by default, using strict IAM roles, VPC isolation, and end-to-end encryption.",
         "Whether you're migrating legacy servers to the cloud or want serverless computing for event-driven workflows, we build infrastructure sized to your actual budget."
+      ]
+    },
+    {
+      "id": "people-workforce",
+      "shortLabel": "People & Workforce",
+      "title": "People, Workforce & Organizational Growth",
+      "description": "Helping growing organizations build the people, processes and capabilities needed to scale alongside their technology. From workforce planning and talent acquisition to leadership development, HR operations and organizational change, we help businesses strengthen their people infrastructure while modernizing their systems and technology.",
+      "order": 5,
+      "deliverables": [
+        "Workforce Planning & Talent Strategy",
+        "HR Operations & Process Optimization",
+        "Leadership Development & Training",
+        "Organizational Design & Change Management",
+        "HR Technology Integration & Adoption"
+      ],
+      "process": [
+        "Organizational & Workforce Assessment",
+        "Strategy & Solution Design",
+        "Implementation & Change Support",
+        "Training, Adoption & Optimization"
       ]
     }
   ],
@@ -685,13 +718,13 @@
     },
     "eyebrow": "About Our Agency",
     "headline": { "prefix": "About", "accent": "Britnova" },
-    "intro": "We're a technology company that helps businesses build scalable digital products using AI, cloud, and modern web technologies.",
+    "intro": "We're a technology company that helps businesses build scalable digital products using AI, cloud, and modern web technologies. We also help organizations grow their people and workforce alongside their technology.",
     "story": {
       "title": "Our Story",
       "paragraphs": [
         "Britnova Technologies was founded on a simple idea: connect complex, emerging technology to tangible business value. We noticed that many companies were either getting lost in AI hype or running fragile legacy systems that bottlenecked growth.",
-        "We specialize in AI/ML model deployment, DevOps pipeline automation, and modern full-stack development. The engineering solutions we deliver are powerful, but also scalable and maintainable.",
-        "From startups launching their first products to growing enterprises modernizing their tech stack, we work side-by-side with product teams to turn technical concepts into production-ready software."
+        "We specialize in AI/ML model deployment, DevOps pipeline automation, and modern full-stack development. The engineering solutions we deliver are powerful, but also scalable and maintainable. Alongside engineering, we help organizations scale their people, processes and capabilities alongside their technology.",
+        "From startups launching their first products to growing enterprises modernizing their tech stack, we work side-by-side with product teams to turn technical concepts into production-ready software. We handle personal data in line with UK GDPR and other applicable data protection laws."
       ]
     },
     "philosophy": {
@@ -721,11 +754,11 @@
   "contactPage": {
     "seo": {
       "title": "Contact Us | Britnova Technologies",
-      "description": "Get in touch with our engineering team to discuss your next custom software development project."
+      "description": "Get in touch with our team to discuss your next custom software development project, or workforce and organizational growth."
     },
     "eyebrow": "Get in Touch",
     "headline": { "line1": "Let's build", "line2Prefix": "something", "accent": "great" },
-    "body": "Ready to automate your workflows, scale your cloud infrastructure, or build a custom web solution? Drop us a line. We respond to all inquiries within 24 hours.",
+    "body": "Ready to automate your workflows, scale your cloud infrastructure, build a custom web solution, or scale your people and organization alongside your technology? Drop us a line. We respond to all inquiries within 24 hours.",
     "info": [
       { "key": "email", "label": "Email us" },
       {
@@ -740,7 +773,17 @@
         "value": "+92 320 407 1050",
         "href": "https://wa.me/923204071050"
       },
-      { "key": "location", "label": "HQ Location", "value": "Norwich, UK · Lahore, Pakistan" },
+      {
+        "key": "phoneCa",
+        "label": "Phone (Canada)",
+        "value": "+1 289 707 2233",
+        "href": "tel:+12897072233"
+      },
+      {
+        "key": "location",
+        "label": "HQ Location",
+        "value": "Norwich, UK · Lahore, Pakistan · Canada"
+      },
       { "key": "hours", "label": "Office Hours", "value": "Mon – Fri, 9:00 AM – 6:00 PM GMT" }
     ]
   },
@@ -748,11 +791,11 @@
   "servicesPage": {
     "seo": {
       "title": "Our Services & Capabilities | Britnova Technologies",
-      "description": "Learn about our custom AI/ML model developments, infrastructure scaling, full-stack systems, and cloud management."
+      "description": "Learn about our custom AI/ML model developments, infrastructure scaling, full-stack systems, cloud management, and people, workforce and organizational growth."
     },
     "eyebrow": "Our Capabilities",
     "headline": "How We Build",
-    "body": "We bring engineering precision and structured development practices to help you scale operations, decrease costs, and build custom software."
+    "body": "We bring engineering precision and structured development practices to help you scale operations, decrease costs, and build custom software. We also help clients grow their people and organizations alongside their technology."
   },
 
   "workPage": {
@@ -779,6 +822,7 @@
       "DevOps & MLOps",
       "Web & Software Development",
       "Cloud Services",
+      "People & Workforce Growth",
       "Consulting / Other"
     ]
   }
