@@ -18,7 +18,7 @@
 import BriefForm from '../../react/BriefForm';
 import content from '../../../data/content.json';
 
-const { eyebrow, headline, body, channels, location } = content.home.contact;
+const { eyebrow, headline, body, channels } = content.home.contact;
 const email = content.site.email;
 const resolvedChannels = channels.map((c) =>
   c.key === 'email' ? { ...c, value: email, href: `mailto:${email}` } : c
@@ -51,7 +51,7 @@ const resolvedChannels = channels.map((c) =>
               return (
                 <Row
                   href={c.href}
-                  class="group flex items-baseline justify-between gap-6 border-b border-ink-800 py-4"
+                  class="group flex items-baseline justify-between gap-6 border-b border-ink-800 py-4 last:border-b-0"
                 >
                   <span class="shrink-0 font-mono text-[11px] tracking-[0.2em] text-ink-300 uppercase">
                     {c.label}
@@ -78,17 +78,6 @@ const resolvedChannels = channels.map((c) =>
               );
             })
           }
-
-          <div class="flex items-baseline justify-between gap-6 py-4">
-            <span class="shrink-0 font-mono text-[11px] tracking-[0.2em] text-ink-300 uppercase">
-              Location
-            </span>
-            <span
-              class="min-w-0 shrink break-words text-right font-mono text-[15px] tracking-[0.04em] text-ink-300"
-            >
-              {location}
-            </span>
-          </div>
         </div>
       </div>
 

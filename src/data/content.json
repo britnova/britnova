@@ -176,6 +176,12 @@
           "photo": "khalil-yafa.webp"
         },
         {
+          "name": "Nikki Buchan",
+          "role": "Partner, Canada",
+          "focus": "Growth Strategy • People & AI",
+          "photo": "nikki-buchan.webp"
+        },
+        {
           "name": "Ali Arham",
           "role": "Chief Technology Officer (CTO)",
           "focus": "Technology Strategy • Cloud Engineering",
@@ -186,12 +192,6 @@
           "role": "Board Director & Head of Engineering",
           "focus": "Delivery Excellence • Platform Engineering",
           "photo": "abubakar-khawaja.webp"
-        },
-        {
-          "name": "Nikki Buchan",
-          "role": "Partner, Canada",
-          "focus": "Growth Strategy • People & AI",
-          "photo": "nikki-buchan.webp"
         }
       ]
     },
@@ -226,8 +226,7 @@
           "value": "+1 289 707 2233",
           "href": "tel:+12897072233"
         }
-      ],
-      "location": "Norwich, UK · Lahore, Pakistan · Canada"
+      ]
     }
   },
 
@@ -763,27 +762,25 @@
     "info": [
       { "key": "email", "label": "Email us" },
       {
-        "key": "whatsappUk",
-        "label": "WhatsApp (UK)",
-        "value": "+44 74 0521 2943",
-        "href": "https://wa.me/447405212943"
-      },
-      {
-        "key": "whatsappPk",
-        "label": "WhatsApp (PK)",
-        "value": "+92 320 407 1050",
-        "href": "https://wa.me/923204071050"
-      },
-      {
-        "key": "phoneCa",
-        "label": "Phone (Canada)",
-        "value": "+1 289 707 2233",
-        "href": "tel:+12897072233"
-      },
-      {
-        "key": "location",
-        "label": "HQ Location",
-        "value": "Norwich, UK · Lahore, Pakistan · Canada"
+        "key": "phones",
+        "label": "Phone & WhatsApp",
+        "numbers": [
+          {
+            "region": "UK",
+            "value": "+44 74 0521 2943",
+            "href": "https://wa.me/447405212943"
+          },
+          {
+            "region": "Pakistan",
+            "value": "+92 320 407 1050",
+            "href": "https://wa.me/923204071050"
+          },
+          {
+            "region": "Canada",
+            "value": "+1 289 707 2233",
+            "href": "tel:+12897072233"
+          }
+        ]
       },
       { "key": "hours", "label": "Office Hours", "value": "Mon – Fri, 9:00 AM – 6:00 PM GMT" }
     ]

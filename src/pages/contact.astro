@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BriefForm from '../components/react/BriefForm';
-import { Mail, MapPin, Globe, MessageCircle, Phone } from 'lucide-react';
+import { Mail, MapPin, Globe, Phone } from 'lucide-react';
 import content from '../data/content.json';
 
 const { contactPage } = content;
@@ -14,9 +14,7 @@ const info = contactPage.info.map((item) =>
 
 const infoIcons = {
   email: Mail,
-  whatsappUk: MessageCircle,
-  whatsappPk: MessageCircle,
-  phoneCa: Phone,
+  phones: Phone,
   location: MapPin,
   hours: Globe,
 };
@@ -58,7 +56,23 @@ const infoIcons = {
                       <span class="block font-mono text-[11px] tracking-[0.2em] text-ink-300 uppercase">
                         {item.label}
                       </span>
-                      {'href' in item && item.href ? (
+                      {'numbers' in item && item.numbers ? (
+                        <ul class="mt-2 space-y-2">
+                          {item.numbers.map((n) => (
+                            <li class="grid grid-cols-[5rem_auto] items-baseline gap-x-4">
+                              <span class="font-mono text-[11px] tracking-[0.12em] text-ink-300 uppercase">
+                                {n.region}
+                              </span>
+                              <a
+                                href={n.href}
+                                class="font-mono text-[15px] text-ink-100 transition-colors hover:text-paper"
+                              >
+                                {n.value}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : 'href' in item && item.href ? (
                         <a
                           href={item.href}
                           class="font-mono text-[15px] text-ink-100 transition-colors hover:text-paper"
