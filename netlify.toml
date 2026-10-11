@@ -5,6 +5,16 @@
 [build.environment]
   NODE_VERSION = "22.23.1"
 
+# Send the default Netlify domain to the canonical domain, so search engines
+# see one site instead of two copies. Deploy previews and branch deploys use
+# different hostnames (e.g. deploy-preview-N--britnova.netlify.app) and are
+# not matched by this rule.
+[[redirects]]
+  from = "https://britnova.netlify.app/*"
+  to = "https://britnova.net/:splat"
+  status = 301
+  force = true
+
 # Font filenames are stable and their contents never change, so they can be
 # cached indefinitely. Without this they inherit Netlify's default, which
 # PageSpeed flags under "Use efficient cache lifetimes".
