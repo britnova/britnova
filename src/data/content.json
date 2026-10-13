@@ -2,7 +2,7 @@
   "site": {
     "brandName": "BritNova",
     "brandSuffix": "tech",
-    "legalName": "Britnova Technologies",
+    "legalName": "Britnova Technology (Private) Limited",
     "defaultTitle": "BritNova Tech | AI, Cloud, Web & Workforce Growth",
     "defaultDescription": "An engineering studio working across machine learning, cloud infrastructure, delivery automation and the modern web, helping organizations grow their people alongside their technology.",
     "email": "contact@britnova.net"
@@ -171,7 +171,7 @@
       "members": [
         {
           "name": "Khaleel Yafa",
-          "role": "Chief Executive Officer (CEO)",
+          "role": "Chief Executive Officer (CEO), UK",
           "focus": "Business Strategy • Client Partnerships",
           "photo": "khaleel-yafa.webp"
         },
@@ -189,7 +189,7 @@
         },
         {
           "name": "Abubakar Khawaja",
-          "role": "Board Director & Head of Engineering",
+          "role": "Head of Engineering",
           "focus": "Delivery Excellence • Platform Engineering",
           "photo": "abubakar-khawaja.webp"
         }
