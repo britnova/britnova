@@ -11,7 +11,9 @@ import content from '../../../data/content.json';
 
 type SocialIconName = 'linkedin' | 'instagram';
 
-const { legalName } = content.site;
+// Short form keeps the copyright on one line on phones; the full registered
+// name stays on /privacy, where the data controller has to be identified.
+const { legalNameShort } = content.site;
 const { legalLinks, social, socialLabel, newTab } = content.footer;
 const { labelOn } = content.analytics;
 
@@ -32,31 +34,37 @@ const isActive = (href: string) => {
   >
     <div class="flex items-center justify-between gap-6">
       <span class="font-sans text-[15px] tracking-normal normal-case"><BrandLogo /></span>
-      {/* -mr cancels the icons' tap padding so their edge lines up with the legal row */}
-      <ul class="-mr-[7px] flex items-center gap-1" aria-label={socialLabel}>
-        {
-          social.map((s) => (
-            <li>
-              <a
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex p-[7px] text-ink-300 transition-colors hover:text-paper"
-              >
-                <SocialIcon name={s.icon as SocialIconName} />
-                <span class="sr-only">{`${s.label} ${newTab}`}</span>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
+      {
+        /* -mr cancels the icons' tap padding so their edge lines up with the legal
+        row; gap + that padding leaves 16px between "Follow Us" and the first icon. */
+      }
+      <div class="-mr-[7px] flex items-center gap-[9px]">
+        <p id="footer-social-label" class="text-ink-200">{socialLabel}</p>
+        <ul class="flex items-center gap-1" aria-labelledby="footer-social-label">
+          {
+            social.map((s) => (
+              <li>
+                <a
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex p-[7px] text-ink-300 transition-colors hover:text-paper"
+                >
+                  <SocialIcon name={s.icon as SocialIconName} />
+                  <span class="sr-only">{`${s.label} ${newTab}`}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
     </div>
 
     {/* The legal name + legal row need ~870px side by side; narrower screens stack them. */}
     <div
       class="flex flex-col gap-3 min-[900px]:flex-row min-[900px]:items-center min-[900px]:justify-between"
     >
-      <p>{`© ${new Date().getFullYear()} ${legalName}`}</p>
+      <p>{`© ${new Date().getFullYear()} ${legalNameShort}`}</p>
       <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
         <nav class="flex flex-wrap gap-x-6 gap-y-2" aria-label="Legal">
           {

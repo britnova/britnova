@@ -3,6 +3,7 @@
     "brandName": "BritNova",
     "brandSuffix": "tech",
     "legalName": "Britnova Technology (Private) Limited",
+    "legalNameShort": "Britnova Technology (Pvt.) Ltd.",
     "defaultTitle": "BritNova Tech | AI, Cloud, Web & Workforce Growth",
     "defaultDescription": "An engineering studio working across machine learning, cloud infrastructure, delivery automation and the modern web, helping organizations grow their people alongside their technology.",
     "email": "contact@britnova.net"
@@ -831,7 +832,7 @@
   },
 
   "footer": {
-    "socialLabel": "Social media",
+    "socialLabel": "Follow Us",
     "newTab": "(opens in a new tab)",
     "social": [
       {
@@ -985,7 +986,7 @@
         {
           "heading": "Other websites",
           "paragraphs": [
-            "This website links to services such as LinkedIn, WhatsApp and Calendly. They have their own privacy policies and we are not responsible for them."
+            "This website links to services such as LinkedIn, Instagram, WhatsApp and Calendly. They have their own privacy policies and we are not responsible for them."
           ]
         },
         {
@@ -1031,7 +1032,7 @@
         {
           "heading": "Third-party links",
           "paragraphs": [
-            "Links to LinkedIn, WhatsApp, Calendly and other sites take you to services that may set their own cookies. We do not control them, so please read their policies."
+            "Links to LinkedIn, Instagram, WhatsApp, Calendly and other sites take you to services that may set their own cookies. We do not control them, so please read their policies."
           ]
         },
         {
