@@ -16,11 +16,22 @@ import TechIcon from './TechIcon.astro';
 import content from '../../../data/content.json';
 
 const { belt, sectionLabel } = content.home.techStack;
+const { beltPause, beltPlay } = content.a11y;
 ---
 
 <section id="stack" class="relative z-10 overflow-hidden border-t border-ink-800">
   <div class="mx-auto max-w-[1500px] px-6 pt-20 md:px-10 md:pt-24">
-    <SectionHeading id="stack" label={sectionLabel} />
+    <SectionHeading id="stack" label={sectionLabel}>
+      <button
+        type="button"
+        id="belt-toggle"
+        data-pause-label={beltPause}
+        data-play-label={beltPlay}
+        class="font-mono text-[12px] tracking-[0.14em] text-ink-300 uppercase transition-colors hover:text-paper"
+      >
+        {beltPause}
+      </button>
+    </SectionHeading>
   </div>
 
   {/* the belt bleeds past the container on purpose; the section clips it */}
@@ -68,6 +79,11 @@ const { belt, sectionLabel } = content.home.techStack;
     animation-direction: reverse;
   }
 
+  /* WCAG 2.2.2: the belt moves on its own, so visitors can pause it (button above) */
+  #stack[data-paused] .sbl-row {
+    animation-play-state: paused;
+  }
+
   .sbl-tile {
     transition:
       border-color 0.3s ease,
@@ -90,3 +106,21 @@ const { belt, sectionLabel } = content.home.techStack;
     }
   }
 </style>
+
+<script>
+  const toggle = document.getElementById('belt-toggle');
+  const section = document.getElementById('stack');
+
+  // Written as one expression (no `{ }` block): see the note in ServicesTabs.astro
+  // about this project's Astro + ESLint + Prettier setup and inline scripts.
+  toggle?.addEventListener(
+    'click',
+    () => (
+      section?.toggleAttribute('data-paused'),
+      (toggle.textContent =
+        (section?.hasAttribute('data-paused')
+          ? toggle.dataset.playLabel
+          : toggle.dataset.pauseLabel) ?? '')
+    )
+  );
+</script>

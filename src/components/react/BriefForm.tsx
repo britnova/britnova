@@ -16,10 +16,11 @@ type Status = 'idle' | 'loading' | 'success' | 'error';
 type ContactApiError = { error?: string };
 
 const SERVICES = content.contactForm.services;
+const PRIVACY_NOTE = content.contactForm.privacyNote;
 
 const labelClass = 'mb-2 block font-mono text-[11px] tracking-[0.2em] text-ink-300 uppercase';
 const fieldClass =
-  'w-full border border-ink-700 bg-ink-950 px-3.5 py-2.5 font-mono text-[15px] text-ink-100 placeholder:text-ink-300 focus:border-ink-400 focus:outline-none transition-colors disabled:opacity-50';
+  'w-full border border-ink-700 bg-ink-950 px-3.5 py-2.5 font-mono text-[15px] text-ink-100 placeholder:text-ink-300 focus:border-ink-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink-200 transition-colors disabled:opacity-50';
 
 export default function BriefForm() {
   const [form, setForm] = useState({
@@ -78,7 +79,7 @@ export default function BriefForm() {
 
       <div className="p-6 md:p-7">
         {status === 'success' ? (
-          <div className="py-10 font-mono text-[15px] leading-[2]">
+          <div role="status" className="py-10 font-mono text-[15px] leading-[2]">
             <p className="text-ink-300">
               <span className="text-ink-300">→</span> brief received
             </p>
@@ -186,6 +187,17 @@ export default function BriefForm() {
             >
               {status === 'loading' ? 'Sending…' : 'Send brief'}
             </button>
+
+            <p className="font-mono text-[12px] leading-relaxed text-ink-300">
+              {PRIVACY_NOTE.text}{' '}
+              <a
+                href={PRIVACY_NOTE.href}
+                className="text-ink-100 underline underline-offset-4 transition-colors hover:text-paper"
+              >
+                {PRIVACY_NOTE.linkLabel}
+              </a>
+              .
+            </p>
           </form>
         )}
       </div>

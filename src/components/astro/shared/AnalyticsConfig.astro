@@ -1,0 +1,37 @@
+---
+/*
+ * Hands the analytics settings to src/utils/analytics.ts and provides the
+ * screen-reader announcement area for the on/off switch. The Umami script is
+ * NOT in the page markup: analytics.ts adds it only while analytics is on.
+ */
+import content from '../../../data/content.json';
+
+interface Props {
+  websiteId: string;
+  scriptSrc: string;
+  enabled: boolean;
+}
+
+const { websiteId, scriptSrc, enabled } = Astro.props;
+const { labelOn, labelOff, announceOn, announceOff } = content.analytics;
+---
+
+<div
+  id="analytics-config"
+  hidden
+  data-website-id={websiteId}
+  data-script-src={scriptSrc}
+  data-enabled={enabled ? 'true' : 'false'}
+  data-label-on={labelOn}
+  data-label-off={labelOff}
+  data-announce-on={announceOn}
+  data-announce-off={announceOff}
+>
+</div>
+<p class="sr-only" role="status" aria-live="polite" data-analytics-live></p>
+
+<script>
+  import { initAnalytics } from '../../../utils/analytics';
+
+  initAnalytics();
+</script>

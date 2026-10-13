@@ -3,6 +3,8 @@ import '../styles/global.css';
 import SiteHeader from '../components/astro/shared/SiteHeader.astro';
 import SiteFooter from '../components/astro/shared/SiteFooter.astro';
 import SiteThemeToggle from '../components/astro/shared/SiteThemeToggle.astro';
+import AnalyticsConfig from '../components/astro/shared/AnalyticsConfig.astro';
+import content from '../data/content.json';
 import { THEME_STORAGE_KEY } from '../utils/theme';
 
 interface Props {
@@ -32,6 +34,7 @@ const {
  * Production builds only, so `npm run dev` doesn't pollute the dashboard.
  */
 const UMAMI_WEBSITE_ID = '3e7b9252-5cdd-4c78-894f-290d84599ec8';
+const UMAMI_SCRIPT_SRC = 'https://cloud.umami.is/script.js';
 
 const analyticsEnabled = import.meta.env.PROD;
 ---
@@ -155,28 +158,27 @@ const analyticsEnabled = import.meta.env.PROD;
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(ogImage, Astro.url)} />
-
-    {
-      /* Analytics — `is:inline` keeps `defer` and `data-website-id` intact;
-        without it Astro bundles the tag into a module and both are lost. */
-    }
-    {
-      analyticsEnabled && (
-        <script
-          is:inline
-          defer
-          src="https://cloud.umami.is/script.js"
-          data-website-id={UMAMI_WEBSITE_ID}
-        />
-      )
-    }
   </head>
   <body
     class="bg-ink-950 text-paper font-sans flex flex-col min-h-screen selection:bg-paper selection:text-ink-950"
   >
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:bg-paper focus:px-4 focus:py-3 focus:font-mono focus:text-[12px] focus:tracking-[0.14em] focus:text-ink-950 focus:uppercase"
+    >
+      {content.a11y.skipLink}
+    </a>
+
+    {/* Analytics is loaded by src/utils/analytics.ts only while the footer switch is on. */}
+    <AnalyticsConfig
+      websiteId={UMAMI_WEBSITE_ID}
+      scriptSrc={UMAMI_SCRIPT_SRC}
+      enabled={analyticsEnabled}
+    />
+
     {chrome && <SiteHeader />}
 
-    <main class="flex-grow">
+    <main id="main-content" tabindex="-1" class="flex-grow focus:outline-none">
       <slot />
     </main>
 

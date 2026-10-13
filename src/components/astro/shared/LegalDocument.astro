@@ -1,0 +1,159 @@
+---
+/*
+ * One legal document (privacy / cookies / accessibility). All text comes from
+ * content.json → legal.<name>; this component only lays it out.
+ *
+ * Section shape:  { heading, paragraphs?, items?, closing?, links?, button? }
+ * rendered in that order. `button` adds an analytics on/off switch that
+ * src/utils/analytics.ts wires up.
+ *
+ * Placeholders of the form "[TODO: replace — …]" are drafted facts the site
+ * owner must supply; they are highlighted so nobody publishes them by accident.
+ * Find them all with:  grep -n "TODO: replace" src/data/content.json
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CTASection from './CTASection.astro';
+
+interface Section {
+  heading: string;
+  paragraphs?: string[];
+  items?: string[];
+  closing?: string[];
+  links?: { label: string; href: string }[];
+  button?: string;
+}
+
+interface Doc {
+  seo: { title: string; description: string };
+  eyebrow: string;
+  headline: string;
+  updated: string;
+  intro: string;
+  sections: Section[];
+}
+
+interface Props {
+  doc: Doc;
+}
+
+const { doc } = Astro.props;
+
+/** Splits "text [TODO: replace — x] more" so the placeholder can be highlighted. */
+const parts = (text: string) => text.split(/(\[TODO:[^\]]*\])/g).filter(Boolean);
+const isTodo = (part: string) => part.startsWith('[TODO:');
+---
+
+<BaseLayout title={doc.seo.title} description={doc.seo.description}>
+  <article class="border-b border-ink-800 py-24">
+    <div class="mx-auto max-w-7xl px-6 md:px-12">
+      <header class="mb-16 max-w-3xl">
+        <p class="mb-5 font-mono text-[12px] tracking-[0.2em] text-ink-300 uppercase">
+          {doc.eyebrow}
+        </p>
+        <h1
+          class="font-brand text-[42px] leading-[1.05] font-semibold tracking-[-0.045em] text-paper md:text-[64px]"
+        >
+          {doc.headline}
+        </h1>
+        <p class="mt-5 font-mono text-[12px] tracking-[0.1em] text-ink-300">
+          {
+            parts(doc.updated).map((part) =>
+              isTodo(part) ? (
+                <mark class="bg-transparent text-ink-100 underline decoration-dotted underline-offset-4">
+                  {part}
+                </mark>
+              ) : (
+                part
+              )
+            )
+          }
+        </p>
+        <p class="mt-8 text-[17px] leading-relaxed text-ink-200">{doc.intro}</p>
+      </header>
+
+      {
+        doc.sections.map((section) => (
+          <section class="grid grid-cols-1 gap-6 border-t border-ink-800 py-12 lg:grid-cols-12 lg:gap-12">
+            <h2 class="font-mono text-[12px] tracking-[0.2em] text-ink-100 uppercase lg:col-span-4">
+              {section.heading}
+            </h2>
+            <div class="max-w-[68ch] space-y-5 text-[15px] leading-relaxed text-ink-300 lg:col-span-8">
+              {section.paragraphs?.map((p) => (
+                <p>
+                  {parts(p).map((part) =>
+                    isTodo(part) ? (
+                      <mark class="bg-transparent text-ink-100 underline decoration-dotted underline-offset-4">
+                        {part}
+                      </mark>
+                    ) : (
+                      part
+                    )
+                  )}
+                </p>
+              ))}
+
+              {section.items && (
+                <ul class="flex flex-col gap-3">
+                  {section.items.map((item) => (
+                    <li class="border-l border-ink-700 pl-4 text-ink-200">
+                      {parts(item).map((part) =>
+                        isTodo(part) ? (
+                          <mark class="bg-transparent text-ink-100 underline decoration-dotted underline-offset-4">
+                            {part}
+                          </mark>
+                        ) : (
+                          part
+                        )
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {section.closing?.map((p) => (
+                <p>
+                  {parts(p).map((part) =>
+                    isTodo(part) ? (
+                      <mark class="bg-transparent text-ink-100 underline decoration-dotted underline-offset-4">
+                        {part}
+                      </mark>
+                    ) : (
+                      part
+                    )
+                  )}
+                </p>
+              ))}
+
+              {section.links && (
+                <ul class="flex flex-col gap-2">
+                  {section.links.map((link) => (
+                    <li>
+                      <a
+                        href={link.href}
+                        class="text-ink-100 underline underline-offset-4 transition-colors hover:text-paper"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {section.button && (
+                <button
+                  type="button"
+                  data-analytics-toggle
+                  class="border border-ink-400 px-6 py-3 font-mono text-[12px] tracking-[0.14em] text-paper uppercase transition-colors hover:bg-paper hover:text-ink-950"
+                >
+                  {section.button}
+                </button>
+              )}
+            </div>
+          </section>
+        ))
+      }
+    </div>
+  </article>
+
+  <CTASection />
+</BaseLayout>

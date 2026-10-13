@@ -1,20 +1,26 @@
 ---
 /*
  * Site footer — the same nav links as SiteHeader, one row, identical on
- * every page. No secondary/"more" row: there's nothing left to link to that
- * isn't already in the primary row.
+ * every page — plus a second row with the legal pages and the analytics
+ * on/off switch (wired up by src/utils/analytics.ts).
  */
 import BrandLogo from './BrandLogo.astro';
 import content from '../../../data/content.json';
 
 const { links } = content.nav;
 const { legalName } = content.site;
+const { legalLinks } = content.footer;
+const { labelOn } = content.analytics;
 
 // Same active-page rule as SiteHeader: the current page renders as plain
 // text (nothing to navigate to), everything else as a link.
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
-const isActive = (href: string) =>
-  href === '/' ? currentPath === '/' : currentPath === href || currentPath.startsWith(`${href}/`);
+const isActive = (href: string) => {
+  const path = href.replace(/\/$/, '') || '/';
+  return path === '/'
+    ? currentPath === '/'
+    : currentPath === path || currentPath.startsWith(`${path}/`);
+};
 ---
 
 <footer class="relative z-10 border-t border-ink-800">
@@ -24,7 +30,7 @@ const isActive = (href: string) =>
     <span class="font-sans text-[15px] tracking-normal text-ink-300 normal-case">
       <BrandLogo />
     </span>
-    <nav class="flex flex-wrap gap-x-6 gap-y-2" aria-label="Primary">
+    <nav class="flex flex-wrap gap-x-6 gap-y-2" aria-label="Footer">
       {
         links.map((l) =>
           isActive(l.href) ? (
@@ -40,5 +46,34 @@ const isActive = (href: string) =>
       }
     </nav>
     <p>© {new Date().getFullYear()} {legalName}</p>
+  </div>
+
+  <div class="border-t border-ink-800">
+    <div
+      class="mx-auto flex max-w-[1500px] flex-wrap items-center gap-x-6 gap-y-2 px-6 py-4 font-mono text-[11px] tracking-[0.12em] text-ink-300 uppercase md:px-10"
+    >
+      <nav class="flex flex-wrap gap-x-6 gap-y-2" aria-label="Legal">
+        {
+          legalLinks.map((l) =>
+            isActive(l.href) ? (
+              <span aria-current="page" class="text-paper">
+                {l.label}
+              </span>
+            ) : (
+              <a href={l.href} class="text-ink-300 transition-colors hover:text-paper">
+                {l.label}
+              </a>
+            )
+          )
+        }
+      </nav>
+      <button
+        type="button"
+        data-analytics-toggle
+        class="uppercase text-ink-300 transition-colors hover:text-paper"
+      >
+        {labelOn}
+      </button>
+    </div>
   </div>
 </footer>

@@ -100,9 +100,9 @@ export default function WorkGridFilters({ caseStudies }: Props) {
               )}
               <div className="flex flex-1 flex-col justify-between p-6 md:p-7">
                 <div>
-                  <h3 className="font-brand text-[22px] font-medium leading-tight tracking-[-0.02em] text-paper mb-3 mt-6">
+                  <h2 className="font-brand text-[22px] font-medium leading-tight tracking-[-0.02em] text-paper mb-3 mt-6">
                     {study.title}
-                  </h3>
+                  </h2>
 
                   <p className="text-[15px] leading-relaxed text-ink-300 mb-6">
                     {study.description}

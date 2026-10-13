@@ -815,6 +815,11 @@
   },
 
   "contactForm": {
+    "privacyNote": {
+      "text": "We use your details only to reply to your enquiry. See our",
+      "linkLabel": "Privacy Policy",
+      "href": "/privacy/"
+    },
     "services": [
       "AI & Machine Learning",
       "DevOps & MLOps",
@@ -823,5 +828,287 @@
       "People & Workforce Growth",
       "Consulting / Other"
     ]
+  },
+
+  "footer": {
+    "legalLinks": [
+      {
+        "label": "Privacy",
+        "href": "/privacy/"
+      },
+      {
+        "label": "Cookies",
+        "href": "/cookies/"
+      },
+      {
+        "label": "Accessibility",
+        "href": "/accessibility/"
+      }
+    ]
+  },
+
+  "analytics": {
+    "labelOn": "Analytics: on",
+    "labelOff": "Analytics: off",
+    "announceOn": "Analytics turned on.",
+    "announceOff": "Analytics turned off. Nothing is tracked."
+  },
+
+  "a11y": {
+    "skipLink": "Skip to main content",
+    "beltPause": "Pause motion",
+    "beltPlay": "Play motion"
+  },
+
+  "legal": {
+    "privacy": {
+      "seo": {
+        "title": "Privacy Policy | Britnova Technologies",
+        "description": "How Britnova Technologies collects, uses and protects personal information on britnova.net, and your rights under UK data protection law."
+      },
+      "eyebrow": "Legal",
+      "headline": "Privacy Policy",
+      "updated": "Last updated: 14 October 2026",
+      "intro": "This policy explains how Britnova Technologies collects, uses and protects personal information when you use britnova.net or contact us. It is written to meet the UK GDPR and the Data Protection Act 2018.",
+      "sections": [
+        {
+          "heading": "Who we are",
+          "paragraphs": [
+            "The controller of your personal information is Britnova Technology (Private) Limited, a private company limited by shares under Pakistan's Companies Act 2017, incorporated on 21 August 2026 and registered with the Securities and Exchange Commission of Pakistan (CRO Lahore) under CUIN 0351933. Its registered office is House # 14, Ghous E Azam Colony, Gulberg 2, Lahore 54660, Punjab, Pakistan.",
+            "We are registering with the Information Commissioner's Office (ICO), the UK data protection regulator, and will publish our registration number here once it is issued.",
+            "Our UK operations are led by Khaleel Yafa, Chief Executive Officer (UK). People in the UK can contact him about their personal information at contact@britnova.net."
+          ]
+        },
+        {
+          "heading": "How to contact us about your data",
+          "paragraphs": [
+            "Email contact@britnova.net and we will respond to any request about your personal information.",
+            "We have not appointed a Data Protection Officer, because the UK GDPR does not require one for our activities."
+          ]
+        },
+        {
+          "heading": "What we collect, why, and our lawful basis",
+          "paragraphs": [
+            "We only collect what we need. Please do not include sensitive information (such as health details) in messages to us."
+          ],
+          "items": [
+            "Contact form (your name, email address, project type and message). We use it to reply to your enquiry and to discuss possible work with you. Lawful basis: our legitimate interest in answering business enquiries, or, if you ask us for a proposal or quote, steps you have asked us to take before entering into a contract.",
+            "Messages you send us directly, including email, WhatsApp, phone calls and Calendly bookings. We use them to reply and to manage our work with you. Lawful basis: our legitimate interest in answering and managing business enquiries, or the steps needed to enter into or carry out a contract with you.",
+            "Website analytics: the page visited, the page you came from, the page title, your screen size and browser language, plus general device and location information derived from the request. We use this in aggregate to understand how the site is used, and it is on unless you turn it off with the Analytics switch in the footer or your browser sends a Global Privacy Control signal. Lawful basis: our legitimate interest in improving the website.",
+            "Technical data our hosting provider handles to deliver and secure the site, such as your IP address and request details. Lawful basis: our legitimate interest in running a secure website."
+          ]
+        },
+        {
+          "heading": "Who we share it with",
+          "paragraphs": [
+            "We use trusted providers to run the site and our business. They act on our instructions as processors:"
+          ],
+          "items": [
+            "Resend, which delivers contact-form messages to us by email.",
+            "Netlify, which hosts the website and runs the function that handles the contact form.",
+            "Umami, which provides website analytics (you can turn this off in the footer).",
+            "Hostinger, which provides our email, including the contact@britnova.net mailbox.",
+            "Calendly, which handles meeting bookings if you book a call with us.",
+            "Professional advisers, such as accountants or lawyers, only where we need their help."
+          ],
+          "closing": ["We do not sell your personal information."]
+        },
+        {
+          "heading": "Transfers outside the UK",
+          "paragraphs": [
+            "Some of the providers above are based in, or process information in, the United States, and our team works from the UK, Pakistan and Canada.",
+            "The UK has adequacy regulations covering Canada (for organisations subject to Canada's PIPEDA) and US organisations certified under the UK Extension to the EU-US Data Privacy Framework, but not Pakistan. We are confirming with our adviser which safeguards UK law requires for the transfers we make, and will describe them here.",
+            "You can ask us about this at any time."
+          ]
+        },
+        {
+          "heading": "How long we keep it",
+          "paragraphs": [
+            "Enquiries that do not lead to work: 12 months after our last contact, then we delete them. Client records: for the length of our work together, and afterwards for as long as Pakistani tax and company law requires us to keep business records. Website analytics: kept as overall statistics, which do not include your name or contact details."
+          ]
+        },
+        {
+          "heading": "Your rights",
+          "paragraphs": ["Under UK data protection law you have the right to:"],
+          "items": [
+            "be told how your information is used (this policy);",
+            "access the personal information we hold about you;",
+            "have inaccurate information corrected;",
+            "have your information erased in certain circumstances;",
+            "restrict how we use it in certain circumstances;",
+            "receive your information in a portable format where it applies;",
+            "turn analytics off at any time with the Analytics switch in the footer of every page."
+          ],
+          "closing": [
+            "You also have the right to object to our use of your information where we rely on legitimate interests. Tell us and we will stop unless we can show a compelling reason to continue.",
+            "To use any of these rights, email us. We will normally respond within one month. We do not use automated decision-making or profiling on this website."
+          ]
+        },
+        {
+          "heading": "Complaints",
+          "paragraphs": [
+            "We would like the chance to put things right first, so please contact us. You can also complain to the Information Commissioner's Office, the UK data protection regulator, on 0303 123 1113."
+          ],
+          "links": [
+            {
+              "label": "Make a complaint to the ICO",
+              "href": "https://ico.org.uk/make-a-complaint/"
+            }
+          ]
+        },
+        {
+          "heading": "Cookies and similar technologies",
+          "paragraphs": [
+            "Our Cookie Policy lists exactly what this website stores on your device and how to change your choices."
+          ],
+          "links": [
+            {
+              "label": "Cookie Policy",
+              "href": "/cookies/"
+            }
+          ]
+        },
+        {
+          "heading": "Other websites",
+          "paragraphs": [
+            "This website links to services such as LinkedIn, WhatsApp and Calendly. They have their own privacy policies and we are not responsible for them."
+          ]
+        },
+        {
+          "heading": "Changes to this policy",
+          "paragraphs": [
+            "We will update this page if how we use personal information changes, and show the date at the top."
+          ]
+        }
+      ]
+    },
+    "cookies": {
+      "seo": {
+        "title": "Cookie Policy | Britnova Technologies",
+        "description": "What britnova.net stores on your device, why, and how to turn analytics off."
+      },
+      "eyebrow": "Legal",
+      "headline": "Cookie Policy",
+      "updated": "Last updated: 14 October 2026",
+      "intro": "This website does not set cookies and does not use advertising or tracking, so there is no cookie banner. It stores two small items in your browser's local storage, and runs privacy-focused analytics that you can switch off at any time. UK law (PECR) treats local storage in the same way as cookies, so we list everything here.",
+      "sections": [
+        {
+          "heading": "What this website stores",
+          "items": [
+            "Your theme (britnova-theme). Saved only if you use the light/dark switch, so the site opens how you left it. It changes only how the site looks. You can clear it by clearing this site's data in your browser.",
+            "Analytics off switch (umami.disabled). Saved only if you turn analytics off, so it stays off on your next visit."
+          ]
+        },
+        {
+          "heading": "Analytics",
+          "paragraphs": [
+            "We use Umami, a privacy-focused analytics service, to see overall visit numbers and which pages are useful. Its script sets no cookies and stores nothing else on your device. It sends the page address, the page you came from, the page title, your screen size and your browser language to Umami. We use the results as overall statistics. We do not use them for advertising or to build profiles of individual visitors.",
+            "UK law allows analytics like this without asking first, as long as we tell you clearly what we do and make it easy to object. This page is that information, and the switch below is the way to object."
+          ]
+        },
+        {
+          "heading": "Turn analytics off or on",
+          "paragraphs": [
+            "Use the Analytics switch here or in the footer of any page. Turning it off is as easy as turning it on, and nothing is sent to Umami while it is off.",
+            "If your browser sends a Global Privacy Control signal, we treat it as turned off until you switch it on."
+          ],
+          "button": "Analytics"
+        },
+        {
+          "heading": "Third-party links",
+          "paragraphs": [
+            "Links to LinkedIn, WhatsApp, Calendly and other sites take you to services that may set their own cookies. We do not control them, so please read their policies."
+          ]
+        },
+        {
+          "heading": "Server information",
+          "paragraphs": [
+            "Our hosting provider receives technical details such as your IP address each time a page is requested, which is how any website works. This is described in our Privacy Policy."
+          ],
+          "links": [
+            {
+              "label": "Privacy Policy",
+              "href": "/privacy/"
+            }
+          ]
+        }
+      ]
+    },
+    "accessibility": {
+      "seo": {
+        "title": "Accessibility Statement | Britnova Technologies",
+        "description": "How accessible britnova.net is, what we tested, the known issues, and how to contact us about accessibility."
+      },
+      "eyebrow": "Legal",
+      "headline": "Accessibility Statement",
+      "updated": "First published: 14 October 2026. Last reviewed: 14 October 2026",
+      "intro": "This statement applies to britnova.net. We want everyone to be able to use this website, including people who use screen readers, keyboards, magnification or other assistive technology.",
+      "sections": [
+        {
+          "heading": "Our standard",
+          "paragraphs": [
+            "We aim to meet the Web Content Accessibility Guidelines (WCAG) 2.2 at level AA. We are a private company and are not covered by the Public Sector Bodies (Websites and Mobile Applications) Accessibility Regulations 2018, but we follow the same standard and the structure of the GOV.UK model statement so that public sector clients can see where we stand."
+          ]
+        },
+        {
+          "heading": "Compliance status",
+          "paragraphs": [
+            "This website is partially compliant with WCAG 2.2 AA. We have tested it ourselves and found no failures of the AA criteria that we tested, but we have not yet had an independent audit or testing with screen reader users, so we cannot claim full compliance. The limits of our testing are listed below."
+          ]
+        },
+        {
+          "heading": "What you can do",
+          "items": [
+            "Use the whole site with a keyboard. A 'Skip to main content' link is the first item you reach.",
+            "Zoom in to 400% (or use a 320 pixel wide window) without scrolling sideways.",
+            "Choose a light or dark theme with the switch on every page.",
+            "Pause the moving technology logos using the 'Pause motion' button. Animations also stop automatically if your device is set to reduce motion."
+          ]
+        },
+        {
+          "heading": "Known limitations",
+          "items": [
+            "We have not yet tested with screen readers such as NVDA, JAWS or VoiceOver.",
+            "We have not had an independent accessibility audit.",
+            "Links to other services, such as Calendly, LinkedIn and WhatsApp, open sites we do not control.",
+            "Images of our case studies have text descriptions, but we have not independently checked each one for quality."
+          ]
+        },
+        {
+          "heading": "Feedback and contact",
+          "paragraphs": [
+            "If you find a barrier, or need information in another format, email contact@britnova.net. We will reply within 5 working days and tell you what we can do."
+          ]
+        },
+        {
+          "heading": "If you are not happy with our response",
+          "paragraphs": [
+            "If you are not satisfied with how we respond, you can contact the Equality Advisory and Support Service (EASS), which gives advice on discrimination and equality in England, Scotland and Wales."
+          ],
+          "links": [
+            {
+              "label": "Equality Advisory and Support Service",
+              "href": "https://www.equalityadvisoryservice.com/"
+            }
+          ]
+        },
+        {
+          "heading": "How we tested",
+          "paragraphs": [
+            "Tested by our own team on 13 October 2026 on the home, services, work, case study, about, contact, privacy, cookie and accessibility pages, in light and dark themes."
+          ],
+          "items": [
+            "Automated: axe-core 4.14.0 against the WCAG 2.0, 2.1 and 2.2 A and AA rules plus best-practice rules, and a Lighthouse accessibility audit.",
+            "Manual: keyboard-only navigation and visible focus, colour contrast of text over the gradient background, size and spacing of clickable targets, and reflow at 320 pixels wide."
+          ]
+        },
+        {
+          "heading": "How often we review this",
+          "paragraphs": [
+            "We will review this statement at least once a year and whenever we make a major change to the website."
+          ]
+        }
+      ]
+    }
   }
 }
