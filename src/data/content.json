@@ -831,6 +831,20 @@
   },
 
   "footer": {
+    "socialLabel": "Social media",
+    "newTab": "(opens in a new tab)",
+    "social": [
+      {
+        "label": "LinkedIn",
+        "icon": "linkedin",
+        "href": "https://www.linkedin.com/company/britnova-technologies"
+      },
+      {
+        "label": "Instagram",
+        "icon": "instagram",
+        "href": "https://www.instagram.com/britnovaa/"
+      }
+    ],
     "legalLinks": [
       {
         "label": "Privacy",

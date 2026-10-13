@@ -1,15 +1,18 @@
 ---
 /*
- * Site footer — the same nav links as SiteHeader, one row, identical on
- * every page — plus a second row with the legal pages and the analytics
- * on/off switch (wired up by src/utils/analytics.ts).
+ * Site footer — one block, two lines, identical on every page:
+ *   logo ............................ social icons
+ *   © legal name ......... legal pages + analytics on/off switch
+ * The analytics switch is wired up by src/utils/analytics.ts.
  */
 import BrandLogo from './BrandLogo.astro';
+import SocialIcon from './SocialIcon.astro';
 import content from '../../../data/content.json';
 
-const { links } = content.nav;
+type SocialIconName = 'linkedin' | 'instagram';
+
 const { legalName } = content.site;
-const { legalLinks } = content.footer;
+const { legalLinks, social, socialLabel, newTab } = content.footer;
 const { labelOn } = content.analytics;
 
 // Same active-page rule as SiteHeader: the current page renders as plain
@@ -25,55 +28,59 @@ const isActive = (href: string) => {
 
 <footer class="relative z-10 border-t border-ink-800">
   <div
-    class="mx-auto flex max-w-[1500px] flex-col gap-4 px-6 py-7 font-mono text-[11px] tracking-[0.12em] text-ink-300 uppercase md:flex-row md:items-center md:justify-between md:px-10"
+    class="mx-auto flex max-w-[1500px] flex-col gap-3 px-6 py-7 font-mono text-[11px] tracking-[0.12em] text-ink-300 uppercase md:px-10"
   >
-    <span class="font-sans text-[15px] tracking-normal text-ink-300 normal-case">
-      <BrandLogo />
-    </span>
-    <nav class="flex flex-wrap gap-x-6 gap-y-2" aria-label="Footer">
-      {
-        links.map((l) =>
-          isActive(l.href) ? (
-            <span aria-current="page" class="text-paper">
-              {l.label}
-            </span>
-          ) : (
-            <a href={l.href} class="text-ink-300 transition-colors hover:text-paper">
-              {l.label}
-            </a>
-          )
-        )
-      }
-    </nav>
-    <p>© {new Date().getFullYear()} {legalName}</p>
-  </div>
-
-  <div class="border-t border-ink-800">
-    <div
-      class="mx-auto flex max-w-[1500px] flex-wrap items-center gap-x-6 gap-y-2 px-6 py-4 font-mono text-[11px] tracking-[0.12em] text-ink-300 uppercase md:px-10"
-    >
-      <nav class="flex flex-wrap gap-x-6 gap-y-2" aria-label="Legal">
+    <div class="flex items-center justify-between gap-6">
+      <span class="font-sans text-[15px] tracking-normal normal-case"><BrandLogo /></span>
+      {/* -mr cancels the icons' tap padding so their edge lines up with the legal row */}
+      <ul class="-mr-[7px] flex items-center gap-1" aria-label={socialLabel}>
         {
-          legalLinks.map((l) =>
-            isActive(l.href) ? (
-              <span aria-current="page" class="text-paper">
-                {l.label}
-              </span>
-            ) : (
-              <a href={l.href} class="text-ink-300 transition-colors hover:text-paper">
-                {l.label}
+          social.map((s) => (
+            <li>
+              <a
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex p-[7px] text-ink-300 transition-colors hover:text-paper"
+              >
+                <SocialIcon name={s.icon as SocialIconName} />
+                <span class="sr-only">{`${s.label} ${newTab}`}</span>
               </a>
-            )
-          )
+            </li>
+          ))
         }
-      </nav>
-      <button
-        type="button"
-        data-analytics-toggle
-        class="uppercase text-ink-300 transition-colors hover:text-paper"
-      >
-        {labelOn}
-      </button>
+      </ul>
+    </div>
+
+    {/* The legal name + legal row need ~870px side by side; narrower screens stack them. */}
+    <div
+      class="flex flex-col gap-3 min-[900px]:flex-row min-[900px]:items-center min-[900px]:justify-between"
+    >
+      <p>{`© ${new Date().getFullYear()} ${legalName}`}</p>
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
+        <nav class="flex flex-wrap gap-x-6 gap-y-2" aria-label="Legal">
+          {
+            legalLinks.map((l) =>
+              isActive(l.href) ? (
+                <span aria-current="page" class="text-paper">
+                  {l.label}
+                </span>
+              ) : (
+                <a href={l.href} class="text-ink-300 transition-colors hover:text-paper">
+                  {l.label}
+                </a>
+              )
+            )
+          }
+        </nav>
+        <button
+          type="button"
+          data-analytics-toggle
+          class="uppercase text-ink-300 transition-colors hover:text-paper"
+        >
+          {labelOn}
+        </button>
+      </div>
     </div>
   </div>
 </footer>
